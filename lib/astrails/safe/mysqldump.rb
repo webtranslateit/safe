@@ -13,7 +13,7 @@ module Astrails
       def mysql_password_file
         Astrails::Safe::TmpFile.create('mysqldump') do |file|
           file.puts '[mysqldump]'
-          %w/user password socket host port/.each do |k|
+          %w[user password socket host port].each do |k|
             v = config[k]
             # values are quoted if needed
             file.puts "#{k} = #{v.inspect}" if v
