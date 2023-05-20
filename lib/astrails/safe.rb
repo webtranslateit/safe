@@ -3,7 +3,7 @@ require "astrails/safe/version"
 require "aws/s3"
 require "cloudfiles"
 require 'net/sftp'
-require 'net/ftp'
+# require 'net/ftp'
 require 'fileutils'
 require 'benchmark'
 
