@@ -18,7 +18,6 @@ Layout/ArgumentAlignment:
 # This cop supports safe autocorrection (--autocorrect).
 Layout/ClosingHeredocIndentation:
   Exclude:
-    - 'astrails-safe.gemspec'
     - 'bin/astrails-safe'
     - 'lib/astrails/safe/tmp_file.rb'
 
