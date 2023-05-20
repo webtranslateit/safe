@@ -44,7 +44,7 @@ def main
   is_verbose = (opts.delete('-v') || opts.delete('--verbose')) && !opts.delete('--not-verbose')
   is_local_only = (opts.delete('-L') || opts.delete('--local')) && !opts.delete('--not-local')
 
-  unless File.exists?(config_file)
+  unless File.exist?(config_file)
     die "Missing configuration file. NOT CREATED! Rerun w/o the -n argument to create a template configuration file." if is_dry
 
     FileUtils.cp File.join(Astrails::Safe::ROOT, "templates", "script.rb"), config_file

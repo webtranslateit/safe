@@ -3,11 +3,11 @@ module Astrails
     class Cloudfiles < Sink
       MAX_CLOUDFILES_FILE_SIZE = 5368709120
 
-      protected
-
       def active?
         container && user && api_key
       end
+
+      protected
 
       def path
         @path ||= expand(config[:cloudfiles, :path] || config[:local, :path] || ":kind/:id")

@@ -67,22 +67,22 @@ describe Astrails::Safe::Cloudfiles do
     end
 
     it "should be true when all params are set" do
-      @cloudfiles.should be_active
+      expect(@cloudfiles.active?).to be_truthy
     end
 
     it "should be false if container is missing" do
       @cloudfiles.config[:cloudfiles].data["container"] = nil
-      @cloudfiles.should_not be_active
+      expect(@cloudfiles.active?).to be_falsy
     end
 
     it "should be false if user is missing" do
       @cloudfiles.config[:cloudfiles].data["user"] = nil
-      @cloudfiles.should_not be_active
+      expect(@cloudfiles.active?).to be_falsy
     end
 
     it "should be false if api_key is missing" do
       @cloudfiles.config[:cloudfiles].data["api_key"] = nil
-      @cloudfiles.should_not be_active
+      expect(@cloudfiles.active?).to be_falsy
     end
   end
 

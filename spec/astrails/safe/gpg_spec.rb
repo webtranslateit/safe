@@ -74,19 +74,19 @@ describe Astrails::Safe::Gpg do
 
     describe "with key" do
       it "should be true" do
-        gpg(:gpg => {:key => :foo}).should be_active
+        expect(gpg(:gpg => {:key => :foo}).active?).to be_truthy
       end
     end
 
     describe "with password" do
       it "should be true" do
-        gpg(:gpg => {:password => :foo}).should be_active
+        expect(gpg(:gpg => {:password => :foo}).active?).to be_truthy
       end
     end
 
     describe "without key & password" do
       it "should be false" do
-        gpg.should_not be_active
+        expect(gpg.active?).to be_falsy
       end
     end
 
@@ -141,7 +141,7 @@ describe Astrails::Safe::Gpg do
   describe :gpg_password_file do
     it "should create password file" do
       file = gpg.send(:gpg_password_file, "foo")
-      File.exists?(file).should be_true
+      expect(File.exist?(file)).to be true
       File.read(file).should == "foo"
     end
   end

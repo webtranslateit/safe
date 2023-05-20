@@ -3,11 +3,11 @@ module Astrails
     class S3 < Sink
       MAX_S3_FILE_SIZE = 5368709120
 
-      protected
-
       def active?
         bucket && key && secret
       end
+
+      protected
 
       def path
         @path ||= expand(config[:s3, :path] || config[:local, :path] || ":kind/:id")

@@ -48,7 +48,7 @@ describe "tar backup" do
   end
 
   it "should create backup file" do
-    File.exists?(@backup).should be_true
+    File.exist?(@backup).should be true
   end
 
   it "should remove old backups" do
