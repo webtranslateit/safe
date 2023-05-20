@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    astrails-safe (0.3.1)
+    webtranslateit-safe (0.3.1)
       aws-s3
       cloudfiles
       net-sftp
@@ -77,13 +77,13 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  astrails-safe!
   awesome_print
   rake
   rr (~> 1.0.4)
   rspec
   rubocop
   rubocop-rspec
+  webtranslateit-safe!
 
 BUNDLED WITH
    2.4.13

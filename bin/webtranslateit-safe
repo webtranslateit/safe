@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+require 'webtranslateit/safe'
+
+include WebTranslateIt::Safe
+
+def die(msg)
+  puts "ERROR: #{msg}"
+  exit 1
+end
+
+def usage
+  puts <<~END
+    Usage: webtranslateit-safe [OPTIONS] CONFIG_FILE
+    Options:
+      -h, --help           This help screen
+      -v, --verbose        be verbose, duh!
+      -n, --dry-run        just pretend, don't do anything.
+      -L, --local          skip S3 and Cloud Files
+
+    Note: config file will be created from template if missing
+  END
+  exit 1
+end
+
+OPTS = [
+  '-h', '--help',
+  '-v', '--verbose', '--not-verbose',
+  '-n', '--dry-run', '--not-dry-run',
+  '-L', '--local', '--not-local'
+].freeze
+def main
+  opts = ARGV & OPTS
+  args = ARGV - OPTS
+
+  usage unless args.first
+  usage if opts.delete('-h') || opts.delete('--help')
+
+  config_file = File.expand_path(args.first)
+
+  is_dry = (opts.delete('-n') || opts.delete('--dry-run')) && !opts.delete('--not-dry-run')
+  is_verbose = (opts.delete('-v') || opts.delete('--verbose')) && !opts.delete('--not-verbose')
+  is_local_only = (opts.delete('-L') || opts.delete('--local')) && !opts.delete('--not-local')
+
+  unless File.exist?(config_file)
+    die 'Missing configuration file. NOT CREATED! Rerun w/o the -n argument to create a template configuration file.' if is_dry
+
+    FileUtils.cp File.join(WebTranslateIt::Safe::ROOT, 'templates', 'script.rb'), config_file
+
+    die "Created default #{config_file}. Please edit and run again."
+  end
+
+  config = eval(File.read(config_file))
+
+  config[:verbose]    = is_verbose
+  config[:dry_run]    = is_dry
+  config[:local_only] = is_local_only
+
+  process config
+end
+
+main
