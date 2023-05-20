@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'astrails/safe'
+require 'webtranslateit/safe'
 
 RSpec.configure do |config|
   config.mock_with :rr

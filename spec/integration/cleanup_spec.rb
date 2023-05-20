@@ -33,7 +33,7 @@ describe 'tar backup' do
     cp qwe, "#{dst}/archive/archive-foobar.000001.tar.gz"
     cp qwe, "#{dst}/archive/archive-foobar.000002.tar.gz"
 
-    config = Astrails::Safe.safe do
+    config = WebTranslateIt::Safe.safe do
       local :path => "#{dst}/:kind"
       tar do
         keep :local => 1 # only leave the latest
@@ -42,7 +42,7 @@ describe 'tar backup' do
         end
       end
     end
-    Astrails::Safe.process config
+    WebTranslateIt::Safe.process config
 
     @backup = "#{dst}/archive/archive-foo.#{@timestamp}.tar.gz"
   end
