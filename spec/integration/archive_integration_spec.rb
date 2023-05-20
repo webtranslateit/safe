@@ -52,7 +52,7 @@ describe "tar backup" do
   end
 
   it "should create backup file" do
-    File.exists?(@backup).should be_true
+    File.exist?(@backup).should be true
   end
 
   describe "after extracting" do
@@ -67,16 +67,16 @@ describe "tar backup" do
     end
 
     it "should include asd1/2/3" do
-      File.exists?("#{@test}/asd1").should be_true
-      File.exists?("#{@test}/a/asd2").should be_true
-      File.exists?("#{@test}/a/s/asd3").should be_true
+      File.exist?("#{@test}/asd1").should be true
+      File.exist?("#{@test}/a/asd2").should be true
+      File.exist?("#{@test}/a/s/asd3").should be true
     end
 
     it "should only include qwe 1 and 2 (no 3)" do
-      File.exists?("#{@test}/qwe1").should be_true
-      File.exists?("#{@test}/q/qwe2").should be_true
-      File.exists?("#{@test}/q/w/qwe3").should be_false
-      File.exists?("#{@test}/q/w/e/qwe4").should be_false
+      File.exist?("#{@test}/qwe1").should be true
+      File.exist?("#{@test}/q/qwe2").should be true
+      File.exist?("#{@test}/q/w/qwe3").should be false
+      File.exist?("#{@test}/q/w/e/qwe4").should be false
     end
 
     it "should preserve file content" do

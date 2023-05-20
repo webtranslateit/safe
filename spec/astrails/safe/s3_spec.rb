@@ -63,22 +63,22 @@ describe Astrails::Safe::S3 do
     end
 
     it "should be true when all params are set" do
-      @s3.should be_active
+      expect(@s3.active?).to be_truthy
     end
 
     it "should be false if bucket is missing" do
       @s3.config[:s3].data["bucket"] = nil
-      @s3.should_not be_active
+      expect(@s3.active?).to be_falsy
     end
 
     it "should be false if key is missing" do
       @s3.config[:s3].data["key"] = nil
-      @s3.should_not be_active
+      expect(@s3.active?).to be_falsy
     end
 
     it "should be false if secret is missing" do
       @s3.config[:s3].data["secret"] = nil
-      @s3.should_not be_active
+      expect(@s3.active?).to be_falsy
     end
   end
 

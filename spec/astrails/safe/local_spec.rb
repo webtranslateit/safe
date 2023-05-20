@@ -33,7 +33,7 @@ describe Astrails::Safe::Local do
 
   describe :active? do
     it "should be true" do
-      local.should be_active
+      expect(local.active?).to be_truthy
     end
   end
 

@@ -69,7 +69,7 @@ describe Astrails::Safe::Mysqldump do
     it "should create passwords file with quoted values" do
       m = mysqldump(:foo, def_config(:password => '#qwe"asd\'zxc'))
       file = m.send(:mysql_password_file)
-      File.exists?(file).should == true
+      File.exist?(file).should == true
       File.read(file).should == <<-PWD
 [mysqldump]
 user = "User"

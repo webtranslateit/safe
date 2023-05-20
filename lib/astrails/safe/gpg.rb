@@ -2,6 +2,12 @@ module Astrails
   module Safe
     class Gpg < Pipe
 
+      def active?
+        raise RuntimeError, "can't use both gpg password and pubkey" if key && password
+
+        !!(password || key)
+      end
+
       protected
 
       def post_process
@@ -19,12 +25,6 @@ module Astrails
 
       def extension
         ".gpg"
-      end
-
-      def active?
-        raise RuntimeError, "can't use both gpg password and pubkey" if key && password
-
-        !!(password || key)
       end
 
       private
