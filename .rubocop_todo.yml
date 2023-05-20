@@ -623,12 +623,6 @@ Style/EachWithObject:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Style/Encoding:
-  Exclude:
-    - 'astrails-safe.gemspec'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
 Style/ExpandPathArguments:
   Exclude:
     - 'astrails-safe.gemspec'
