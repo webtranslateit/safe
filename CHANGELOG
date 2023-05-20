@@ -1,3 +1,9 @@
+0.4.1
+
+* Add ruby 3.2 compantibility
+* Modernize gem
+* Rename astrails-safe to webtranslateit-safe
+
 0.3.1
 
 * plain ftp support from seroy
