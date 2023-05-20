@@ -45,12 +45,6 @@ Layout/EmptyLineAfterGuardClause:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Layout/EmptyLineAfterMagicComment:
-  Exclude:
-    - 'astrails-safe.gemspec'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EmptyLineBetweenMethodDefs, EmptyLineBetweenClassDefs, EmptyLineBetweenModuleDefs, AllowAdjacentOneLineDefs, NumberOfEmptyLines.
 Layout/EmptyLineBetweenDefs:
   Exclude:
@@ -603,12 +597,6 @@ Style/ConditionalAssignment:
 Style/EachWithObject:
   Exclude:
     - 'lib/astrails/safe/config/node.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/ExpandPathArguments:
-  Exclude:
-    - 'astrails-safe.gemspec'
 
 # Offense count: 8
 # This cop supports safe autocorrection (--autocorrect).
