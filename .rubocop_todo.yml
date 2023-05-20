@@ -870,12 +870,6 @@ Style/RedundantInterpolation:
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
-Style/RedundantPercentQ:
-  Exclude:
-    - 'astrails-safe.gemspec'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
 Style/RedundantSelf:
   Exclude:
     - 'lib/astrails/safe/backup.rb'
