@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Astrails::Safe::VERSION
   spec.authors       = ["Vitaly Kushner"]
   spec.email         = ["we@astrails.com"]
+  spec.required_ruby_version = '>= 3.2'
   spec.description = <<-DESC
 Astrails-Safe is a simple tool to backup databases (MySQL and PostgreSQL), Subversion repositories (with svndump) and just files.
 Backups can be stored locally or remotely and can be enctypted.
