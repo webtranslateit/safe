@@ -1,0 +1,8 @@
+inherit_from:
+  - https://raw.githubusercontent.com/webtranslateit/webtranslateit/main/.rubocop_common.yml
+  - .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.2
+  Exclude:
+    - vendor/bundle/**/*
