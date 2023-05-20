@@ -9,11 +9,11 @@ module Astrails
       end
 
       def path
-        @path ||= expand(config[:ftp, :path] || config[:local, :path] || ":kind/:id")
+        @path ||= expand(config[:ftp, :path] || config[:local, :path] || ':kind/:id')
       end
 
       def save
-        raise RuntimeError, "pipe-streaming not supported for FTP." unless @backup.path
+        raise RuntimeError, 'pipe-streaming not supported for FTP.' unless @backup.path
 
         puts "Uploading #{host}:#{full_path} via FTP" if verbose? || dry_run?
 
@@ -31,7 +31,7 @@ module Astrails
               puts "Ensuring remote path (#{path}) exists" if verbose?
             end
           end
-          puts "...done" if verbose?
+          puts '...done' if verbose?
         end
       end
 

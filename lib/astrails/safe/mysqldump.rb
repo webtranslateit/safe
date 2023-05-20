@@ -11,8 +11,8 @@ module Astrails
       protected
 
       def mysql_password_file
-        Astrails::Safe::TmpFile.create("mysqldump") do |file|
-          file.puts "[mysqldump]"
+        Astrails::Safe::TmpFile.create('mysqldump') do |file|
+          file.puts '[mysqldump]'
           %w/user password socket host port/.each do |k|
             v = config[k]
             # values are quoted if needed
@@ -23,7 +23,7 @@ module Astrails
 
       def mysql_skip_tables
         if skip_tables = config[:skip_tables]
-          [*skip_tables].map{ |t| "--ignore-table=#{@id}.#{t}" }.join(" ")
+          [*skip_tables].map{ |t| "--ignore-table=#{@id}.#{t}" }.join(' ')
         end
       end
 

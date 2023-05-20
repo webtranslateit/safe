@@ -940,47 +940,6 @@ Style/StringConcatenation:
     - 'lib/astrails/safe/s3.rb'
     - 'lib/astrails/safe/sink.rb'
 
-# Offense count: 515
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'Rakefile'
-    - 'astrails-safe.gemspec'
-    - 'bin/astrails-safe'
-    - 'lib/astrails/safe.rb'
-    - 'lib/astrails/safe/archive.rb'
-    - 'lib/astrails/safe/cloudfiles.rb'
-    - 'lib/astrails/safe/config/node.rb'
-    - 'lib/astrails/safe/ftp.rb'
-    - 'lib/astrails/safe/gpg.rb'
-    - 'lib/astrails/safe/gzip.rb'
-    - 'lib/astrails/safe/local.rb'
-    - 'lib/astrails/safe/mongodump.rb'
-    - 'lib/astrails/safe/mysqldump.rb'
-    - 'lib/astrails/safe/pgdump.rb'
-    - 'lib/astrails/safe/s3.rb'
-    - 'lib/astrails/safe/sftp.rb'
-    - 'lib/astrails/safe/sink.rb'
-    - 'lib/astrails/safe/source.rb'
-    - 'lib/astrails/safe/version.rb'
-    - 'lib/extensions/mktmpdir.rb'
-    - 'spec/astrails/safe/archive_spec.rb'
-    - 'spec/astrails/safe/cloudfiles_spec.rb'
-    - 'spec/astrails/safe/config_spec.rb'
-    - 'spec/astrails/safe/gpg_spec.rb'
-    - 'spec/astrails/safe/gzip_spec.rb'
-    - 'spec/astrails/safe/local_spec.rb'
-    - 'spec/astrails/safe/mongodump_spec.rb'
-    - 'spec/astrails/safe/mysqldump_spec.rb'
-    - 'spec/astrails/safe/pgdump_spec.rb'
-    - 'spec/astrails/safe/s3_spec.rb'
-    - 'spec/astrails/safe/svndump_spec.rb'
-    - 'spec/integration/archive_integration_spec.rb'
-    - 'spec/integration/cleanup_spec.rb'
-    - 'templates/script.rb'
-
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.

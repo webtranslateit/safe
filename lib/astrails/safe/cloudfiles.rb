@@ -10,7 +10,7 @@ module Astrails
       protected
 
       def path
-        @path ||= expand(config[:cloudfiles, :path] || config[:local, :path] || ":kind/:id")
+        @path ||= expand(config[:cloudfiles, :path] || config[:local, :path] || ':kind/:id')
       end
 
       # UGLY: we need this function for the reason that
@@ -21,7 +21,7 @@ module Astrails
       end
 
       def save
-        raise RuntimeError, "pipe-streaming not supported for S3." unless @backup.path
+        raise RuntimeError, 'pipe-streaming not supported for S3.' unless @backup.path
 
         # needed in cleanup even on dry run
         cf = CloudFiles::Connection.new(user, api_key, true, service_net) unless local_only?
@@ -36,8 +36,8 @@ module Astrails
             o = cf_container.create_object(full_path,true)
             o.write(File.open(@backup.path))
           end
-          puts "...done" if verbose?
-          puts("Upload took " + sprintf("%.2f", benchmark) + " second(s).") if verbose?
+          puts '...done' if verbose?
+          puts('Upload took ' + sprintf('%.2f', benchmark) + ' second(s).') if verbose?
         end
       end
 

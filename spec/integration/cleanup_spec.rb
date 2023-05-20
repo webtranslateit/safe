@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-require "fileutils"
+require 'fileutils'
 include FileUtils
 
-describe "tar backup" do
+describe 'tar backup' do
   before(:all) do
     # need both local and instance vars
     # instance variables are used in tests
     # local variables are used in the backup definition (instance vars can't be seen)
-    @root = root = "tmp/cleanup_example"
+    @root = root = 'tmp/cleanup_example'
 
     # clean state
     rm_rf @root
@@ -18,13 +18,13 @@ describe "tar backup" do
     @src = src = "#{@root}/src"
     mkdir_p src
 
-    File.open(qwe = "#{@src}/qwe", "w") {|f| f.write("qwe") }
+    File.open(qwe = "#{@src}/qwe", 'w') {|f| f.write('qwe') }
 
     @dst = dst = "#{@root}/backup"
     mkdir_p "#{@dst}/archive"
 
     @now = Time.now
-    @timestamp = @now.strftime("%y%m%d-%H%M")
+    @timestamp = @now.strftime('%y%m%d-%H%M')
 
     stub(Time).now {@now} # Freeze
 
@@ -47,15 +47,15 @@ describe "tar backup" do
     @backup = "#{dst}/archive/archive-foo.#{@timestamp}.tar.gz"
   end
 
-  it "should create backup file" do
+  it 'should create backup file' do
     File.exist?(@backup).should be true
   end
 
-  it "should remove old backups" do
+  it 'should remove old backups' do
     Dir["#{@dst}/archive/archive-foo.*"].should == [@backup]
   end
 
-  it "should NOT remove backups with base having same prefix" do
+  it 'should NOT remove backups with base having same prefix' do
     Dir["#{@dst}/archive/archive-foobar.*"].sort.should == ["#{@dst}/archive/archive-foobar.000001.tar.gz", "#{@dst}/archive/archive-foobar.000002.tar.gz"]
   end
 

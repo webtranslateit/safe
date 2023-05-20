@@ -24,7 +24,7 @@ module Astrails
       end
 
       def extension
-        ".gpg"
+        '.gpg'
       end
 
       private
@@ -38,8 +38,8 @@ module Astrails
       end
 
       def gpg_password_file(pass)
-        return "TEMP_GENERATED_FILENAME" if dry_run?
-        Astrails::Safe::TmpFile.create("gpg-pass") { |file| file.write(pass) }
+        return 'TEMP_GENERATED_FILENAME' if dry_run?
+        Astrails::Safe::TmpFile.create('gpg-pass') { |file| file.write(pass) }
       end
     end
   end

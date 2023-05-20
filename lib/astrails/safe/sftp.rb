@@ -9,11 +9,11 @@ module Astrails
       end
 
       def path
-        @path ||= expand(config[:sftp, :path] || config[:local, :path] || ":kind/:id")
+        @path ||= expand(config[:sftp, :path] || config[:local, :path] || ':kind/:id')
       end
 
       def save
-        raise RuntimeError, "pipe-streaming not supported for SFTP." unless @backup.path
+        raise RuntimeError, 'pipe-streaming not supported for SFTP.' unless @backup.path
 
         puts "Uploading #{host}:#{full_path} via SFTP" if verbose? || dry_run?
 
@@ -37,7 +37,7 @@ module Astrails
               retry
             end
           end
-          puts "...done" if verbose?
+          puts '...done' if verbose?
         end
       end
 

@@ -10,12 +10,12 @@ module Astrails
       protected
 
       def path
-        @path ||= expand(config[:s3, :path] || config[:local, :path] || ":kind/:id")
+        @path ||= expand(config[:s3, :path] || config[:local, :path] || ':kind/:id')
       end
 
       def save
         # FIXME: user friendly error here :)
-        raise RuntimeError, "pipe-streaming not supported for S3." unless @backup.path
+        raise RuntimeError, 'pipe-streaming not supported for S3.' unless @backup.path
 
         # needed in cleanup even on dry run
         AWS::S3::Base.establish_connection!(:access_key_id => key, :secret_access_key => secret, :use_ssl => true) unless local_only?
@@ -32,8 +32,8 @@ module Astrails
               AWS::S3::S3Object.store(full_path, file, bucket)
             end
           end
-          puts "...done" if verbose?
-          puts("Upload took " + sprintf("%.2f", benchmark) + " second(s).") if verbose?
+          puts '...done' if verbose?
+          puts('Upload took ' + sprintf('%.2f', benchmark) + ' second(s).') if verbose?
         end
       end
 

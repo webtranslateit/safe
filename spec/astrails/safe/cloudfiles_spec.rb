@@ -37,9 +37,9 @@ describe Astrails::Safe::Cloudfiles do
 
       @files = [4,1,3,2].map { |i| "aaaaa#{i}" }
 
-      @container = "container"
+      @container = 'container'
 
-      stub(@container).objects(prefix: "_kind/_id/_kind-_id.") { @files }
+      stub(@container).objects(prefix: '_kind/_id/_kind-_id.') { @files }
       stub(@container).delete_object(anything)
 
       stub(CloudFiles::Connection).
@@ -47,13 +47,13 @@ describe Astrails::Safe::Cloudfiles do
         container('_container') {@container}
     end
 
-    it "should check [:keep, :cloudfiles]" do
-      @cloudfiles.config[:keep].data["cloudfiles"] = nil
+    it 'should check [:keep, :cloudfiles]' do
+      @cloudfiles.config[:keep].data['cloudfiles'] = nil
       dont_allow(@cloudfiles.backup).filename
       @cloudfiles.send :cleanup
     end
 
-    it "should delete extra files" do
+    it 'should delete extra files' do
       mock(@container).delete_object('aaaaa1')
       mock(@container).delete_object('aaaaa2')
       @cloudfiles.send :cleanup
@@ -66,22 +66,22 @@ describe Astrails::Safe::Cloudfiles do
       @cloudfiles = cloudfiles
     end
 
-    it "should be true when all params are set" do
+    it 'should be true when all params are set' do
       expect(@cloudfiles.active?).to be_truthy
     end
 
-    it "should be false if container is missing" do
-      @cloudfiles.config[:cloudfiles].data["container"] = nil
+    it 'should be false if container is missing' do
+      @cloudfiles.config[:cloudfiles].data['container'] = nil
       expect(@cloudfiles.active?).to be_falsy
     end
 
-    it "should be false if user is missing" do
-      @cloudfiles.config[:cloudfiles].data["user"] = nil
+    it 'should be false if user is missing' do
+      @cloudfiles.config[:cloudfiles].data['user'] = nil
       expect(@cloudfiles.active?).to be_falsy
     end
 
-    it "should be false if api_key is missing" do
-      @cloudfiles.config[:cloudfiles].data["api_key"] = nil
+    it 'should be false if api_key is missing' do
+      @cloudfiles.config[:cloudfiles].data['api_key'] = nil
       expect(@cloudfiles.active?).to be_falsy
     end
   end
@@ -90,19 +90,19 @@ describe Astrails::Safe::Cloudfiles do
     before(:each) do
       @cloudfiles = cloudfiles
     end
-    it "should use cloudfiles/path 1st" do
-      @cloudfiles.config[:cloudfiles].data["path"] = "cloudfiles_path"
-      @cloudfiles.config[:local] = {path: "local_path"}
-      @cloudfiles.send(:path).should == "cloudfiles_path"
+    it 'should use cloudfiles/path 1st' do
+      @cloudfiles.config[:cloudfiles].data['path'] = 'cloudfiles_path'
+      @cloudfiles.config[:local] = {path: 'local_path'}
+      @cloudfiles.send(:path).should == 'cloudfiles_path'
     end
 
-    it "should use local/path 2nd" do
+    it 'should use local/path 2nd' do
       @cloudfiles.config.merge local: {path: 'local_path'}
       @cloudfiles.send(:path).should == 'local_path'
     end
 
-    it "should use constant 3rd" do
-      @cloudfiles.send(:path).should == "_kind/_id"
+    it 'should use constant 3rd' do
+      @cloudfiles.send(:path).should == '_kind/_id'
     end
 
   end
@@ -112,20 +112,20 @@ describe Astrails::Safe::Cloudfiles do
       stubs.each do |s|
         case s
         when :connection
-          @connection = "connection"
+          @connection = 'connection'
           stub(CloudFiles::Authentication).new
           stub(CloudFiles::Connection).
             new('_user', '_api_key', true, false) {@connection}
         when :file_size
-          stub(@cloudfiles).get_file_size("foo") {123}
+          stub(@cloudfiles).get_file_size('foo') {123}
         when :create_container
-          @container = "container"
-          stub(@container).create_object("_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar", true) {@object}
+          @container = 'container'
+          stub(@container).create_object('_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar', true) {@object}
           stub(@connection).create_container {@container}
         when :file_open
-          stub(File).open("foo")
+          stub(File).open('foo')
         when :cloudfiles_store
-          @object = "object"
+          @object = 'object'
           stub(@object).write(nil) {true}
         end
       end
@@ -133,40 +133,40 @@ describe Astrails::Safe::Cloudfiles do
 
     before(:each) do
       @cloudfiles = cloudfiles(def_config, def_backup(path: 'foo'))
-      @full_path = "_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar"
+      @full_path = '_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar'
     end
 
-    it "should fail if no backup.file is set" do
+    it 'should fail if no backup.file is set' do
       @cloudfiles.backup.path = nil
       proc {@cloudfiles.send(:save)}.should raise_error(RuntimeError)
     end
 
-    it "should establish Cloud Files connection" do
+    it 'should establish Cloud Files connection' do
       add_stubs(:connection, :file_size, :create_container, :file_open, :cloudfiles_store)
       @cloudfiles.send(:save)
     end
 
-    it "should open local file" do
+    it 'should open local file' do
       add_stubs(:connection, :file_size, :create_container, :cloudfiles_store)
-      mock(File).open("foo")
+      mock(File).open('foo')
       @cloudfiles.send(:save)
     end
 
     it "should call write on the cloudfile object with files' descriptor" do
       add_stubs(:connection, :file_size, :create_container, :cloudfiles_store)
-      stub(File).open("foo") {"qqq"}
-      mock(@object).write("qqq") {true}
+      stub(File).open('foo') {'qqq'}
+      mock(@object).write('qqq') {true}
       @cloudfiles.send(:save)
     end
 
-    it "should upload file" do
+    it 'should upload file' do
       add_stubs(:connection, :file_size, :create_container, :file_open, :cloudfiles_store)
       @cloudfiles.send(:save)
     end
 
-    it "should fail on files bigger then 5G" do
+    it 'should fail on files bigger then 5G' do
       add_stubs(:connection)
-      mock(File).stat("foo").stub!.size {5*1024*1024*1024+1}
+      mock(File).stat('foo').stub!.size {5*1024*1024*1024+1}
       mock(STDERR).puts(anything)
       dont_allow(Benchmark).realtime
       @cloudfiles.send(:save)

@@ -11,7 +11,7 @@ module Astrails
       protected
 
       def path
-        @path ||= File.expand_path(expand(config[:local, :path] || raise(RuntimeError, "missing :local/:path")))
+        @path ||= File.expand_path(expand(config[:local, :path] || raise(RuntimeError, 'missing :local/:path')))
       end
 
       def save
@@ -25,7 +25,7 @@ module Astrails
           benchmark = Benchmark.realtime do
             system "#{@backup.command}>#{@backup.path}"
           end
-          puts("command took " + sprintf("%.2f", benchmark) + " second(s).") if verbose?
+          puts('command took ' + sprintf('%.2f', benchmark) + ' second(s).') if verbose?
         end
 
       end

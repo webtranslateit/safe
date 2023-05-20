@@ -9,11 +9,11 @@ module Astrails
       end
 
       def pipe
-        "|gzip"
+        '|gzip'
       end
 
       def extension
-        ".gz"
+        '.gz'
       end
 
       def active?

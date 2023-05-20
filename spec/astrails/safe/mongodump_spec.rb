@@ -14,7 +14,7 @@ describe Astrails::Safe::Mongodump do
   end
   
   before(:each) do
-    stub(Time).now.stub!.strftime {"NOW"}
+    stub(Time).now.stub!.strftime {'NOW'}
     @output_folder = File.join(Astrails::Safe::TmpFile.tmproot, 'mongodump')
   end
   
@@ -26,24 +26,24 @@ describe Astrails::Safe::Mongodump do
     end
     
     {
-      :id => "foo",
-      :kind => "mongodump",
-      :extension => ".tar",
-      :filename => "mongodump-foo.NOW"
+      :id => 'foo',
+      :kind => 'mongodump',
+      :extension => '.tar',
+      :filename => 'mongodump-foo.NOW'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @mongo.backup.send(k).should == v
       end
     end
     
-    it "should set the command" do
+    it 'should set the command' do
       @mongo.backup.send(:command).should == "mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db foo --host prod.example.com -u testuser -p p4ssw0rd --out #{@output_folder} && cd #{@output_folder} && tar cf - ."
     end
     
     {
-      :host => "--host ",
-      :user => "-u ",
-      :password => "-p "
+      :host => '--host ',
+      :user => '-u ',
+      :password => '-p '
     }.each do |key, v|    
       it "should not add #{key} to command if it is not present" do
         @mongo = mongodump(:foo, def_config.reject! {|k,v| k == key})

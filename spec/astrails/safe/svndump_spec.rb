@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Astrails::Safe::Svndump do
   def def_config
     {
-      :options => "OPTS",
-      :repo_path => "bar/baz"
+      :options => 'OPTS',
+      :repo_path => 'bar/baz'
     }
   end
 
@@ -13,7 +13,7 @@ describe Astrails::Safe::Svndump do
   end
 
   before(:each) do
-    stub(Time).now.stub!.strftime {"NOW"}
+    stub(Time).now.stub!.strftime {'NOW'}
   end
 
   after(:each) { Astrails::Safe::TmpFile.cleanup }
@@ -24,11 +24,11 @@ describe Astrails::Safe::Svndump do
     end
 
     {
-      :id => "foo",
-      :kind => "svndump",
-      :extension => ".svn",
-      :filename => "svndump-foo.NOW",
-      :command => "svnadmin dump OPTS bar/baz",
+      :id => 'foo',
+      :kind => 'svndump',
+      :extension => '.svn',
+      :filename => 'svndump-foo.NOW',
+      :command => 'svnadmin dump OPTS bar/baz',
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @svn.backup.send(k).should == v

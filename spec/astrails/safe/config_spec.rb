@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Astrails::Safe::Config do
-  it "should parse example config" do
+  it 'should parse example config' do
     config = Astrails::Safe::Config::Node.new do
 
       dry_run false
@@ -9,25 +9,25 @@ describe Astrails::Safe::Config do
       verbose true
 
       local do
-        path "path"
+        path 'path'
       end
 
       s3 do
-        key "s3 key"
-        secret "secret"
-        bucket "bucket"
-        path "path1"
+        key 's3 key'
+        secret 'secret'
+        bucket 'bucket'
+        path 'path1'
       end
 
       sftp do
-        user "sftp user"
-        password "sftp password"
-        host "sftp host"
+        user 'sftp user'
+        password 'sftp password'
+        host 'sftp host'
       end
 
       gpg do
-        password "astrails"
-        key "gpg-key"
+        password 'astrails'
+        key 'gpg-key'
       end
 
       keep do
@@ -36,13 +36,13 @@ describe Astrails::Safe::Config do
       end
 
       mysqldump do
-        options "-ceKq --single-transaction --create-options"
+        options '-ceKq --single-transaction --create-options'
 
-        user "astrails"
-        password ""
-        host "localhost"
+        user 'astrails'
+        password ''
+        host 'localhost'
         port 3306
-        socket "/var/run/mysqld/mysqld.sock"
+        socket '/var/run/mysqld/mysqld.sock'
 
         database :blog
 
@@ -50,7 +50,7 @@ describe Astrails::Safe::Config do
           keep :local => 3
 
           gpg do
-            password "custom-production-pass"
+            password 'custom-production-pass'
           end
 
           skip_tables [:logger_exceptions, :request_logs]
@@ -59,11 +59,11 @@ describe Astrails::Safe::Config do
       end
 
       pgdump do
-        options "-i -x -O"
+        options '-i -x -O'
 
-        user "astrails"
-        password ""
-        host "localhost"
+        user 'astrails'
+        password ''
+        host 'localhost'
         port 5432
 
         database :blog
@@ -78,163 +78,163 @@ describe Astrails::Safe::Config do
 
       svndump do
         repo :my_repo do
-          repo_path "/home/svn/my_repo"
+          repo_path '/home/svn/my_repo'
         end
       end
 
       tar do
-        archive "git-repositories" do
-          files "/home/git/repositories"
+        archive 'git-repositories' do
+          files '/home/git/repositories'
         end
 
-        archive "etc-files" do
-          files "/etc"
-          exclude "/etc/puppet/other"
+        archive 'etc-files' do
+          files '/etc'
+          exclude '/etc/puppet/other'
         end
 
-        archive "dot-configs" do
-          files "/home/*/.[^.]*"
+        archive 'dot-configs' do
+          files '/home/*/.[^.]*'
         end
 
-        archive "blog" do
-          files "/var/www/blog.astrails.com/"
-          exclude ["/var/www/blog.astrails.com/log", "/var/www/blog.astrails.com/tmp"]
+        archive 'blog' do
+          files '/var/www/blog.astrails.com/'
+          exclude ['/var/www/blog.astrails.com/log', '/var/www/blog.astrails.com/tmp']
         end
 
         archive :misc do
-          files [ "/backup/*.rb" ]
+          files [ '/backup/*.rb' ]
         end
       end
 
       mongodump do
-        host "host"
-        database "database"
-        user "user"
-        password "password"
+        host 'host'
+        database 'database'
+        user 'user'
+        password 'password'
       end
     end
 
     expected = {
-      "dry_run" => false,
-      "local_only" => true,
-      "verbose" => true,
+      'dry_run' => false,
+      'local_only' => true,
+      'verbose' => true,
 
-      "local" => {"path" => "path"},
+      'local' => {'path' => 'path'},
 
-      "s3" => {
-        "key" => "s3 key",
-        "secret" => "secret",
-        "bucket" => "bucket",
-        "path" => "path1",
+      's3' => {
+        'key' => 's3 key',
+        'secret' => 'secret',
+        'bucket' => 'bucket',
+        'path' => 'path1',
       },
 
-      "sftp" => {
-        "user" => "sftp user",
-        "password" => "sftp password",
-        "host" => "sftp host",
+      'sftp' => {
+        'user' => 'sftp user',
+        'password' => 'sftp password',
+        'host' => 'sftp host',
       },
 
-      "gpg" => {"password" => "astrails", "key" => "gpg-key"},
+      'gpg' => {'password' => 'astrails', 'key' => 'gpg-key'},
 
-      "keep" => {"s3" => 20, "local" => 4},
+      'keep' => {'s3' => 20, 'local' => 4},
 
-      "mysqldump" => {
-        "options" => "-ceKq --single-transaction --create-options",
-        "user" => "astrails",
-        "password" => "",
-        "host" => "localhost",
-        "port" => 3306,
-        "socket" => "/var/run/mysqld/mysqld.sock",
+      'mysqldump' => {
+        'options' => '-ceKq --single-transaction --create-options',
+        'user' => 'astrails',
+        'password' => '',
+        'host' => 'localhost',
+        'port' => 3306,
+        'socket' => '/var/run/mysqld/mysqld.sock',
 
-        "databases" => {
-          "blog" => {},
-          "production" => {
-           "keep" => {"local" => 3},
-           "gpg" => {"password" => "custom-production-pass"},
-            "skip_tables" => ["logger_exceptions", "request_logs"],
+        'databases' => {
+          'blog' => {},
+          'production' => {
+           'keep' => {'local' => 3},
+           'gpg' => {'password' => 'custom-production-pass'},
+            'skip_tables' => ['logger_exceptions', 'request_logs'],
           },
         },
       },
 
-      "pgdump" => {
-        "options" => "-i -x -O",
-        "user" => "astrails",
-        "password" => "",
-        "host" => "localhost",
-        "port" => 5432,
+      'pgdump' => {
+        'options' => '-i -x -O',
+        'user' => 'astrails',
+        'password' => '',
+        'host' => 'localhost',
+        'port' => 5432,
 
-        "databases" => {
-          "blog" => {},
-          "production" => {
-           "keep" => {"local" => 3},
-            "skip_tables" => ["logger_exceptions", "request_logs"],
+        'databases' => {
+          'blog' => {},
+          'production' => {
+           'keep' => {'local' => 3},
+            'skip_tables' => ['logger_exceptions', 'request_logs'],
           },
         },
       },
 
-      "svndump" => {
-        "repos" => {
-          "my_repo"=> {
-            "repo_path" => "/home/svn/my_repo"
+      'svndump' => {
+        'repos' => {
+          'my_repo'=> {
+            'repo_path' => '/home/svn/my_repo'
           }
         }
       },
 
-      "tar" => {
-        "archives" => {
-          "git-repositories" => {"files" => ["/home/git/repositories"]},
-          "etc-files" => {"files" => ["/etc"], "exclude" => ["/etc/puppet/other"]},
-          "dot-configs" => {"files" => ["/home/*/.[^.]*"]},
-          "blog" => {
-            "files" => ["/var/www/blog.astrails.com/"],
-            "exclude" => ["/var/www/blog.astrails.com/log", "/var/www/blog.astrails.com/tmp"],
+      'tar' => {
+        'archives' => {
+          'git-repositories' => {'files' => ['/home/git/repositories']},
+          'etc-files' => {'files' => ['/etc'], 'exclude' => ['/etc/puppet/other']},
+          'dot-configs' => {'files' => ['/home/*/.[^.]*']},
+          'blog' => {
+            'files' => ['/var/www/blog.astrails.com/'],
+            'exclude' => ['/var/www/blog.astrails.com/log', '/var/www/blog.astrails.com/tmp'],
           },
-          "misc" => { "files" => ["/backup/*.rb"] },
+          'misc' => { 'files' => ['/backup/*.rb'] },
         },
       },
 
-      "mongodump" => {
-        "host" => "host",
-        "databases" => {
-          "database" => {}
+      'mongodump' => {
+        'host' => 'host',
+        'databases' => {
+          'database' => {}
         },
-        "user" => "user",
-        "password" => "password"
+        'user' => 'user',
+        'password' => 'password'
       }
     }
 
     config.to_hash.should == expected
   end
 
-  it "should make an array from multivalues" do
+  it 'should make an array from multivalues' do
     config = Astrails::Safe::Config::Node.new do
-      skip_tables "a"
-      skip_tables "b"
-      files "/foo"
-      files "/bar"
-      exclude "/foo/bar"
-      exclude "/foo/bar/baz"
+      skip_tables 'a'
+      skip_tables 'b'
+      files '/foo'
+      files '/bar'
+      exclude '/foo/bar'
+      exclude '/foo/bar/baz'
     end
 
     expected = {
-      "skip_tables" => ["a", "b"],
-      "files" => ["/foo", "/bar"],
-      "exclude" => ["/foo/bar", "/foo/bar/baz"],
+      'skip_tables' => ['a', 'b'],
+      'files' => ['/foo', '/bar'],
+      'exclude' => ['/foo/bar', '/foo/bar/baz'],
     }
 
     config.to_hash.should == expected
   end
 
-  it "should raise error on key duplication" do
+  it 'should raise error on key duplication' do
     proc do
       Astrails::Safe::Config::Node.new do
-        path "foo"
-        path "bar"
+        path 'foo'
+        path 'bar'
       end
     end.should raise_error(ArgumentError, "duplicate value for 'path'")
   end
 
-  it "should accept hash as data" do
+  it 'should accept hash as data' do
     Astrails::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo', exclude: ['aaa', 'bbb']
@@ -251,7 +251,7 @@ describe Astrails::Safe::Config do
     }
   end
 
-  it "should accept hash as data and a block" do
+  it 'should accept hash as data and a block' do
     Astrails::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo' do

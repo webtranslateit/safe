@@ -4,10 +4,10 @@ describe Astrails::Safe::Pgdump do
 
   def def_config
     {
-      :options => "OPTS",
-      :user => "User",
-      :password => "pwd",
-      :host => "localhost",
+      :options => 'OPTS',
+      :user => 'User',
+      :password => 'pwd',
+      :host => 'localhost',
       :port => 7777,
       :skip_tables => [:bar, :baz]
     }
@@ -18,7 +18,7 @@ describe Astrails::Safe::Pgdump do
   end
 
   before(:each) do
-    stub(Time).now.stub!.strftime {"NOW"}
+    stub(Time).now.stub!.strftime {'NOW'}
   end
 
   after(:each) { Astrails::Safe::TmpFile.cleanup }
@@ -29,10 +29,10 @@ describe Astrails::Safe::Pgdump do
     end
 
     {
-      :id => "foo",
-      :kind => "pgdump",
-      :extension => ".sql",
-      :filename => "pgdump-foo.NOW",
+      :id => 'foo',
+      :kind => 'pgdump',
+      :extension => '.sql',
+      :filename => 'pgdump-foo.NOW',
       :command => "pg_dump OPTS --username='User' --host='localhost' --port='7777' foo",
     }.each do |k, v|
       it "should set #{k} to #{v}" do

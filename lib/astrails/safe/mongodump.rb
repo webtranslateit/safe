@@ -16,7 +16,7 @@ module Astrails
       
       protected
       def output_directory
-        File.join(TmpFile.tmproot, "mongodump")
+        File.join(TmpFile.tmproot, 'mongodump')
       end
     end
   end
