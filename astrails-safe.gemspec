@@ -27,4 +27,5 @@ DESC
   spec.add_dependency 'cloudfiles'
   spec.add_dependency 'net-sftp'
 
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end
