@@ -1,3 +1,10 @@
+0.4.0
+
+* Rename gem to webtranslateit-safe.
+* GitHub Action CI.
+* Rubocop Linting.
+* Ruby 3.2 compatibility.
+
 0.3.1
 
 * plain ftp support from seroy
