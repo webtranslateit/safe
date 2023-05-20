@@ -56,11 +56,11 @@ module Astrails
           end
         end
 
-        def dump(indent = "")
+        def dump(indent = '')
           @data.each do |key, value|
             if value.is_a?(Node)
               puts "#{indent}#{key}:"
-              value.dump(indent + "    ")
+              value.dump(indent + '    ')
             else
               puts "#{indent}#{key}: #{value.inspect}"
             end

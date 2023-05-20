@@ -1,7 +1,7 @@
-require "astrails/safe/version"
+require 'astrails/safe/version'
 
-require "aws/s3"
-require "cloudfiles"
+require 'aws/s3'
+require 'cloudfiles'
 require 'net/sftp'
 # require 'net/ftp'
 require 'fileutils'
@@ -39,7 +39,7 @@ require 'astrails/safe/ftp'
 
 module Astrails
   module Safe
-    ROOT = File.join(File.dirname(__FILE__), "..", "..")
+    ROOT = File.join(File.dirname(__FILE__), '..', '..')
 
     def safe(&block)
       Config::Node.new(&block)

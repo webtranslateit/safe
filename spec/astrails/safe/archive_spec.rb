@@ -4,9 +4,9 @@ describe Astrails::Safe::Archive do
 
   def def_config
     {
-      :options => "OPTS",
-      :files   => "apples",
-      :exclude => "oranges"
+      :options => 'OPTS',
+      :files   => 'apples',
+      :exclude => 'oranges'
     }
   end
 
@@ -19,15 +19,15 @@ describe Astrails::Safe::Archive do
   describe :backup do
     before(:each) do
       @archive = archive
-      stub(@archive).timestamp {"NOW"}
+      stub(@archive).timestamp {'NOW'}
     end
 
     {
-      :id => "foo",
-      :kind => "archive",
-      :extension => ".tar",
-      :filename => "archive-foo.NOW",
-      :command => "tar -cf - OPTS --exclude=oranges apples",
+      :id => 'foo',
+      :kind => 'archive',
+      :extension => '.tar',
+      :filename => 'archive-foo.NOW',
+      :command => 'tar -cf - OPTS --exclude=oranges apples',
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @archive.backup.send(k).should == v
@@ -40,28 +40,28 @@ describe Astrails::Safe::Archive do
       archive(:foo, {}).send(:tar_exclude_files).should == ''
     end
 
-    it "should accept single exclude as string" do
-      archive(:foo, {:exclude => "bar"}).send(:tar_exclude_files).should == '--exclude=bar'
+    it 'should accept single exclude as string' do
+      archive(:foo, {:exclude => 'bar'}).send(:tar_exclude_files).should == '--exclude=bar'
     end
 
-    it "should accept multiple exclude as array" do
-      archive(:foo, {:exclude => ["foo", "bar"]}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
+    it 'should accept multiple exclude as array' do
+      archive(:foo, {:exclude => ['foo', 'bar']}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
     end
   end
 
   describe :tar_files do
-    it "should raise RuntimeError when no files" do
+    it 'should raise RuntimeError when no files' do
       lambda {
         archive(:foo, {}).send(:tar_files)
-      }.should raise_error(RuntimeError, "missing files for tar")
+      }.should raise_error(RuntimeError, 'missing files for tar')
     end
 
-    it "should accept single file as string" do
-      archive(:foo, {:files => "foo"}).send(:tar_files).should == "foo"
+    it 'should accept single file as string' do
+      archive(:foo, {:files => 'foo'}).send(:tar_files).should == 'foo'
     end
 
-    it "should accept multiple files as array" do
-      archive(:foo, {:files => ["foo", "bar"]}).send(:tar_files).should == "foo bar"
+    it 'should accept multiple files as array' do
+      archive(:foo, {:files => ['foo', 'bar']}).send(:tar_files).should == 'foo bar'
     end
   end
 end

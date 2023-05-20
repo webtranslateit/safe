@@ -15,7 +15,7 @@ safe do
   #   :timestamp -> current run timestamp (same for all the backups in the same 'run')
   # you can set separate :path for all backups (or once globally here)
   local do
-    path "/backup/:kind"
+    path '/backup/:kind'
   end
 
   ## uncomment to enable uploads to Amazon S3
@@ -86,13 +86,13 @@ safe do
   # backup mysql databases with mysqldump
   mysqldump do
     # you can override any setting from parent in a child:
-    options "-ceKq --single-transaction --create-options"
+    options '-ceKq --single-transaction --create-options'
 
-    user "astrails"
-    password ""
+    user 'astrails'
+    password ''
     # host "localhost"
     # port 3306
-    socket "/var/run/mysqld/mysqld.sock"
+    socket '/var/run/mysqld/mysqld.sock'
 
     # database is a 'collection' element. it must have a hash or block parameter
     # it will be 'collected' in a 'databases', with database id (1st arg) used as hash key

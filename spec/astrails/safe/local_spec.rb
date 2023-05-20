@@ -4,7 +4,7 @@ describe Astrails::Safe::Local do
   def def_config
     {
       :local => {
-        :path => "/:kind~:id~:timestamp"
+        :path => '/:kind~:id~:timestamp'
       },
       :keep => {
         :local => 2
@@ -14,13 +14,13 @@ describe Astrails::Safe::Local do
 
   def def_backup
     {
-      :kind => "mysqldump",
-      :id => "blog",
-      :timestamp => "NoW",
+      :kind => 'mysqldump',
+      :id => 'blog',
+      :timestamp => 'NoW',
       :compressed => true,
-      :command => "command",
-      :extension => ".foo.gz",
-      :filename => "qweqwe"
+      :command => 'command',
+      :extension => '.foo.gz',
+      :filename => 'qweqwe'
     }
   end
 
@@ -32,20 +32,20 @@ describe Astrails::Safe::Local do
   end
 
   describe :active? do
-    it "should be true" do
+    it 'should be true' do
       expect(local.active?).to be_truthy
     end
   end
 
   describe :path do
-    it "should raise RuntimeError when no path" do
+    it 'should raise RuntimeError when no path' do
       lambda {
         local({}).send :path
-      }.should raise_error(RuntimeError, "missing :local/:path")
+      }.should raise_error(RuntimeError, 'missing :local/:path')
     end
 
-    it "should use local/path" do
-      local.send(:path).should == "/mysqldump~blog~NoW"
+    it 'should use local/path' do
+      local.send(:path).should == '/mysqldump~blog~NoW'
     end
   end
 
@@ -53,32 +53,32 @@ describe Astrails::Safe::Local do
     before(:each) do
       @local = local
       stub(@local).system
-      stub(@local).full_path {"file-path"}
+      stub(@local).full_path {'file-path'}
       stub(FileUtils).mkdir_p
     end
 
-    it "should call system to save the file" do
-      mock(@local).system("command>file-path")
+    it 'should call system to save the file' do
+      mock(@local).system('command>file-path')
       @local.send(:save)
     end
 
-    it "should create directory" do
-      mock(FileUtils).mkdir_p("/mysqldump~blog~NoW")
+    it 'should create directory' do
+      mock(FileUtils).mkdir_p('/mysqldump~blog~NoW')
       @local.send(:save)
     end
 
-    it "should set backup.path" do
-      mock(@backup).path = "file-path"
+    it 'should set backup.path' do
+      mock(@backup).path = 'file-path'
       @local.send(:save)
     end
 
-    describe "dry run" do
+    describe 'dry run' do
       before(:each) { @local.config[:dry_run] = true }
 
-      it "should not create directory"
-      it "should not call system"
-      it "should set backup.path" do
-        mock(@backup).path = "file-path"
+      it 'should not create directory'
+      it 'should not call system'
+      it 'should set backup.path' do
+        mock(@backup).path = 'file-path'
         @local.send(:save)
       end
     end
@@ -92,17 +92,17 @@ describe Astrails::Safe::Local do
       stub(File).unlink
     end
 
-    it "should check [:keep, :local]" do
+    it 'should check [:keep, :local]' do
       @local = local(def_config.merge(:keep => {}))
       dont_allow(Dir).[]
       @local.send :cleanup
     end
 
-    it "should delete extra files" do
+    it 'should delete extra files' do
       @local = local
-      mock(Dir).[]("/mysqldump~blog~NoW/qweqwe.*") {@files}
-      mock(File).unlink("/mysqldump~blog~NoW/qweqwe.1")
-      mock(File).unlink("/mysqldump~blog~NoW/qweqwe.2")
+      mock(Dir).[]('/mysqldump~blog~NoW/qweqwe.*') {@files}
+      mock(File).unlink('/mysqldump~blog~NoW/qweqwe.1')
+      mock(File).unlink('/mysqldump~blog~NoW/qweqwe.2')
       @local.send :cleanup
     end
   end

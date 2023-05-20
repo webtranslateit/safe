@@ -6,11 +6,11 @@ unless Dir.respond_to?(:mktmpdir)
     def Dir.mktmpdir(prefix_suffix=nil, tmpdir=nil)
       case prefix_suffix
       when nil
-        prefix = "d"
-        suffix = ""
+        prefix = 'd'
+        suffix = ''
       when String
         prefix = prefix_suffix
-        suffix = ""
+        suffix = ''
       when Array
         prefix = prefix_suffix[0]
         suffix = prefix_suffix[1]
@@ -18,7 +18,7 @@ unless Dir.respond_to?(:mktmpdir)
         raise ArgumentError, "unexpected prefix_suffix: #{prefix_suffix.inspect}"
       end
       tmpdir ||= Dir.tmpdir
-      t = Time.now.strftime("%Y%m%d")
+      t = Time.now.strftime('%Y%m%d')
       n = nil
       begin
         path = "#{tmpdir}/#{prefix}#{t}-#{$$}-#{rand(0x100000000).to_s(36)}"

@@ -36,7 +36,7 @@ def main
   args = ARGV - OPTS
 
   usage unless args.first
-  usage if opts.delete("-h") || opts.delete("--help")
+  usage if opts.delete('-h') || opts.delete('--help')
 
   config_file = File.expand_path(args.first)
 
@@ -45,9 +45,9 @@ def main
   is_local_only = (opts.delete('-L') || opts.delete('--local')) && !opts.delete('--not-local')
 
   unless File.exist?(config_file)
-    die "Missing configuration file. NOT CREATED! Rerun w/o the -n argument to create a template configuration file." if is_dry
+    die 'Missing configuration file. NOT CREATED! Rerun w/o the -n argument to create a template configuration file.' if is_dry
 
-    FileUtils.cp File.join(Astrails::Safe::ROOT, "templates", "script.rb"), config_file
+    FileUtils.cp File.join(Astrails::Safe::ROOT, 'templates', 'script.rb'), config_file
 
     die "Created default #{config_file}. Please edit and run again."
   end

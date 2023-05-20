@@ -5,9 +5,9 @@ describe Astrails::Safe::Gzip do
   def def_backup
     {
       :compressed => false,
-      :command => "command",
-      :extension => ".foo",
-      :filename => "qweqwe"
+      :command => 'command',
+      :extension => '.foo',
+      :filename => 'qweqwe'
     }
   end
 
@@ -22,40 +22,40 @@ describe Astrails::Safe::Gzip do
 
   describe :preocess do
 
-    describe "when not yet compressed" do
+    describe 'when not yet compressed' do
       before(:each) { @gzip = gzip }
 
-      it "should add .gz extension" do
+      it 'should add .gz extension' do
         mock(@backup.extension) << '.gz'
         @gzip.process
       end
 
-      it "should add |gzip pipe" do
+      it 'should add |gzip pipe' do
         mock(@backup.command) << '|gzip'
         @gzip.process
       end
 
-      it "should set compressed" do
+      it 'should set compressed' do
         mock(@backup).compressed = true
         @gzip.process
       end
     end
 
-    describe "when already compressed" do
+    describe 'when already compressed' do
 
-      before(:each) { @gzip = gzip({}, :extension => ".foo", :command => "foobar", :compressed => true) }
+      before(:each) { @gzip = gzip({}, :extension => '.foo', :command => 'foobar', :compressed => true) }
 
-      it "should not touch extension" do
+      it 'should not touch extension' do
         @gzip.process
-        @backup.extension.should == ".foo"
+        @backup.extension.should == '.foo'
       end
 
-      it "should not touch command" do
+      it 'should not touch command' do
         @gzip.process
-        @backup.command.should == "foobar"
+        @backup.command.should == 'foobar'
       end
 
-      it "should not touch compressed" do
+      it 'should not touch compressed' do
         @gzip.process
         @backup.compressed.should == true
       end

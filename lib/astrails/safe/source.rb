@@ -8,7 +8,7 @@ module Astrails
       end
 
       def timestamp
-        Time.now.strftime("%y%m%d-%H%M")
+        Time.now.strftime('%y%m%d-%H%M')
       end
 
       def kind
@@ -16,7 +16,7 @@ module Astrails
       end
 
       def filename
-        @filename ||= expand(":kind-:id.:timestamp")
+        @filename ||= expand(':kind-:id.:timestamp')
       end
 
       def backup
