@@ -2,9 +2,9 @@
 
 require 'rubygems'
 
-require 'astrails/safe'
+require 'webtranslateit/safe'
 
-include Astrails::Safe
+include WebTranslateIt::Safe
 
 def die(msg)
   puts "ERROR: #{msg}"
@@ -13,7 +13,7 @@ end
 
 def usage
   puts <<-END
-Usage: astrails-safe [OPTIONS] CONFIG_FILE
+Usage: webtranslateit-safe [OPTIONS] CONFIG_FILE
 Options:
   -h, --help           This help screen
   -v, --verbose        be verbose, duh!
@@ -47,7 +47,7 @@ def main
   unless File.exist?(config_file)
     die 'Missing configuration file. NOT CREATED! Rerun w/o the -n argument to create a template configuration file.' if is_dry
 
-    FileUtils.cp File.join(Astrails::Safe::ROOT, 'templates', 'script.rb'), config_file
+    FileUtils.cp File.join(WebTranslateIt::Safe::ROOT, 'templates', 'script.rb'), config_file
 
     die "Created default #{config_file}. Please edit and run again."
   end
