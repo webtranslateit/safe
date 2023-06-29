@@ -30,7 +30,7 @@ OPTS = [
   '-v', '--verbose', '--not-verbose',
   '-n', '--dry-run', '--not-dry-run',
   '-L', '--local', '--not-local'
-]
+].freeze
 def main
   opts = ARGV & OPTS
   args = ARGV - OPTS
