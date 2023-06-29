@@ -18,9 +18,7 @@ module WebTranslateIt
         puts "Uploading #{host}:#{full_path} via FTP" if verbose? || dry_run?
 
         unless dry_run? || local_only?
-          unless port
-            port = 21
-          end
+          port ||= 21
           Net::FTP.open(host) do |ftp|
             ftp.connect(host, port)
             ftp.login(user, password)
@@ -41,9 +39,7 @@ module WebTranslateIt
         return unless keep = config[:keep, :ftp]
 
         puts "listing files: #{host}:#{base}*" if verbose?
-        unless port
-           port = 21
-        end
+        port ||= 21
         Net::FTP.open(host) do |ftp|
           ftp.connect(host, port)
           ftp.login(user, password)
