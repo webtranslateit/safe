@@ -1,3 +1,0 @@
-Autotest.add_hook(:initialize) do |at|
-  at.add_mapping(%r{lib/webtranslateit/safe/config/.*\.rb$}, true) {'spec/webtranslateit/safe/config_spec.rb'}
-end
