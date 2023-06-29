@@ -23,13 +23,13 @@ module WebTranslateIt
           value = @data[key.to_s]
           return value if !value.nil? && path.empty?
 
-          value && value.get(*path)
+          value&.get(*path)
         end
 
         # recursive find
         # starts at the node and continues to the parent
         def find(*path)
-          get(*path) || @parent && @parent.find(*path)
+          get(*path) || @parent&.find(*path)
         end
         alias :[] :find
 
