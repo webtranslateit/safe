@@ -83,18 +83,6 @@ Naming/MethodParameterName:
   Exclude:
     - 'lib/webtranslateit/safe/config/builder.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Performance/RegexpMatch:
-  Exclude:
-    - 'lib/webtranslateit/safe/tmp_file.rb'
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Performance/StringInclude:
-  Exclude:
-    - 'lib/webtranslateit/safe/tmp_file.rb'
-
 # Offense count: 3
 RSpec/BeforeAfterAll:
   Exclude:

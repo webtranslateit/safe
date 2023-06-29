@@ -15,7 +15,7 @@ module WebTranslateIt
         begin
           FileUtils.remove_entry_secure tmproot
         rescue ArgumentError => e
-          raise unless e.message =~ /parent directory is world writable/
+          raise unless e.message.include?('parent directory is world writable')
 
           puts <<~ERR
 
