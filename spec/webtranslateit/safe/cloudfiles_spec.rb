@@ -94,16 +94,16 @@ describe WebTranslateIt::Safe::Cloudfiles do
     it 'uses cloudfiles/path 1st' do
       @cloudfiles.config[:cloudfiles].data['path'] = 'cloudfiles_path'
       @cloudfiles.config[:local] = {path: 'local_path'}
-      @cloudfiles.send(:path).should == 'cloudfiles_path'
+      expect(@cloudfiles.send(:path)).to eq('cloudfiles_path')
     end
 
     it 'uses local/path 2nd' do
       @cloudfiles.config.merge local: {path: 'local_path'}
-      @cloudfiles.send(:path).should == 'local_path'
+      expect(@cloudfiles.send(:path)).to eq('local_path')
     end
 
     it 'uses constant 3rd' do
-      @cloudfiles.send(:path).should == '_kind/_id'
+      expect(@cloudfiles.send(:path)).to eq('_kind/_id')
     end
 
   end
@@ -139,7 +139,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
     it 'fails if no backup.file is set' do
       @cloudfiles.backup.path = nil
-      proc { @cloudfiles.send(:save) }.should raise_error(RuntimeError)
+      expect { @cloudfiles.send(:save) }.to raise_error(RuntimeError)
     end
 
     it 'opens local file' do

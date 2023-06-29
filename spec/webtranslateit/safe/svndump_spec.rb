@@ -31,7 +31,7 @@ describe WebTranslateIt::Safe::Svndump do
       command: 'svnadmin dump OPTS bar/baz'
     }.each do |k, v|
       it "sets #{k} to #{v}" do
-        @svn.backup.send(k).should == v
+        expect(@svn.backup.send(k)).to eq(v)
       end
     end
 

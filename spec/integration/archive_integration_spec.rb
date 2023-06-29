@@ -52,7 +52,7 @@ describe 'tar backup' do
   end
 
   it 'creates backup file' do
-    File.exist?(@backup).should be true
+    expect(File.exist?(@backup)).to be true
   end
 
   describe 'after extracting' do
@@ -67,22 +67,22 @@ describe 'tar backup' do
     end
 
     it 'includes asd1/2/3' do
-      File.exist?("#{@test}/asd1").should be true
-      File.exist?("#{@test}/a/asd2").should be true
-      File.exist?("#{@test}/a/s/asd3").should be true
+      expect(File.exist?("#{@test}/asd1")).to be true
+      expect(File.exist?("#{@test}/a/asd2")).to be true
+      expect(File.exist?("#{@test}/a/s/asd3")).to be true
     end
 
     it 'onlies include qwe 1 and 2 (no 3)' do
-      File.exist?("#{@test}/qwe1").should be true
-      File.exist?("#{@test}/q/qwe2").should be true
-      File.exist?("#{@test}/q/w/qwe3").should be false
-      File.exist?("#{@test}/q/w/e/qwe4").should be false
+      expect(File.exist?("#{@test}/qwe1")).to be true
+      expect(File.exist?("#{@test}/q/qwe2")).to be true
+      expect(File.exist?("#{@test}/q/w/qwe3")).to be false
+      expect(File.exist?("#{@test}/q/w/e/qwe4")).to be false
     end
 
     it 'preserves file content' do
-      File.read("#{@test}/qwe1").should == 'qwe'
-      File.read("#{@test}/q/qwe2").should == 'qweqwe'
-      File.read("#{@test}/a/s/asd3").should == 'asdasdasd'
+      expect(File.read("#{@test}/qwe1")).to eq('qwe')
+      expect(File.read("#{@test}/q/qwe2")).to eq('qweqwe')
+      expect(File.read("#{@test}/a/s/asd3")).to eq('asdasdasd')
     end
   end
 

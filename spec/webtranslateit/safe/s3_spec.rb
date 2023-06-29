@@ -93,16 +93,16 @@ describe WebTranslateIt::Safe::S3 do
     it 'uses s3/path 1st' do
       @s3.config[:s3].data['path'] = 's3_path'
       @s3.config[:local] = {path: 'local_path'}
-      @s3.send(:path).should == 's3_path'
+      expect(@s3.send(:path)).to eq('s3_path')
     end
 
     it 'uses local/path 2nd' do
       @s3.config.merge local: {path: 'local_path'}
-      @s3.send(:path).should == 'local_path'
+      expect(@s3.send(:path)).to eq('local_path')
     end
 
     it 'uses constant 3rd' do
-      @s3.send(:path).should == '_kind/_id'
+      expect(@s3.send(:path)).to eq('_kind/_id')
     end
 
   end
@@ -133,7 +133,7 @@ describe WebTranslateIt::Safe::S3 do
 
     it 'fails if no backup.file is set' do
       @s3.backup.path = nil
-      proc { @s3.send(:save) }.should raise_error(RuntimeError)
+      expect { @s3.send(:save) }.to raise_error(RuntimeError)
     end
 
     it 'establishes s3 connection' do

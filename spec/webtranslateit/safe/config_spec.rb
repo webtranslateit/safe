@@ -203,7 +203,7 @@ describe WebTranslateIt::Safe::Config do
       }
     }
 
-    config.to_hash.should == expected
+    expect(config.to_hash).to eq(expected)
   end
 
   it 'makes an array from multivalues' do
@@ -222,52 +222,52 @@ describe WebTranslateIt::Safe::Config do
       'exclude' => ['/foo/bar', '/foo/bar/baz']
     }
 
-    config.to_hash.should == expected
+    expect(config.to_hash).to eq(expected)
   end
 
   it 'raises error on key duplication' do
-    proc do
+    expect do
       WebTranslateIt::Safe::Config::Node.new do
         path 'foo'
         path 'bar'
       end
-    end.should raise_error(ArgumentError, "duplicate value for 'path'")
+    end.to raise_error(ArgumentError, "duplicate value for 'path'")
   end
 
   it 'accepts hash as data' do
-    WebTranslateIt::Safe::Config::Node.new do
+    expect(WebTranslateIt::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo', exclude: %w[aaa bbb]
       end
-    end.to_hash.should == {
-      'tar' => {
-        'archives' => {
-          'blog' => {
-            'files' => ['foo'],
-            'exclude' => %w[aaa bbb]
-          }
-        }
-      }
-    }
+    end.to_hash).to eq({
+                         'tar' => {
+                           'archives' => {
+                             'blog' => {
+                               'files' => ['foo'],
+                               'exclude' => %w[aaa bbb]
+                             }
+                           }
+                         }
+                       })
   end
 
   it 'accepts hash as data and a block' do
-    WebTranslateIt::Safe::Config::Node.new do
+    expect(WebTranslateIt::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo' do
           exclude %w[aaa bbb]
         end
       end
-    end.to_hash.should == {
-      'tar' => {
-        'archives' => {
-          'blog' => {
-            'files' => ['foo'],
-            'exclude' => %w[aaa bbb]
-          }
-        }
-      }
-    }
+    end.to_hash).to eq({
+                         'tar' => {
+                           'archives' => {
+                             'blog' => {
+                               'files' => ['foo'],
+                               'exclude' => %w[aaa bbb]
+                             }
+                           }
+                         }
+                       })
   end
 
   it 'accepts multiple levels of data hash' do
@@ -276,12 +276,12 @@ describe WebTranslateIt::Safe::Config do
       keep: {s3: 2}
     }
 
-    config.to_hash.should == {
-      'tar' => {
-        's3' => {'bucket' => '_bucket', 'key' => '_key', 'secret' => '_secret'},
-        'keep' => {'s3' => 2}
-      }
-    }
+    expect(config.to_hash).to eq({
+                                   'tar' => {
+                                     's3' => {'bucket' => '_bucket', 'key' => '_key', 'secret' => '_secret'},
+                                     'keep' => {'s3' => 2}
+                                   }
+                                 })
   end
 
   it 'sets multi value as array' do
@@ -293,15 +293,15 @@ describe WebTranslateIt::Safe::Config do
       end
     end
 
-    config.to_hash.should == {
-      'tar' => {
-        'archives' => {
-          'foo' => {
-            'files' => ['bar']
-          }
-        }
-      }
-    }
+    expect(config.to_hash).to eq({
+                                   'tar' => {
+                                     'archives' => {
+                                       'foo' => {
+                                         'files' => ['bar']
+                                       }
+                                     }
+                                   }
+                                 })
   end
 
 end

@@ -39,13 +39,13 @@ describe WebTranslateIt::Safe::Local do
 
   describe :path do
     it 'raises RuntimeError when no path' do
-      lambda {
+      expect do
         local({}).send :path
-      }.should raise_error(RuntimeError, 'missing :local/:path')
+      end.to raise_error(RuntimeError, 'missing :local/:path')
     end
 
     it 'uses local/path' do
-      local.send(:path).should == '/mysqldump~blog~NoW'
+      expect(local.send(:path)).to eq('/mysqldump~blog~NoW')
     end
   end
 

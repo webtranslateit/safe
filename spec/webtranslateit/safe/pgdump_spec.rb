@@ -36,7 +36,7 @@ describe WebTranslateIt::Safe::Pgdump do
       command: "pg_dump OPTS --username='User' --host='localhost' --port='7777' foo"
     }.each do |k, v|
       it "sets #{k} to #{v}" do
-        @pg.backup.send(k).should == v
+        expect(@pg.backup.send(k)).to eq(v)
       end
     end
 
