@@ -49,10 +49,9 @@ module WebTranslateIt
         include Enumerable
 
         def to_hash
-          @data.keys.inject({}) do |res, key|
+          @data.keys.each_with_object({}) do |key, res|
             value = @data[key]
             res[key] = value.is_a?(Node) ? value.to_hash : value
-            res
           end
         end
 
