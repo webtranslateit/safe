@@ -35,7 +35,7 @@ module WebTranslateIt
         end
       end
 
-      def cleanup
+      def cleanup # rubocop:todo Metrics/AbcSize
         return if local_only? || dry_run?
 
         return unless keep = config[:keep, :ftp]
@@ -48,7 +48,7 @@ module WebTranslateIt
           ftp.connect(host, port)
           ftp.login(user, password)
           files = ftp.nlst(path)
-          pattern = File.basename("#{base}")
+          pattern = File.basename(base.to_s)
           files = files.reject{ |x| !x.start_with?(pattern)}
           puts files.collect {|x| x} if verbose?
 

@@ -828,12 +828,6 @@ Style/RedundantException:
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
-Style/RedundantInterpolation:
-  Exclude:
-    - 'lib/webtranslateit/safe/ftp.rb'
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: RequireEnglish, EnforcedStyle.
 # SupportedStyles: use_perl_names, use_english_names, use_builtin_english_names
 Style/SpecialGlobalVars:
