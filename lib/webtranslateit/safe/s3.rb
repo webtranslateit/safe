@@ -47,8 +47,8 @@ module WebTranslateIt
         puts files.collect(&:key) if verbose?
 
         files = files.
-          collect(&:key).
-          sort
+                collect(&:key).
+                sort
 
         cleanup_with_limit(files, keep) do |f|
           puts "removing s3 file #{bucket}:#{f}" if dry_run? || verbose?
