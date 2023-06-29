@@ -53,10 +53,10 @@ module WebTranslateIt
         Net::SFTP.start(host, user, opts) do |sftp|
           files = sftp.dir.glob(path, File.basename("#{base}*"))
 
-          puts files.collect {|x| x.name } if verbose?
+          puts files.collect(&:name) if verbose?
 
           files = files.
-            collect {|x| x.name }.
+            collect(&:name).
             sort
 
           cleanup_with_limit(files, keep) do |f|

@@ -44,10 +44,10 @@ module WebTranslateIt
 
         puts "listing files: #{bucket}:#{base}*" if verbose?
         files = AWS::S3::Bucket.objects(bucket, :prefix => base, :max_keys => keep * 2)
-        puts files.collect {|x| x.key} if verbose?
+        puts files.collect(&:key) if verbose?
 
         files = files.
-          collect {|x| x.key}.
+          collect(&:key).
           sort
 
         cleanup_with_limit(files, keep) do |f|
