@@ -34,15 +34,6 @@ Layout/DotPosition:
     - 'lib/webtranslateit/safe/stream.rb'
     - 'spec/webtranslateit/safe/cloudfiles_spec.rb'
 
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-Layout/HeredocIndentation:
-  Exclude:
-    - 'bin/webtranslateit-safe'
-    - 'lib/webtranslateit/safe/tmp_file.rb'
-    - 'spec/webtranslateit/safe/mysqldump_spec.rb'
-    - 'webtranslateit-safe.gemspec'
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedMethods, AllowedPatterns.
