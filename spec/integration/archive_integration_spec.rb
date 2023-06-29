@@ -19,14 +19,14 @@ describe 'tar backup' do
     mkdir_p "#{@src}/q/w/e"
     mkdir_p "#{@src}/a/s/d"
 
-    File.open("#{@src}/qwe1", 'w') {|f| f.write('qwe') }
-    File.open("#{@src}/q/qwe2", 'w') {|f| f.write('qwe'*2) }
-    File.open("#{@src}/q/w/qwe3", 'w') {|f| f.write('qwe'*3) }
-    File.open("#{@src}/q/w/e/qwe4", 'w') {|f| f.write('qwe'*4) }
+    File.write("#{@src}/qwe1", 'qwe')
+    File.write("#{@src}/q/qwe2", 'qwe'*2)
+    File.write("#{@src}/q/w/qwe3", 'qwe'*3)
+    File.write("#{@src}/q/w/e/qwe4", 'qwe'*4)
 
-    File.open("#{@src}/asd1", 'w') {|f| f.write('asd') }
-    File.open("#{@src}/a/asd2", 'w') {|f| f.write('asd' * 2) }
-    File.open("#{@src}/a/s/asd3", 'w') {|f| f.write('asd' * 3) }
+    File.write("#{@src}/asd1", 'asd')
+    File.write("#{@src}/a/asd2", 'asd' * 2)
+    File.write("#{@src}/a/s/asd3", 'asd' * 3)
 
     @dst = dst = "#{@root}/backup"
     mkdir_p @dst
