@@ -92,9 +92,9 @@ describe WebTranslateIt::Safe::Gpg do
 
     describe 'with key & password' do
       it 'raises RuntimeError' do
-        lambda {
+        expect do
           gpg(gpg: {key: 'foo', password: 'bar'}).send :active?
-        }.should raise_error(RuntimeError, "can't use both gpg password and pubkey")
+        end.to raise_error(RuntimeError, "can't use both gpg password and pubkey")
       end
     end
   end
@@ -113,11 +113,11 @@ describe WebTranslateIt::Safe::Gpg do
       end
 
       it "uses '-r' and :options" do
-        kgpg.send(:pipe).should == '|gpg GPG-OPT -e -r foo'
+        expect(kgpg.send(:pipe)).to eq('|gpg GPG-OPT -e -r foo')
       end
 
       it "uses the 'command' options" do
-        kgpg(command: 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -e -r foo'
+        expect(kgpg(command: 'other-gpg').send(:pipe)).to eq('|other-gpg GPG-OPT -e -r foo')
       end
     end
 
@@ -129,11 +129,11 @@ describe WebTranslateIt::Safe::Gpg do
       end
 
       it "uses '--passphrase-file' and :options" do
-        pgpg.send(:pipe).should == '|gpg GPG-OPT -c --passphrase-file pass-file'
+        expect(pgpg.send(:pipe)).to eq('|gpg GPG-OPT -c --passphrase-file pass-file')
       end
 
       it "uses the 'command' options" do
-        pgpg(command: 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -c --passphrase-file pass-file'
+        expect(pgpg(command: 'other-gpg').send(:pipe)).to eq('|other-gpg GPG-OPT -c --passphrase-file pass-file')
       end
     end
   end
@@ -142,7 +142,7 @@ describe WebTranslateIt::Safe::Gpg do
     it 'creates password file' do
       file = gpg.send(:gpg_password_file, 'foo')
       expect(File.exist?(file)).to be true
-      File.read(file).should == 'foo'
+      expect(File.read(file)).to eq('foo')
     end
   end
 end

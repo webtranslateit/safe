@@ -47,17 +47,17 @@ describe WebTranslateIt::Safe::Gzip do
 
       it 'does not touch extension' do
         @gzip.process
-        @backup.extension.should == '.foo'
+        expect(@backup.extension).to eq('.foo')
       end
 
       it 'does not touch command' do
         @gzip.process
-        @backup.command.should == 'foobar'
+        expect(@backup.command).to eq('foobar')
       end
 
       it 'does not touch compressed' do
         @gzip.process
-        @backup.compressed.should == true
+        expect(@backup.compressed).to be(true)
       end
     end
   end

@@ -30,38 +30,38 @@ describe WebTranslateIt::Safe::Archive do
       command: 'tar -cf - OPTS --exclude=oranges apples'
     }.each do |k, v|
       it "sets #{k} to #{v}" do
-        @archive.backup.send(k).should == v
+        expect(@archive.backup.send(k)).to eq(v)
       end
     end
   end
 
   describe :tar_exclude_files do
     it "returns '' when no excludes" do
-      archive(:foo, {}).send(:tar_exclude_files).should == ''
+      expect(archive(:foo, {}).send(:tar_exclude_files)).to eq('')
     end
 
     it 'accepts single exclude as string' do
-      archive(:foo, {exclude: 'bar'}).send(:tar_exclude_files).should == '--exclude=bar'
+      expect(archive(:foo, {exclude: 'bar'}).send(:tar_exclude_files)).to eq('--exclude=bar')
     end
 
     it 'accepts multiple exclude as array' do
-      archive(:foo, {exclude: %w[foo bar]}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
+      expect(archive(:foo, {exclude: %w[foo bar]}).send(:tar_exclude_files)).to eq('--exclude=foo --exclude=bar')
     end
   end
 
   describe :tar_files do
     it 'raises RuntimeError when no files' do
-      lambda {
+      expect do
         archive(:foo, {}).send(:tar_files)
-      }.should raise_error(RuntimeError, 'missing files for tar')
+      end.to raise_error(RuntimeError, 'missing files for tar')
     end
 
     it 'accepts single file as string' do
-      archive(:foo, {files: 'foo'}).send(:tar_files).should == 'foo'
+      expect(archive(:foo, {files: 'foo'}).send(:tar_files)).to eq('foo')
     end
 
     it 'accepts multiple files as array' do
-      archive(:foo, {files: %w[foo bar]}).send(:tar_files).should == 'foo bar'
+      expect(archive(:foo, {files: %w[foo bar]}).send(:tar_files)).to eq('foo bar')
     end
   end
 end

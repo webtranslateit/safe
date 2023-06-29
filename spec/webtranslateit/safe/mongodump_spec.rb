@@ -32,12 +32,12 @@ describe WebTranslateIt::Safe::Mongodump do
       filename: 'mongodump-foo.NOW'
     }.each do |k, v|
       it "sets #{k} to #{v}" do
-        @mongo.backup.send(k).should == v
+        expect(@mongo.backup.send(k)).to eq(v)
       end
     end
 
     it 'sets the command' do
-      @mongo.backup.send(:command).should == "mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db foo --host prod.example.com -u testuser -p p4ssw0rd --out #{@output_folder} && cd #{@output_folder} && tar cf - ."
+      expect(@mongo.backup.send(:command)).to eq("mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db foo --host prod.example.com -u testuser -p p4ssw0rd --out #{@output_folder} && cd #{@output_folder} && tar cf - .")
     end
 
     {
@@ -47,7 +47,7 @@ describe WebTranslateIt::Safe::Mongodump do
     }.each do |key, v|
       it "does not add #{key} to command if it is not present" do
         @mongo = mongodump(:foo, def_config.reject! { |k, _v| k == key })
-        @mongo.backup.send(:command).should_not =~ /#{v}/
+        expect(@mongo.backup.send(:command)).not_to match(/#{v}/)
       end
     end
   end

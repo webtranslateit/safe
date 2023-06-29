@@ -48,15 +48,15 @@ describe 'tar backup' do
   end
 
   it 'creates backup file' do
-    File.exist?(@backup).should be true
+    expect(File.exist?(@backup)).to be true
   end
 
   it 'removes old backups' do
-    Dir["#{@dst}/archive/archive-foo.*"].should == [@backup]
+    expect(Dir["#{@dst}/archive/archive-foo.*"]).to eq([@backup])
   end
 
   it 'does not remove backups with base having same prefix' do
-    Dir["#{@dst}/archive/archive-foobar.*"].should == ["#{@dst}/archive/archive-foobar.000001.tar.gz", "#{@dst}/archive/archive-foobar.000002.tar.gz"]
+    expect(Dir["#{@dst}/archive/archive-foobar.*"]).to eq(["#{@dst}/archive/archive-foobar.000001.tar.gz", "#{@dst}/archive/archive-foobar.000002.tar.gz"])
   end
 
 end
