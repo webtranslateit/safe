@@ -47,13 +47,13 @@ describe WebTranslateIt::Safe::Cloudfiles do
         container('_container') {@container}
     end
 
-    it 'should check [:keep, :cloudfiles]' do
+    it 'checks [:keep, :cloudfiles]' do
       @cloudfiles.config[:keep].data['cloudfiles'] = nil
       dont_allow(@cloudfiles.backup).filename
       @cloudfiles.send :cleanup
     end
 
-    it 'should delete extra files' do
+    it 'deletes extra files' do
       mock(@container).delete_object('aaaaa1')
       mock(@container).delete_object('aaaaa2')
       @cloudfiles.send :cleanup
@@ -66,21 +66,21 @@ describe WebTranslateIt::Safe::Cloudfiles do
       @cloudfiles = cloudfiles
     end
 
-    it 'should be true when all params are set' do
+    it 'is true when all params are set' do
       expect(@cloudfiles.active?).to be_truthy
     end
 
-    it 'should be false if container is missing' do
+    it 'is false if container is missing' do
       @cloudfiles.config[:cloudfiles].data['container'] = nil
       expect(@cloudfiles.active?).to be_falsy
     end
 
-    it 'should be false if user is missing' do
+    it 'is false if user is missing' do
       @cloudfiles.config[:cloudfiles].data['user'] = nil
       expect(@cloudfiles.active?).to be_falsy
     end
 
-    it 'should be false if api_key is missing' do
+    it 'is false if api_key is missing' do
       @cloudfiles.config[:cloudfiles].data['api_key'] = nil
       expect(@cloudfiles.active?).to be_falsy
     end
@@ -90,18 +90,18 @@ describe WebTranslateIt::Safe::Cloudfiles do
     before do
       @cloudfiles = cloudfiles
     end
-    it 'should use cloudfiles/path 1st' do
+    it 'uses cloudfiles/path 1st' do
       @cloudfiles.config[:cloudfiles].data['path'] = 'cloudfiles_path'
       @cloudfiles.config[:local] = {path: 'local_path'}
       @cloudfiles.send(:path).should == 'cloudfiles_path'
     end
 
-    it 'should use local/path 2nd' do
+    it 'uses local/path 2nd' do
       @cloudfiles.config.merge local: {path: 'local_path'}
       @cloudfiles.send(:path).should == 'local_path'
     end
 
-    it 'should use constant 3rd' do
+    it 'uses constant 3rd' do
       @cloudfiles.send(:path).should == '_kind/_id'
     end
 
@@ -136,30 +136,30 @@ describe WebTranslateIt::Safe::Cloudfiles do
       @full_path = '_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar'
     end
 
-    it 'should fail if no backup.file is set' do
+    it 'fails if no backup.file is set' do
       @cloudfiles.backup.path = nil
       proc {@cloudfiles.send(:save)}.should raise_error(RuntimeError)
     end
 
-    it 'should open local file' do
+    it 'opens local file' do
       add_stubs(:connection, :file_size, :create_container, :cloudfiles_store)
       mock(File).open('foo')
       @cloudfiles.send(:save)
     end
 
-    it "should call write on the cloudfile object with files' descriptor" do
+    it "calls write on the cloudfile object with files' descriptor" do
       add_stubs(:connection, :file_size, :create_container, :cloudfiles_store)
       stub(File).open('foo') {'qqq'}
       mock(@object).write('qqq') {true}
       @cloudfiles.send(:save)
     end
 
-    it 'should upload file' do
+    it 'uploads file' do
       add_stubs(:connection, :file_size, :create_container, :file_open, :cloudfiles_store)
       @cloudfiles.send(:save)
     end
 
-    it 'should fail on files bigger then 5G' do
+    it 'fails on files bigger then 5G' do
       add_stubs(:connection)
       mock(File).stat('foo').stub!.size {5*1024*1024*1024+1}
       dont_allow(Benchmark).realtime

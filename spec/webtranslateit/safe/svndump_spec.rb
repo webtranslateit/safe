@@ -30,7 +30,7 @@ describe WebTranslateIt::Safe::Svndump do
       filename: 'svndump-foo.NOW',
       command: 'svnadmin dump OPTS bar/baz'
     }.each do |k, v|
-      it "should set #{k} to #{v}" do
+      it "sets #{k} to #{v}" do
         @svn.backup.send(k).should == v
       end
     end

@@ -25,17 +25,17 @@ describe WebTranslateIt::Safe::Gzip do
     describe 'when not yet compressed' do
       before { @gzip = gzip }
 
-      it 'should add .gz extension' do
+      it 'adds .gz extension' do
         mock(@backup.extension) << '.gz'
         @gzip.process
       end
 
-      it 'should add |gzip pipe' do
+      it 'adds |gzip pipe' do
         mock(@backup.command) << '|gzip'
         @gzip.process
       end
 
-      it 'should set compressed' do
+      it 'sets compressed' do
         mock(@backup).compressed = true
         @gzip.process
       end
@@ -45,17 +45,17 @@ describe WebTranslateIt::Safe::Gzip do
 
       before { @gzip = gzip({}, extension: '.foo', command: 'foobar', compressed: true) }
 
-      it 'should not touch extension' do
+      it 'does not touch extension' do
         @gzip.process
         @backup.extension.should == '.foo'
       end
 
-      it 'should not touch command' do
+      it 'does not touch command' do
         @gzip.process
         @backup.command.should == 'foobar'
       end
 
-      it 'should not touch compressed' do
+      it 'does not touch compressed' do
         @gzip.process
         @backup.compressed.should == true
       end

@@ -32,17 +32,17 @@ describe WebTranslateIt::Safe::Gpg do
         stub(@gpg).active? {true}
       end
 
-      it 'should add .gpg extension' do
+      it 'adds .gpg extension' do
         mock(@gpg.backup.extension) << '.gpg'
         @gpg.process
       end
 
-      it 'should add command pipe' do
+      it 'adds command pipe' do
         mock(@gpg.backup.command) << (/\|gpg -BLAH/)
         @gpg.process
       end
 
-      it 'should set compressed' do
+      it 'sets compressed' do
         mock(@gpg.backup).compressed = true
         @gpg.process
       end
@@ -53,17 +53,17 @@ describe WebTranslateIt::Safe::Gpg do
         stub(@gpg).active? {false}
       end
 
-      it 'should not touch extension' do
+      it 'does not touch extension' do
         dont_allow(@gpg.backup.extension) << anything
         @gpg.process
       end
 
-      it 'should not touch command' do
+      it 'does not touch command' do
         dont_allow(@gpg.backup.command) << anything
         @gpg.process
       end
 
-      it 'should not touch compressed' do
+      it 'does not touch compressed' do
         dont_allow(@gpg.backup).compressed = anything
         @gpg.process
       end
@@ -73,25 +73,25 @@ describe WebTranslateIt::Safe::Gpg do
   describe :active? do
 
     describe 'with key' do
-      it 'should be true' do
+      it 'is true' do
         expect(gpg(gpg: {key: :foo}).active?).to be_truthy
       end
     end
 
     describe 'with password' do
-      it 'should be true' do
+      it 'is true' do
         expect(gpg(gpg: {password: :foo}).active?).to be_truthy
       end
     end
 
     describe 'without key & password' do
-      it 'should be false' do
+      it 'is false' do
         expect(gpg.active?).to be_falsy
       end
     end
 
     describe 'with key & password' do
-      it 'should raise RuntimeError' do
+      it 'raises RuntimeError' do
         lambda {
           gpg(gpg: {key: 'foo', password: 'bar'}).send :active?
         }.should raise_error(RuntimeError, "can't use both gpg password and pubkey")
@@ -106,17 +106,17 @@ describe WebTranslateIt::Safe::Gpg do
         gpg({gpg: {key: 'foo', options: 'GPG-OPT'}.merge(extra), options: 'OPT'})
       end
 
-      it 'should not call gpg_password_file' do
+      it 'does not call gpg_password_file' do
         g = kgpg
         dont_allow(g).gpg_password_file(anything)
         g.send(:pipe)
       end
 
-      it "should use '-r' and :options" do
+      it "uses '-r' and :options" do
         kgpg.send(:pipe).should == '|gpg GPG-OPT -e -r foo'
       end
 
-      it "should use the 'command' options" do
+      it "uses the 'command' options" do
         kgpg(command: 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -e -r foo'
       end
     end
@@ -128,18 +128,18 @@ describe WebTranslateIt::Safe::Gpg do
         end
       end
 
-      it "should use '--passphrase-file' and :options" do
+      it "uses '--passphrase-file' and :options" do
         pgpg.send(:pipe).should == '|gpg GPG-OPT -c --passphrase-file pass-file'
       end
 
-      it "should use the 'command' options" do
+      it "uses the 'command' options" do
         pgpg(command: 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -c --passphrase-file pass-file'
       end
     end
   end
 
   describe :gpg_password_file do
-    it 'should create password file' do
+    it 'creates password file' do
       file = gpg.send(:gpg_password_file, 'foo')
       expect(File.exist?(file)).to be true
       File.read(file).should == 'foo'

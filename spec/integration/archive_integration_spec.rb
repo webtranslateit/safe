@@ -51,7 +51,7 @@ describe 'tar backup' do
     @backup = "#{dst}/archive/archive-test1.#{@timestamp}.tar.gz"
   end
 
-  it 'should create backup file' do
+  it 'creates backup file' do
     File.exist?(@backup).should be true
   end
 
@@ -66,20 +66,20 @@ describe 'tar backup' do
       puts @test
     end
 
-    it 'should include asd1/2/3' do
+    it 'includes asd1/2/3' do
       File.exist?("#{@test}/asd1").should be true
       File.exist?("#{@test}/a/asd2").should be true
       File.exist?("#{@test}/a/s/asd3").should be true
     end
 
-    it 'should only include qwe 1 and 2 (no 3)' do
+    it 'onlies include qwe 1 and 2 (no 3)' do
       File.exist?("#{@test}/qwe1").should be true
       File.exist?("#{@test}/q/qwe2").should be true
       File.exist?("#{@test}/q/w/qwe3").should be false
       File.exist?("#{@test}/q/w/e/qwe4").should be false
     end
 
-    it 'should preserve file content' do
+    it 'preserves file content' do
       File.read("#{@test}/qwe1").should == 'qwe'
       File.read("#{@test}/q/qwe2").should == 'qweqwe'
       File.read("#{@test}/a/s/asd3").should == 'asdasdasd'

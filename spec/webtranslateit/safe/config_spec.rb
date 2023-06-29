@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe WebTranslateIt::Safe::Config do
-  it 'should parse example config' do
+  it 'parses example config' do
     config = WebTranslateIt::Safe::Config::Node.new do
 
       dry_run false
@@ -206,7 +206,7 @@ describe WebTranslateIt::Safe::Config do
     config.to_hash.should == expected
   end
 
-  it 'should make an array from multivalues' do
+  it 'makes an array from multivalues' do
     config = WebTranslateIt::Safe::Config::Node.new do
       skip_tables 'a'
       skip_tables 'b'
@@ -225,7 +225,7 @@ describe WebTranslateIt::Safe::Config do
     config.to_hash.should == expected
   end
 
-  it 'should raise error on key duplication' do
+  it 'raises error on key duplication' do
     proc do
       WebTranslateIt::Safe::Config::Node.new do
         path 'foo'
@@ -234,7 +234,7 @@ describe WebTranslateIt::Safe::Config do
     end.should raise_error(ArgumentError, "duplicate value for 'path'")
   end
 
-  it 'should accept hash as data' do
+  it 'accepts hash as data' do
     WebTranslateIt::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo', exclude: %w[aaa bbb]
@@ -251,7 +251,7 @@ describe WebTranslateIt::Safe::Config do
     }
   end
 
-  it 'should accept hash as data and a block' do
+  it 'accepts hash as data and a block' do
     WebTranslateIt::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo' do
@@ -270,7 +270,7 @@ describe WebTranslateIt::Safe::Config do
     }
   end
 
-  it 'should accept multiple levels of data hash' do
+  it 'accepts multiple levels of data hash' do
     config = WebTranslateIt::Safe::Config::Node.new nil, tar: {
       s3: { bucket: '_bucket', key: '_key', secret: '_secret' },
       keep: { s3: 2 }
@@ -284,7 +284,7 @@ describe WebTranslateIt::Safe::Config do
     }
   end
   
-  it 'should set multi value as array' do
+  it 'sets multi value as array' do
     config = WebTranslateIt::Safe::Config::Node.new do
       tar do
         archive 'foo' do

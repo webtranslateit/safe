@@ -46,13 +46,13 @@ describe WebTranslateIt::Safe::S3 do
       stub(AWS::S3::Bucket).objects('_bucket', prefix: anything).stub![0].stub!.delete
     end
 
-    it 'should check [:keep, :s3]' do
+    it 'checks [:keep, :s3]' do
       @s3.config[:keep].data['s3'] = nil
       dont_allow(@s3.backup).filename
       @s3.send :cleanup
     end
 
-    it 'should delete extra files' do
+    it 'deletes extra files' do
       mock(AWS::S3::Bucket).objects('_bucket', prefix: 'aaaaa1').mock![0].mock!.delete
       mock(AWS::S3::Bucket).objects('_bucket', prefix: 'aaaaa2').mock![0].mock!.delete
       @s3.send :cleanup
@@ -65,21 +65,21 @@ describe WebTranslateIt::Safe::S3 do
       @s3 = s3
     end
 
-    it 'should be true when all params are set' do
+    it 'is true when all params are set' do
       expect(@s3.active?).to be_truthy
     end
 
-    it 'should be false if bucket is missing' do
+    it 'is false if bucket is missing' do
       @s3.config[:s3].data['bucket'] = nil
       expect(@s3.active?).to be_falsy
     end
 
-    it 'should be false if key is missing' do
+    it 'is false if key is missing' do
       @s3.config[:s3].data['key'] = nil
       expect(@s3.active?).to be_falsy
     end
 
-    it 'should be false if secret is missing' do
+    it 'is false if secret is missing' do
       @s3.config[:s3].data['secret'] = nil
       expect(@s3.active?).to be_falsy
     end
@@ -89,18 +89,18 @@ describe WebTranslateIt::Safe::S3 do
     before do
       @s3 = s3
     end
-    it 'should use s3/path 1st' do
+    it 'uses s3/path 1st' do
       @s3.config[:s3].data['path'] = 's3_path'
       @s3.config[:local] = {path: 'local_path'}
       @s3.send(:path).should == 's3_path'
     end
 
-    it 'should use local/path 2nd' do
+    it 'uses local/path 2nd' do
       @s3.config.merge local: {path: 'local_path'}
       @s3.send(:path).should == 'local_path'
     end
 
-    it 'should use constant 3rd' do
+    it 'uses constant 3rd' do
       @s3.send(:path).should == '_kind/_id'
     end
 
@@ -130,37 +130,37 @@ describe WebTranslateIt::Safe::S3 do
       @full_path = '_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar'
     end
 
-    it 'should fail if no backup.file is set' do
+    it 'fails if no backup.file is set' do
       @s3.backup.path = nil
       proc {@s3.send(:save)}.should raise_error(RuntimeError)
     end
 
-    it 'should establish s3 connection' do
+    it 'establishes s3 connection' do
       mock(AWS::S3::Base).establish_connection!(access_key_id: '_key', secret_access_key: '_secret', use_ssl: true)
       add_stubs(:stat, :create_bucket, :file_open, :s3_store)
       @s3.send(:save)
     end
 
-    it 'should open local file' do
+    it 'opens local file' do
       add_stubs(:connection, :stat, :create_bucket)
       mock(File).open('foo')
       @s3.send(:save)
     end
 
-    it 'should upload file' do
+    it 'uploads file' do
       add_stubs(:connection, :stat, :create_bucket, :file_open)
       mock(AWS::S3::S3Object).store(@full_path, :opened_file, '_bucket')
       @s3.send(:save)
     end
 
-    it 'should fail on files bigger then 5G' do
+    it 'fails on files bigger then 5G' do
       add_stubs(:connection)
       mock(File).stat('foo').stub!.size {5*1024*1024*1024+1}
       dont_allow(Benchmark).realtime
       @s3.send(:save)
     end
 
-    it 'should not create a bucket that already exists' do
+    it 'does not create a bucket that already exists' do
       add_stubs(:connection, :stat, :file_open, :s3_store)
       stub(AWS::S3::Bucket).find('_bucket') { true }
       dont_allow(AWS::S3::Bucket).create
