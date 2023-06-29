@@ -20,15 +20,15 @@ module WebTranslateIt
       end
 
       def postgres_host
-        config['host'] && "--host='#{config["host"]}'"
+        config['host'] && "--host='#{config['host']}'"
       end
 
       def postgres_port
-        config['port'] && "--port='#{config["port"]}'"
+        config['port'] && "--port='#{config['port']}'"
       end
 
       def postgres_username
-        config['user'] && "--username='#{config["user"]}'"
+        config['user'] && "--username='#{config['user']}'"
       end
 
     end

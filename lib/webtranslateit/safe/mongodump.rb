@@ -9,7 +9,7 @@ module WebTranslateIt
         opts << "-p #{config[:password]}" if config[:password]
         opts << "--out #{output_directory}"
       
-        "mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db #{@id} #{opts.join(" ")} && cd #{output_directory} && tar cf - ."
+        "mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db #{@id} #{opts.join(' ')} && cd #{output_directory} && tar cf - ."
       end
     
       def extension; '.tar'; end

@@ -897,15 +897,6 @@ Style/StringConcatenation:
     - 'lib/webtranslateit/safe/s3.rb'
     - 'lib/webtranslateit/safe/sink.rb'
 
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiteralsInInterpolation:
-  Exclude:
-    - 'lib/webtranslateit/safe/mongodump.rb'
-    - 'lib/webtranslateit/safe/pgdump.rb'
-
 # Offense count: 9
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
