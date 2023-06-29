@@ -31,7 +31,7 @@ module WebTranslateIt
         def find(*path)
           get(*path) || @parent&.find(*path)
         end
-        alias :[] :find
+        alias [] find
 
         def set_multi(key, value)
           @data[key.to_s] ||= []
@@ -41,7 +41,7 @@ module WebTranslateIt
         def set(key, value)
           @data[key.to_s] = value
         end
-        alias :[]= :set
+        alias []= set
 
         def each(&block)
           @data.each(&block)

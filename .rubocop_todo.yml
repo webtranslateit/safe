@@ -566,14 +566,6 @@ Security/Eval:
   Exclude:
     - 'bin/webtranslateit-safe'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: prefer_alias, prefer_alias_method
-Style/Alias:
-  Exclude:
-    - 'lib/webtranslateit/safe/config/node.rb'
-
 # Offense count: 41
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
