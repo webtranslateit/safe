@@ -556,11 +556,6 @@ RSpec/PredicateMatcher:
     - 'spec/webtranslateit/safe/local_spec.rb'
     - 'spec/webtranslateit/safe/s3_spec.rb'
 
-# Offense count: 2
-RSpec/RepeatedExample:
-  Exclude:
-    - 'spec/webtranslateit/safe/cloudfiles_spec.rb'
-
 # Offense count: 1
 Security/Eval:
   Exclude:
