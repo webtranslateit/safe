@@ -61,9 +61,9 @@ module WebTranslateIt
 
           puts files.collect(&:name) if verbose?
 
-          files = files.
-                  collect(&:name).
-                  sort
+          files = files
+                  .collect(&:name)
+                  .sort
 
           cleanup_with_limit(files, keep) do |f|
             file = File.join(path, f)

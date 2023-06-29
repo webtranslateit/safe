@@ -14,26 +14,6 @@ Layout/ArgumentAlignment:
   Exclude:
     - 'lib/webtranslateit/safe/config/builder.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Layout/ClosingHeredocIndentation:
-  Exclude:
-    - 'bin/webtranslateit-safe'
-    - 'lib/webtranslateit/safe/tmp_file.rb'
-
-# Offense count: 14
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: leading, trailing
-Layout/DotPosition:
-  Exclude:
-    - 'lib/webtranslateit/safe/ftp.rb'
-    - 'lib/webtranslateit/safe/local.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-    - 'lib/webtranslateit/safe/sftp.rb'
-    - 'lib/webtranslateit/safe/stream.rb'
-    - 'spec/webtranslateit/safe/cloudfiles_spec.rb'
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedMethods, AllowedPatterns.
