@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Sftp < Sink
 
       protected
@@ -88,5 +90,7 @@ module WebTranslateIt
       end
 
     end
+
   end
+
 end

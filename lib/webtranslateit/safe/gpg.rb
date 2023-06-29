@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Gpg < Pipe
 
       def active?
@@ -39,8 +41,12 @@ module WebTranslateIt
 
       def gpg_password_file(pass)
         return 'TEMP_GENERATED_FILENAME' if dry_run?
+
         WebTranslateIt::Safe::TmpFile.create('gpg-pass') { |file| file.write(pass) }
       end
+
     end
+
   end
+
 end

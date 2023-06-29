@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Pgdump < Source
 
       def command
@@ -28,5 +30,7 @@ module WebTranslateIt
       end
 
     end
+
   end
+
 end

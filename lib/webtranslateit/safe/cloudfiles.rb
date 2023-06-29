@@ -1,6 +1,9 @@
 module WebTranslateIt
+
   module Safe
+
     class Cloudfiles < Sink
+
       MAX_CLOUDFILES_FILE_SIZE = 5_368_709_120
 
       def active?
@@ -72,6 +75,9 @@ module WebTranslateIt
       def service_net
         config[:cloudfiles, :service_net] || false
       end
+
     end
+
   end
+
 end

@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Gzip < Pipe
 
       protected
@@ -21,5 +23,7 @@ module WebTranslateIt
       end
 
     end
+
   end
+
 end

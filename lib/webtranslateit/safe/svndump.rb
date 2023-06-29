@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Svndump < Source
 
       def command
@@ -9,5 +11,7 @@ module WebTranslateIt
       def extension = '.svn'
 
     end
+
   end
+
 end

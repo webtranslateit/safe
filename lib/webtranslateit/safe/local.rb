@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Local < Sink
 
       def active?
@@ -27,8 +29,6 @@ module WebTranslateIt
           system "#{@backup.command}>#{@backup.path}"
         end
         puts("command took #{format('%.2f', benchmark)} second(s).") if verbose?
-
-
       end
 
       def cleanup
@@ -47,6 +47,9 @@ module WebTranslateIt
           File.unlink(f) unless dry_run?
         end
       end
+
     end
+
   end
+
 end

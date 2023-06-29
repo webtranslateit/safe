@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Mongodump < Source
 
       def command
@@ -15,9 +17,13 @@ module WebTranslateIt
       def extension = '.tar'
 
       protected
+
       def output_directory
         File.join(TmpFile.tmproot, 'mongodump')
       end
+
     end
+
   end
+
 end

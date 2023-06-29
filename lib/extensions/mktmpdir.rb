@@ -3,6 +3,7 @@ require 'tmpdir'
 unless Dir.respond_to?(:mktmpdir)
   # backward compat for 1.8.6
   class Dir
+
     def self.mktmpdir(prefix_suffix = nil, tmpdir = nil)
       case prefix_suffix
       when nil
@@ -41,5 +42,6 @@ unless Dir.respond_to?(:mktmpdir)
         path
       end
     end
+
   end
 end

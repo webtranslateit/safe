@@ -1,6 +1,9 @@
 module WebTranslateIt
+
   module Safe
+
     module Config
+
       class Builder
 
         def initialize(node, data = {})
@@ -10,6 +13,7 @@ module WebTranslateIt
 
 
         class << self
+
           def simple_value(*names)
             names.each do |m|
               define_method(m) do |value|
@@ -56,6 +60,7 @@ module WebTranslateIt
             names.each do |m|
               define_method(m) do |id, data = {}, &block|
                 raise "bad collection id: #{id.inspect}" unless id
+
                 ensure_hash(m, data)
 
                 name = "#{m}s"
@@ -64,6 +69,7 @@ module WebTranslateIt
               end
             end
           end
+
         end
 
         simple_value :verbose, :dry_run, :local_only, :path, :command,
@@ -83,7 +89,11 @@ module WebTranslateIt
         def ensure_hash(k, v)
           raise "#{k}: hash expected: #{v.inspect}" unless v.is_a?(Hash)
         end
+
       end
+
     end
+
   end
+
 end

@@ -1,6 +1,9 @@
 module WebTranslateIt
+
   module Safe
+
     class Pipe < Stream
+
       # process adds required commands to the current
       # shell command string
       # :active?, :pipe, :extension and :post_process are
@@ -12,6 +15,9 @@ module WebTranslateIt
         @backup.extension << extension
         post_process
       end
+
     end
+
   end
+
 end
