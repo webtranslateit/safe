@@ -47,15 +47,15 @@ describe 'tar backup' do
     @backup = "#{dst}/archive/archive-foo.#{@timestamp}.tar.gz"
   end
 
-  it 'should create backup file' do
+  it 'creates backup file' do
     File.exist?(@backup).should be true
   end
 
-  it 'should remove old backups' do
+  it 'removes old backups' do
     Dir["#{@dst}/archive/archive-foo.*"].should == [@backup]
   end
 
-  it 'should NOT remove backups with base having same prefix' do
+  it 'does not remove backups with base having same prefix' do
     Dir["#{@dst}/archive/archive-foobar.*"].sort.should == ["#{@dst}/archive/archive-foobar.000001.tar.gz", "#{@dst}/archive/archive-foobar.000002.tar.gz"]
   end
 

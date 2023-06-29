@@ -37,7 +37,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       filename: 'mysqldump-foo.NOW',
       command: 'mysqldump --defaults-extra-file=/tmp/pwd OPTS --ignore-table=foo.bar --ignore-table=foo.baz foo'
     }.each do |k, v|
-      it "should set #{k} to #{v}" do
+      it "sets #{k} to #{v}" do
         @mysql.backup.send(k).should == v
       end
     end
@@ -45,7 +45,7 @@ describe WebTranslateIt::Safe::Mysqldump do
   end
 
   describe :mysql_skip_tables do
-    it 'should return nil if no skip_tables' do
+    it 'returns nil if no skip_tables' do
       config = def_config.dup
       config.delete(:skip_tables)
       m = mysqldump(:foo, WebTranslateIt::Safe::Config::Node.new(nil, config))
@@ -54,7 +54,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       m.backup.command.should_not match(/ignore-table/)
     end
 
-    it "should return '' if skip_tables empty" do
+    it "returns '' if skip_tables empty" do
       config = def_config.dup
       config[:skip_tables] = []
       m = mysqldump(:foo, WebTranslateIt::Safe::Config::Node.new(nil, config))
@@ -66,7 +66,7 @@ describe WebTranslateIt::Safe::Mysqldump do
   end
 
   describe :mysql_password_file do
-    it 'should create passwords file with quoted values' do
+    it 'creates passwords file with quoted values' do
       m = mysqldump(:foo, def_config(password: '#qwe"asd\'zxc'))
       file = m.send(:mysql_password_file)
       File.exist?(file).should == true

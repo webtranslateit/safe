@@ -29,38 +29,38 @@ describe WebTranslateIt::Safe::Archive do
       filename: 'archive-foo.NOW',
       command: 'tar -cf - OPTS --exclude=oranges apples'
     }.each do |k, v|
-      it "should set #{k} to #{v}" do
+      it "sets #{k} to #{v}" do
         @archive.backup.send(k).should == v
       end
     end
   end
 
   describe :tar_exclude_files do
-    it "should return '' when no excludes" do
+    it "returns '' when no excludes" do
       archive(:foo, {}).send(:tar_exclude_files).should == ''
     end
 
-    it 'should accept single exclude as string' do
+    it 'accepts single exclude as string' do
       archive(:foo, {exclude: 'bar'}).send(:tar_exclude_files).should == '--exclude=bar'
     end
 
-    it 'should accept multiple exclude as array' do
+    it 'accepts multiple exclude as array' do
       archive(:foo, {exclude: %w[foo bar]}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
     end
   end
 
   describe :tar_files do
-    it 'should raise RuntimeError when no files' do
+    it 'raises RuntimeError when no files' do
       lambda {
         archive(:foo, {}).send(:tar_files)
       }.should raise_error(RuntimeError, 'missing files for tar')
     end
 
-    it 'should accept single file as string' do
+    it 'accepts single file as string' do
       archive(:foo, {files: 'foo'}).send(:tar_files).should == 'foo'
     end
 
-    it 'should accept multiple files as array' do
+    it 'accepts multiple files as array' do
       archive(:foo, {files: %w[foo bar]}).send(:tar_files).should == 'foo bar'
     end
   end

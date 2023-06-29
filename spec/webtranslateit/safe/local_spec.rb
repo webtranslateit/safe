@@ -32,19 +32,19 @@ describe WebTranslateIt::Safe::Local do
   end
 
   describe :active? do
-    it 'should be true' do
+    it 'is true' do
       expect(local.active?).to be_truthy
     end
   end
 
   describe :path do
-    it 'should raise RuntimeError when no path' do
+    it 'raises RuntimeError when no path' do
       lambda {
         local({}).send :path
       }.should raise_error(RuntimeError, 'missing :local/:path')
     end
 
-    it 'should use local/path' do
+    it 'uses local/path' do
       local.send(:path).should == '/mysqldump~blog~NoW'
     end
   end
@@ -57,17 +57,17 @@ describe WebTranslateIt::Safe::Local do
       stub(FileUtils).mkdir_p
     end
 
-    it 'should call system to save the file' do
+    it 'calls system to save the file' do
       mock(@local).system('command>file-path')
       @local.send(:save)
     end
 
-    it 'should create directory' do
+    it 'creates directory' do
       mock(FileUtils).mkdir_p('/mysqldump~blog~NoW')
       @local.send(:save)
     end
 
-    it 'should set backup.path' do
+    it 'sets backup.path' do
       mock(@backup).path = 'file-path'
       @local.send(:save)
     end
@@ -77,7 +77,7 @@ describe WebTranslateIt::Safe::Local do
 
       it 'should not create directory'
       it 'should not call system'
-      it 'should set backup.path' do
+      it 'sets backup.path' do
         mock(@backup).path = 'file-path'
         @local.send(:save)
       end
@@ -92,13 +92,13 @@ describe WebTranslateIt::Safe::Local do
       stub(File).unlink
     end
 
-    it 'should check [:keep, :local]' do
+    it 'checks [:keep, :local]' do
       @local = local(def_config.merge(keep: {}))
       dont_allow(Dir).[]
       @local.send :cleanup
     end
 
-    it 'should delete extra files' do
+    it 'deletes extra files' do
       @local = local
       mock(Dir).[]('/mysqldump~blog~NoW/qweqwe.*') {@files}
       mock(File).unlink('/mysqldump~blog~NoW/qweqwe.1')

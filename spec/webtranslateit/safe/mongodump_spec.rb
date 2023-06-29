@@ -31,12 +31,12 @@ describe WebTranslateIt::Safe::Mongodump do
       extension: '.tar',
       filename: 'mongodump-foo.NOW'
     }.each do |k, v|
-      it "should set #{k} to #{v}" do
+      it "sets #{k} to #{v}" do
         @mongo.backup.send(k).should == v
       end
     end
     
-    it 'should set the command' do
+    it 'sets the command' do
       @mongo.backup.send(:command).should == "mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db foo --host prod.example.com -u testuser -p p4ssw0rd --out #{@output_folder} && cd #{@output_folder} && tar cf - ."
     end
     
@@ -45,7 +45,7 @@ describe WebTranslateIt::Safe::Mongodump do
       user: '-u ',
       password: '-p '
     }.each do |key, v|    
-      it "should not add #{key} to command if it is not present" do
+      it "does not add #{key} to command if it is not present" do
         @mongo = mongodump(:foo, def_config.reject! {|k,v| k == key})
         @mongo.backup.send(:command).should_not =~ /#{v}/
       end
