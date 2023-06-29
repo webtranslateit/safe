@@ -35,7 +35,7 @@ module WebTranslateIt
 
         def set_multi(key, value)
           @data[key.to_s] ||= []
-          @data[key.to_s].concat [*value]
+          @data[key.to_s].push(*value)
         end
 
         def set(key, value)
