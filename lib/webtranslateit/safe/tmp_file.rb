@@ -1,7 +1,10 @@
 require 'tmpdir'
 module WebTranslateIt
+
   module Safe
+
     module TmpFile
+
       @keep_files = []
 
       def self.tmproot
@@ -42,6 +45,9 @@ ERR
         @keep_files << file # so that it will not get gcollected and removed from filesystem until the end
         file.path
       end
+
     end
+
   end
+
 end

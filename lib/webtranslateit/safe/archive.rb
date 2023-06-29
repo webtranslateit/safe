@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Archive < Source
 
       def command
@@ -16,9 +18,12 @@ module WebTranslateIt
 
       def tar_files
         raise 'missing files for tar' unless config[:files]
+
         [*config[:files]].map(&:strip).join(' ')
       end
 
     end
+
   end
+
 end

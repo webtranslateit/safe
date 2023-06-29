@@ -1,7 +1,11 @@
 module WebTranslateIt
+
   module Safe
+
     class Backup
+
       attr_accessor :id, :kind, :filename, :extension, :command, :compressed, :timestamp, :path
+
       def initialize(opts = {})
         opts.each do |k, v|
           send("#{k}=", v)
@@ -15,6 +19,9 @@ module WebTranslateIt
           WebTranslateIt::Safe.const_get(mod).new(config, self).process
         end
       end
+
     end
+
   end
+
 end

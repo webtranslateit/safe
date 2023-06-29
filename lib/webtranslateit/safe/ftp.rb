@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Ftp < Sink
 
       protected
@@ -77,5 +79,7 @@ module WebTranslateIt
       end
 
     end
+
   end
+
 end

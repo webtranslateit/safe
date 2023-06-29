@@ -1,8 +1,11 @@
 module WebTranslateIt
+
   module Safe
+
     class Source < Stream
 
       attr_accessor :id
+
       def initialize(id, config)
         @id = id.to_s
         @config = config
@@ -22,6 +25,7 @@ module WebTranslateIt
 
       def backup
         return @backup if @backup
+
         @backup = Backup.new(
           id: @id,
           kind: kind,
@@ -41,5 +45,7 @@ module WebTranslateIt
       end
 
     end
+
   end
+
 end

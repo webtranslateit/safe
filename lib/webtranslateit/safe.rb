@@ -36,7 +36,9 @@ require 'webtranslateit/safe/sftp'
 require 'webtranslateit/safe/ftp'
 
 module WebTranslateIt
+
   module Safe
+
     ROOT = File.join(File.dirname(__FILE__), '..', '..')
 
     def safe(&block)
@@ -44,7 +46,6 @@ module WebTranslateIt
     end
 
     def process(config)
-
       [[Mysqldump, %i[mysqldump databases]],
        [Pgdump,    %i[pgdump databases]],
        [Mongodump, %i[mongodump databases]],
@@ -61,5 +62,7 @@ module WebTranslateIt
     end
     module_function :safe
     module_function :process
+
   end
+
 end

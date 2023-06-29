@@ -1,6 +1,9 @@
 module WebTranslateIt
+
   module Safe
+
     class S3 < Sink
+
       MAX_S3_FILE_SIZE = 5_368_709_120
 
       def active?
@@ -75,6 +78,9 @@ module WebTranslateIt
       rescue AWS::S3::NoSuchBucket
         false
       end
+
     end
+
   end
+
 end

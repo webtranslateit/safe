@@ -1,5 +1,7 @@
 module WebTranslateIt
+
   module Safe
+
     class Sink < Stream
 
       def process
@@ -30,6 +32,9 @@ module WebTranslateIt
         # TODO: validate here
         to_remove.each(&block)
       end
+
     end
+
   end
+
 end

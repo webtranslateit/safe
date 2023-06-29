@@ -1,8 +1,12 @@
 require 'webtranslateit/safe/config/builder'
 module WebTranslateIt
+
   module Safe
+
     module Config
+
       class Node
+
         attr_reader :parent, :data
 
         def initialize(parent = nil, data = {}, &block)
@@ -65,7 +69,11 @@ module WebTranslateIt
             end
           end
         end
+
       end
+
     end
+
   end
+
 end

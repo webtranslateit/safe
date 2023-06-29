@@ -1,12 +1,16 @@
 module WebTranslateIt
+
   module Safe
+
     class Stream
 
       attr_accessor :config, :backup
+
       def initialize(config, backup)
         @config = config
         @backup = backup
       end
+
       # FIXME: move to Backup
       def expand(path)
         path.
@@ -28,6 +32,9 @@ module WebTranslateIt
       def dry_run?
         config[:dry_run]
       end
+
     end
+
   end
+
 end
