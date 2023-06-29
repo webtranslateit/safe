@@ -17,18 +17,18 @@ module WebTranslateIt
         rescue ArgumentError => e
           raise unless e.message =~ /parent directory is world writable/
 
-          puts <<-ERR
+          puts <<~ERR
 
 
-********************************************************************************
-It looks like you have wrong permissions on your TEMP directory.  The usual
-case is when you have world writable TEMP directory withOUT the sticky bit.
+            ********************************************************************************
+            It looks like you have wrong permissions on your TEMP directory.  The usual
+            case is when you have world writable TEMP directory withOUT the sticky bit.
 
-Try "chmod +t" on it.
+            Try "chmod +t" on it.
 
-********************************************************************************
+            ********************************************************************************
 
-ERR
+          ERR
           raise
         end
         @tmproot = nil

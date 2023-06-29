@@ -70,13 +70,13 @@ describe WebTranslateIt::Safe::Mysqldump do
       m = mysqldump(:foo, def_config(password: '#qwe"asd\'zxc'))
       file = m.send(:mysql_password_file)
       File.exist?(file).should == true
-      File.read(file).should == <<-PWD
-[mysqldump]
-user = "User"
-password = "#qwe\\"asd'zxc"
-socket = "socket"
-host = "localhost"
-port = 7777
+      File.read(file).should == <<~PWD
+        [mysqldump]
+        user = "User"
+        password = "#qwe\\"asd'zxc"
+        socket = "socket"
+        host = "localhost"
+        port = 7777
       PWD
     end
   end
