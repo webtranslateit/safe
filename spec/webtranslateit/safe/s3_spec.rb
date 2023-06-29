@@ -89,6 +89,7 @@ describe WebTranslateIt::Safe::S3 do
     before do
       @s3 = s3
     end
+
     it 'uses s3/path 1st' do
       @s3.config[:s3].data['path'] = 's3_path'
       @s3.config[:local] = {path: 'local_path'}
