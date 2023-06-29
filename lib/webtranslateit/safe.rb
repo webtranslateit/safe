@@ -45,11 +45,11 @@ module WebTranslateIt
 
     def process(config)
 
-      [[Mysqldump, [:mysqldump, :databases]],
-       [Pgdump,    [:pgdump,    :databases]],
-       [Mongodump, [:mongodump, :databases]],
-       [Archive,   [:tar,       :archives]],
-       [Svndump,   [:svndump,   :repos]]
+      [[Mysqldump, %i[mysqldump databases]],
+       [Pgdump,    %i[pgdump databases]],
+       [Mongodump, %i[mongodump databases]],
+       [Archive,   %i[tar archives]],
+       [Svndump,   %i[svndump repos]]
       ].each do |klass, path|
         if collection = config[*path]
           collection.each do |name, c|

@@ -10,7 +10,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       :host => 'localhost',
       :port => 7777,
       :socket => 'socket',
-      :skip_tables => [:bar, :baz]
+      :skip_tables => %i[bar baz]
     }.merge(extra)
   end
 

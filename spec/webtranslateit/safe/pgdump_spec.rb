@@ -9,7 +9,7 @@ describe WebTranslateIt::Safe::Pgdump do
       :password => 'pwd',
       :host => 'localhost',
       :port => 7777,
-      :skip_tables => [:bar, :baz]
+      :skip_tables => %i[bar baz]
     }
   end
 

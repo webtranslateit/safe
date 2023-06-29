@@ -53,7 +53,7 @@ describe WebTranslateIt::Safe::Config do
             password 'custom-production-pass'
           end
 
-          skip_tables [:logger_exceptions, :request_logs]
+          skip_tables %i[logger_exceptions request_logs]
         end
 
       end
@@ -71,7 +71,7 @@ describe WebTranslateIt::Safe::Config do
         database :production do
           keep :local => 3
 
-          skip_tables [:logger_exceptions, :request_logs]
+          skip_tables %i[logger_exceptions request_logs]
         end
 
       end
