@@ -879,13 +879,6 @@ Style/SpecialGlobalVars:
   Exclude:
     - 'lib/extensions/mktmpdir.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Style/StderrPuts:
-  Exclude:
-    - 'lib/webtranslateit/safe/cloudfiles.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-
 # Offense count: 9
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
