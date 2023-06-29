@@ -725,12 +725,6 @@ Style/HashSyntax:
     - 'spec/webtranslateit/safe/s3_spec.rb'
     - 'spec/webtranslateit/safe/svndump_spec.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Style/IfUnlessModifier:
-  Exclude:
-    - 'lib/webtranslateit/safe/ftp.rb'
-
 # Offense count: 3
 Style/MixinUsage:
   Exclude:
