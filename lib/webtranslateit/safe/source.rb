@@ -36,8 +36,6 @@ module WebTranslateIt
         @backup
       end
 
-      protected
-
       def self.human_name
         name.split('::').last.downcase
       end
