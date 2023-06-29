@@ -16,7 +16,7 @@ module WebTranslateIt
 
       def tar_files
         raise RuntimeError, 'missing files for tar' unless config[:files]
-        [*config[:files]].map{|s| s.strip}.join(' ')
+        [*config[:files]].map(&:strip).join(' ')
       end
 
     end
