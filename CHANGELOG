@@ -1,38 +1,42 @@
-* Remove `default_executable` line and simplify executables definition.
+## Unreleased
 
-0.4.3
+* Remove `default_executable` line and simplify executables definition.
+* Autocorrect rubocop offences.
+* Convert rspec syntax from `should` to `expect`.
+
+## 0.4.3 - 2023-06-29
 
 * Bug fix on builder.
 * Move version number to gemspec file.
 
-0.4.2
+## 0.4.2 - 2023-05-22
 
 * Bug fix on executable
 
-0.4.1
+## 0.4.1 - 2023-05-20
 
 * Add ruby 3.2 compantibility
 * Modernize gem
 * Rename astrails-safe to webtranslateit-safe
 
-0.3.1
+## 0.3.1
 
 * plain ftp support from seroy
 * mongodump support from Matt Berther
 
-0.3.0
+## 0.3.0
 
 * switch to bundler
 * fixed the rspec
 
-0.2.8
+## 0.2.8
 
 * ruby 1.9.2 compatibility (tests mostly)
 * code review, and tons of small fixes
 * check file size before attempting to upload to cloudfiles
 * testing framework changed from micronaut to rspec
 
-0.2.7
+## 0.2.7
 
 * default options for gpg now include '--no-use-agent'
 * support for 'command' option for gpg
@@ -40,13 +44,13 @@
 * add 'lib' to $:
 * [EXPERIMENTAL] Rackspace Cloud Files support
 
-0.2.6
+## 0.2.6
 
 * fix typo in the template config file. (change option to options in pgdump)
 * add example 'options' for tar in the template config file.
 * do not try to upload more then 5G of data to S3. print error instead
 
-0.2.5
+## 0.2.5
 
 * Safety mesure: Disable overwrite of existing configuration keys except for multi-value keys
   supported multi-value keys: skip_tables, exclude, files
