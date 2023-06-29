@@ -53,7 +53,7 @@ describe WebTranslateIt::Safe::Local do
     before do
       @local = local
       stub(@local).system
-      stub(@local).full_path {'file-path'}
+      stub(@local).full_path { 'file-path' }
       stub(FileUtils).mkdir_p
     end
 
@@ -86,9 +86,9 @@ describe WebTranslateIt::Safe::Local do
 
   describe :cleanup do
     before do
-      @files = [4,1,3,2].map { |i| "/mysqldump~blog~NoW/qweqwe.#{i}" }
-      stub(File).file?(anything) {true}
-      stub(File).size(anything) {1}
+      @files = [4, 1, 3, 2].map { |i| "/mysqldump~blog~NoW/qweqwe.#{i}" }
+      stub(File).file?(anything) { true }
+      stub(File).size(anything) { 1 }
       stub(File).unlink
     end
 
@@ -100,7 +100,7 @@ describe WebTranslateIt::Safe::Local do
 
     it 'deletes extra files' do
       @local = local
-      mock(Dir).[]('/mysqldump~blog~NoW/qweqwe.*') {@files}
+      mock(Dir).[]('/mysqldump~blog~NoW/qweqwe.*') { @files }
       mock(File).unlink('/mysqldump~blog~NoW/qweqwe.1')
       mock(File).unlink('/mysqldump~blog~NoW/qweqwe.2')
       @local.send :cleanup

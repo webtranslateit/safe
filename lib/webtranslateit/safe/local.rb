@@ -38,8 +38,8 @@ module WebTranslateIt
 
         # TODO: cleanup ALL zero-length files
 
-        files = Dir["#{base}*"] .
-          select{|f| File.file?(f) && File.size(f).positive?} .
+        files = Dir["#{base}*"].
+          select { |f| File.file?(f) && File.size(f).positive? }.
           sort
 
         cleanup_with_limit(files, keep) do |f|

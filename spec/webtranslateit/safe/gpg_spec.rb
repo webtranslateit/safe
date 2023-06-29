@@ -23,13 +23,13 @@ describe WebTranslateIt::Safe::Gpg do
 
     before do
       @gpg = gpg
-      stub(@gpg).gpg_password_file {'pwd-file'}
-      stub(@gpg).pipe {'|gpg -BLAH'}
+      stub(@gpg).gpg_password_file { 'pwd-file' }
+      stub(@gpg).pipe { '|gpg -BLAH' }
     end
 
     describe 'when active' do
       before do
-        stub(@gpg).active? {true}
+        stub(@gpg).active? { true }
       end
 
       it 'adds .gpg extension' do
@@ -50,7 +50,7 @@ describe WebTranslateIt::Safe::Gpg do
 
     describe 'when inactive' do
       before do
-        stub(@gpg).active? {false}
+        stub(@gpg).active? { false }
       end
 
       it 'does not touch extension' do
@@ -102,7 +102,7 @@ describe WebTranslateIt::Safe::Gpg do
   describe :pipe do
 
     describe 'with key' do
-      def kgpg(extra={})
+      def kgpg(extra = {})
         gpg({gpg: {key: 'foo', options: 'GPG-OPT'}.merge(extra), options: 'OPT'})
       end
 
@@ -124,7 +124,7 @@ describe WebTranslateIt::Safe::Gpg do
     describe 'with password' do
       def pgpg(extra = {})
         returning(gpg({gpg: {password: 'bar', options: 'GPG-OPT'}.merge(extra), options: 'OPT'})) do |g|
-          stub(g).gpg_password_file(anything) {'pass-file'}
+          stub(g).gpg_password_file(anything) { 'pass-file' }
         end
       end
 

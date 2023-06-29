@@ -20,9 +20,9 @@ describe 'tar backup' do
     mkdir_p "#{@src}/a/s/d"
 
     File.write("#{@src}/qwe1", 'qwe')
-    File.write("#{@src}/q/qwe2", 'qwe'*2)
-    File.write("#{@src}/q/w/qwe3", 'qwe'*3)
-    File.write("#{@src}/q/w/e/qwe4", 'qwe'*4)
+    File.write("#{@src}/q/qwe2", 'qwe' * 2)
+    File.write("#{@src}/q/w/qwe3", 'qwe' * 3)
+    File.write("#{@src}/q/w/e/qwe4", 'qwe' * 4)
 
     File.write("#{@src}/asd1", 'asd')
     File.write("#{@src}/a/asd2", 'asd' * 2)
@@ -34,7 +34,7 @@ describe 'tar backup' do
     @now = Time.now
     @timestamp = @now.strftime('%y%m%d-%H%M')
 
-    stub(Time).now {@now} # Freeze
+    stub(Time).now { @now } # Freeze
 
     config = WebTranslateIt::Safe.safe do
       local path: "#{dst}/:kind"

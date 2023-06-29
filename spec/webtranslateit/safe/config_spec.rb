@@ -102,7 +102,7 @@ describe WebTranslateIt::Safe::Config do
         end
 
         archive :misc do
-          files [ '/backup/*.rb' ]
+          files ['/backup/*.rb']
         end
       end
 
@@ -174,7 +174,7 @@ describe WebTranslateIt::Safe::Config do
 
       'svndump' => {
         'repos' => {
-          'my_repo'=> {
+          'my_repo' => {
             'repo_path' => '/home/svn/my_repo'
           }
         }
@@ -189,7 +189,7 @@ describe WebTranslateIt::Safe::Config do
             'files' => ['/var/www/blog.astrails.com/'],
             'exclude' => ['/var/www/blog.astrails.com/log', '/var/www/blog.astrails.com/tmp']
           },
-          'misc' => { 'files' => ['/backup/*.rb'] }
+          'misc' => {'files' => ['/backup/*.rb']}
         }
       },
 
@@ -272,18 +272,18 @@ describe WebTranslateIt::Safe::Config do
 
   it 'accepts multiple levels of data hash' do
     config = WebTranslateIt::Safe::Config::Node.new nil, tar: {
-      s3: { bucket: '_bucket', key: '_key', secret: '_secret' },
-      keep: { s3: 2 }
+      s3: {bucket: '_bucket', key: '_key', secret: '_secret'},
+      keep: {s3: 2}
     }
 
     config.to_hash.should == {
       'tar' => {
-        's3' => { 'bucket' => '_bucket', 'key' => '_key', 'secret' => '_secret' },
-        'keep' => { 's3' => 2 }
+        's3' => {'bucket' => '_bucket', 'key' => '_key', 'secret' => '_secret'},
+        'keep' => {'s3' => 2}
       }
     }
   end
-  
+
   it 'sets multi value as array' do
     config = WebTranslateIt::Safe::Config::Node.new do
       tar do

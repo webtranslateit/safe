@@ -43,4 +43,3 @@ module WebTranslateIt
     end
   end
 end
-

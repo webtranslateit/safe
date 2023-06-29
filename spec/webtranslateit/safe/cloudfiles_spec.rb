@@ -9,7 +9,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
         user:      '_user',
         api_key:   '_api_key'
       },
-      keep: { cloudfiles: 2 }
+      keep: {cloudfiles: 2}
     }
   end
 
@@ -35,7 +35,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
     before do
       @cloudfiles = cloudfiles
 
-      @files = [4,1,3,2].map { |i| "aaaaa#{i}" }
+      @files = [4, 1, 3, 2].map { |i| "aaaaa#{i}" }
 
       @container = 'container'
 
@@ -44,7 +44,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
       stub(CloudFiles::Connection).
         new('_user', '_api_key', true, false).stub!.
-        container('_container') {@container}
+        container('_container') { @container }
     end
 
     it 'checks [:keep, :cloudfiles]' do
@@ -116,18 +116,18 @@ describe WebTranslateIt::Safe::Cloudfiles do
           @connection = 'connection'
           stub(CloudFiles::Authentication).new
           stub(CloudFiles::Connection).
-            new('_user', '_api_key', true, false) {@connection}
+            new('_user', '_api_key', true, false) { @connection }
         when :file_size
-          stub(@cloudfiles).get_file_size('foo') {123}
+          stub(@cloudfiles).get_file_size('foo') { 123 }
         when :create_container
           @container = 'container'
-          stub(@container).create_object('_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar', true) {@object}
-          stub(@connection).create_container {@container}
+          stub(@container).create_object('_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar', true) { @object }
+          stub(@connection).create_container { @container }
         when :file_open
           stub(File).open('foo')
         when :cloudfiles_store
           @object = 'object'
-          stub(@object).write(nil) {true}
+          stub(@object).write(nil) { true }
         end
       end
     end
@@ -139,7 +139,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
     it 'fails if no backup.file is set' do
       @cloudfiles.backup.path = nil
-      proc {@cloudfiles.send(:save)}.should raise_error(RuntimeError)
+      proc { @cloudfiles.send(:save) }.should raise_error(RuntimeError)
     end
 
     it 'opens local file' do
@@ -150,8 +150,8 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
     it "calls write on the cloudfile object with files' descriptor" do
       add_stubs(:connection, :file_size, :create_container, :cloudfiles_store)
-      stub(File).open('foo') {'qqq'}
-      mock(@object).write('qqq') {true}
+      stub(File).open('foo') { 'qqq' }
+      mock(@object).write('qqq') { true }
       @cloudfiles.send(:save)
     end
 
@@ -162,7 +162,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
     it 'fails on files bigger then 5G' do
       add_stubs(:connection)
-      mock(File).stat('foo').stub!.size {5*1024*1024*1024+1}
+      mock(File).stat('foo').stub!.size { 5 * 1024 * 1024 * 1024 + 1 }
       dont_allow(Benchmark).realtime
       @cloudfiles.send(:save)
     end

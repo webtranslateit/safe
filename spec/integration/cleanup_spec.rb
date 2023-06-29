@@ -26,7 +26,7 @@ describe 'tar backup' do
     @now = Time.now
     @timestamp = @now.strftime('%y%m%d-%H%M')
 
-    stub(Time).now {@now} # Freeze
+    stub(Time).now { @now } # Freeze
 
     cp qwe, "#{dst}/archive/archive-foo.000001.tar.gz"
     cp qwe, "#{dst}/archive/archive-foo.000002.tar.gz"

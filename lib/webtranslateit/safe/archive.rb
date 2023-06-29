@@ -11,7 +11,7 @@ module WebTranslateIt
       protected
 
       def tar_exclude_files
-        [*config[:exclude]].compact.map{|x| "--exclude=#{x}"}.join(' ')
+        [*config[:exclude]].compact.map { |x| "--exclude=#{x}" }.join(' ')
       end
 
       def tar_files

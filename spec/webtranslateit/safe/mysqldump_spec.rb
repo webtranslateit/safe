@@ -19,7 +19,7 @@ describe WebTranslateIt::Safe::Mysqldump do
   end
 
   before do
-    stub(Time).now.stub!.strftime {'NOW'}
+    stub(Time).now.stub!.strftime { 'NOW' }
   end
 
   after { WebTranslateIt::Safe::TmpFile.cleanup }
@@ -27,7 +27,7 @@ describe WebTranslateIt::Safe::Mysqldump do
   describe :backup do
     before do
       @mysql = mysqldump
-      stub(@mysql).mysql_password_file {'/tmp/pwd'}
+      stub(@mysql).mysql_password_file { '/tmp/pwd' }
     end
 
     {
@@ -49,7 +49,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       config = def_config.dup
       config.delete(:skip_tables)
       m = mysqldump(:foo, WebTranslateIt::Safe::Config::Node.new(nil, config))
-      stub(m).timestamp {'NOW'}
+      stub(m).timestamp { 'NOW' }
       m.send(:mysql_skip_tables).should be_nil
       m.backup.command.should_not match(/ignore-table/)
     end
@@ -58,7 +58,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       config = def_config.dup
       config[:skip_tables] = []
       m = mysqldump(:foo, WebTranslateIt::Safe::Config::Node.new(nil, config))
-      stub(m).timestamp {'NOW'}
+      stub(m).timestamp { 'NOW' }
       m.send(:mysql_skip_tables).should == ''
       m.backup.command.should_not match(/ignore-table/)
     end
