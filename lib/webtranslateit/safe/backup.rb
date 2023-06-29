@@ -4,7 +4,7 @@ module WebTranslateIt
       attr_accessor :id, :kind, :filename, :extension, :command, :compressed, :timestamp, :path
       def initialize(opts = {})
         opts.each do |k, v|
-          self.send("#{k}=", v)
+          send("#{k}=", v)
         end
       end
 

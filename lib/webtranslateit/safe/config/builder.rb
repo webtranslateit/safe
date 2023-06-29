@@ -5,7 +5,7 @@ module WebTranslateIt
 
         def initialize(node, data = {})
           @node = node
-          data.each { |k, v| self.send k, v }
+          data.each { |k, v| send k, v }
         end
 
 
