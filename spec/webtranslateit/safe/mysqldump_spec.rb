@@ -35,7 +35,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       :kind => 'mysqldump',
       :extension => '.sql',
       :filename => 'mysqldump-foo.NOW',
-      :command => 'mysqldump --defaults-extra-file=/tmp/pwd OPTS --ignore-table=foo.bar --ignore-table=foo.baz foo',
+      :command => 'mysqldump --defaults-extra-file=/tmp/pwd OPTS --ignore-table=foo.bar --ignore-table=foo.baz foo'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @mysql.backup.send(k).should == v

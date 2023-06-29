@@ -125,13 +125,13 @@ describe WebTranslateIt::Safe::Config do
         'key' => 's3 key',
         'secret' => 'secret',
         'bucket' => 'bucket',
-        'path' => 'path1',
+        'path' => 'path1'
       },
 
       'sftp' => {
         'user' => 'sftp user',
         'password' => 'sftp password',
-        'host' => 'sftp host',
+        'host' => 'sftp host'
       },
 
       'gpg' => {'password' => 'astrails', 'key' => 'gpg-key'},
@@ -151,9 +151,9 @@ describe WebTranslateIt::Safe::Config do
           'production' => {
            'keep' => {'local' => 3},
            'gpg' => {'password' => 'custom-production-pass'},
-            'skip_tables' => ['logger_exceptions', 'request_logs'],
-          },
-        },
+            'skip_tables' => ['logger_exceptions', 'request_logs']
+          }
+        }
       },
 
       'pgdump' => {
@@ -167,9 +167,9 @@ describe WebTranslateIt::Safe::Config do
           'blog' => {},
           'production' => {
            'keep' => {'local' => 3},
-            'skip_tables' => ['logger_exceptions', 'request_logs'],
-          },
-        },
+            'skip_tables' => ['logger_exceptions', 'request_logs']
+          }
+        }
       },
 
       'svndump' => {
@@ -187,10 +187,10 @@ describe WebTranslateIt::Safe::Config do
           'dot-configs' => {'files' => ['/home/*/.[^.]*']},
           'blog' => {
             'files' => ['/var/www/blog.astrails.com/'],
-            'exclude' => ['/var/www/blog.astrails.com/log', '/var/www/blog.astrails.com/tmp'],
+            'exclude' => ['/var/www/blog.astrails.com/log', '/var/www/blog.astrails.com/tmp']
           },
-          'misc' => { 'files' => ['/backup/*.rb'] },
-        },
+          'misc' => { 'files' => ['/backup/*.rb'] }
+        }
       },
 
       'mongodump' => {
@@ -219,7 +219,7 @@ describe WebTranslateIt::Safe::Config do
     expected = {
       'skip_tables' => ['a', 'b'],
       'files' => ['/foo', '/bar'],
-      'exclude' => ['/foo/bar', '/foo/bar/baz'],
+      'exclude' => ['/foo/bar', '/foo/bar/baz']
     }
 
     config.to_hash.should == expected
@@ -272,13 +272,13 @@ describe WebTranslateIt::Safe::Config do
 
   it 'should accept multiple levels of data hash' do
     config = WebTranslateIt::Safe::Config::Node.new nil, tar: {
-      s3: { bucket: '_bucket', key: '_key', secret: '_secret', },
+      s3: { bucket: '_bucket', key: '_key', secret: '_secret' },
       keep: { s3: 2 }
     }
 
     config.to_hash.should == {
       'tar' => {
-        's3' => { 'bucket' => '_bucket', 'key' => '_key', 'secret' => '_secret', },
+        's3' => { 'bucket' => '_bucket', 'key' => '_key', 'secret' => '_secret' },
         'keep' => { 's3' => 2 }
       }
     }

@@ -5,7 +5,7 @@ describe WebTranslateIt::Safe::Mongodump do
     {
       :host => 'prod.example.com',
       :user => 'testuser',
-      :password => 'p4ssw0rd',
+      :password => 'p4ssw0rd'
     }
   end
   

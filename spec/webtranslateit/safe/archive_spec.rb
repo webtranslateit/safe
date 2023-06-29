@@ -27,7 +27,7 @@ describe WebTranslateIt::Safe::Archive do
       :kind => 'archive',
       :extension => '.tar',
       :filename => 'archive-foo.NOW',
-      :command => 'tar -cf - OPTS --exclude=oranges apples',
+      :command => 'tar -cf - OPTS --exclude=oranges apples'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @archive.backup.send(k).should == v

@@ -7,7 +7,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
       cloudfiles: {
         container: '_container',
         user:      '_user',
-        api_key:   '_api_key',
+        api_key:   '_api_key'
       },
       keep: { cloudfiles: 2 }
     }

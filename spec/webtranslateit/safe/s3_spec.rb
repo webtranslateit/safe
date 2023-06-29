@@ -7,7 +7,7 @@ describe WebTranslateIt::Safe::S3 do
       :s3 => {
         :bucket => '_bucket',
         :key    => '_key',
-        :secret => '_secret',
+        :secret => '_secret'
       },
       :keep => {
         :s3 => 2

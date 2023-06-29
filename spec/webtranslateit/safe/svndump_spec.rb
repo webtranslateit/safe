@@ -28,7 +28,7 @@ describe WebTranslateIt::Safe::Svndump do
       :kind => 'svndump',
       :extension => '.svn',
       :filename => 'svndump-foo.NOW',
-      :command => 'svnadmin dump OPTS bar/baz',
+      :command => 'svnadmin dump OPTS bar/baz'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @svn.backup.send(k).should == v

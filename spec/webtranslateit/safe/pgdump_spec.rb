@@ -33,7 +33,7 @@ describe WebTranslateIt::Safe::Pgdump do
       :kind => 'pgdump',
       :extension => '.sql',
       :filename => 'pgdump-foo.NOW',
-      :command => "pg_dump OPTS --username='User' --host='localhost' --port='7777' foo",
+      :command => "pg_dump OPTS --username='User' --host='localhost' --port='7777' foo"
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @pg.backup.send(k).should == v
