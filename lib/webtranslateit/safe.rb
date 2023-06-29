@@ -49,8 +49,7 @@ module WebTranslateIt
        [Pgdump,    %i[pgdump databases]],
        [Mongodump, %i[mongodump databases]],
        [Archive,   %i[tar archives]],
-       [Svndump,   %i[svndump repos]]
-      ].each do |klass, path|
+       [Svndump,   %i[svndump repos]]].each do |klass, path|
         next unless collection = config[*path]
 
         collection.each do |name, c|
