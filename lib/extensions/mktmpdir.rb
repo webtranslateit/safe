@@ -24,7 +24,7 @@ unless Dir.respond_to?(:mktmpdir)
         path = "#{tmpdir}/#{prefix}#{t}-#{$$}-#{rand(0x100000000).to_s(36)}"
         path << "-#{n}" if n
         path << suffix
-        Dir.mkdir(path, 0700)
+        Dir.mkdir(path, 0o700)
       rescue Errno::EEXIST
         n ||= 0
         n += 1
