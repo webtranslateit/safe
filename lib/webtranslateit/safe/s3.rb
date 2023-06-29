@@ -34,7 +34,7 @@ module WebTranslateIt
           end
         end
         puts '...done' if verbose?
-        puts("Upload took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
+        puts("Upload took #{format('%.2f', benchmark)} second(s).") if verbose?
         
       end
 
