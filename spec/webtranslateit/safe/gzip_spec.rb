@@ -4,10 +4,10 @@ describe WebTranslateIt::Safe::Gzip do
 
   def def_backup
     {
-      :compressed => false,
-      :command => 'command',
-      :extension => '.foo',
-      :filename => 'qweqwe'
+      compressed: false,
+      command: 'command',
+      extension: '.foo',
+      filename: 'qweqwe'
     }
   end
 
@@ -43,7 +43,7 @@ describe WebTranslateIt::Safe::Gzip do
 
     describe 'when already compressed' do
 
-      before(:each) { @gzip = gzip({}, :extension => '.foo', :command => 'foobar', :compressed => true) }
+      before(:each) { @gzip = gzip({}, extension: '.foo', command: 'foobar', compressed: true) }
 
       it 'should not touch extension' do
         @gzip.process

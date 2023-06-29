@@ -47,7 +47,7 @@ describe WebTranslateIt::Safe::Config do
         database :blog
 
         database :production do
-          keep :local => 3
+          keep local: 3
 
           gpg do
             password 'custom-production-pass'
@@ -69,7 +69,7 @@ describe WebTranslateIt::Safe::Config do
         database :blog
 
         database :production do
-          keep :local => 3
+          keep local: 3
 
           skip_tables %i[logger_exceptions request_logs]
         end

@@ -18,7 +18,7 @@ module WebTranslateIt
         raise 'pipe-streaming not supported for S3.' unless @backup.path
 
         # needed in cleanup even on dry run
-        AWS::S3::Base.establish_connection!(:access_key_id => key, :secret_access_key => secret, :use_ssl => true) unless local_only?
+        AWS::S3::Base.establish_connection!(access_key_id: key, secret_access_key: secret, use_ssl: true) unless local_only?
 
         puts "Uploading #{bucket}:#{full_path}" if verbose? || dry_run?
         unless dry_run? || local_only?
@@ -43,7 +43,7 @@ module WebTranslateIt
         return unless keep = config[:keep, :s3]
 
         puts "listing files: #{bucket}:#{base}*" if verbose?
-        files = AWS::S3::Bucket.objects(bucket, :prefix => base, :max_keys => keep * 2)
+        files = AWS::S3::Bucket.objects(bucket, prefix: base, max_keys: keep * 2)
         puts files.collect(&:key) if verbose?
 
         files = files.
@@ -52,7 +52,7 @@ module WebTranslateIt
 
         cleanup_with_limit(files, keep) do |f|
           puts "removing s3 file #{bucket}:#{f}" if dry_run? || verbose?
-          AWS::S3::Bucket.objects(bucket, :prefix => f)[0].delete unless dry_run? || local_only?
+          AWS::S3::Bucket.objects(bucket, prefix: f)[0].delete unless dry_run? || local_only?
         end
       end
 

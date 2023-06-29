@@ -3,8 +3,8 @@ require 'spec_helper'
 describe WebTranslateIt::Safe::Svndump do
   def def_config
     {
-      :options => 'OPTS',
-      :repo_path => 'bar/baz'
+      options: 'OPTS',
+      repo_path: 'bar/baz'
     }
   end
 
@@ -24,11 +24,11 @@ describe WebTranslateIt::Safe::Svndump do
     end
 
     {
-      :id => 'foo',
-      :kind => 'svndump',
-      :extension => '.svn',
-      :filename => 'svndump-foo.NOW',
-      :command => 'svnadmin dump OPTS bar/baz'
+      id: 'foo',
+      kind: 'svndump',
+      extension: '.svn',
+      filename: 'svndump-foo.NOW',
+      command: 'svnadmin dump OPTS bar/baz'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @svn.backup.send(k).should == v

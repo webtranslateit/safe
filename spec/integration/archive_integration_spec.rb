@@ -37,7 +37,7 @@ describe 'tar backup' do
     stub(Time).now {@now} # Freeze
 
     config = WebTranslateIt::Safe.safe do
-      local :path => "#{dst}/:kind"
+      local path: "#{dst}/:kind"
       tar do
         archive :test1 do
           files src

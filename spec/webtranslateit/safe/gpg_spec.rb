@@ -3,10 +3,10 @@ require 'spec_helper'
 describe WebTranslateIt::Safe::Gpg do
   def def_backup
     {
-      :compressed => false,
-      :command => 'command',
-      :extension => '.foo',
-      :filename => 'qweqwe'
+      compressed: false,
+      command: 'command',
+      extension: '.foo',
+      filename: 'qweqwe'
     }
   end
 
@@ -74,13 +74,13 @@ describe WebTranslateIt::Safe::Gpg do
 
     describe 'with key' do
       it 'should be true' do
-        expect(gpg(:gpg => {:key => :foo}).active?).to be_truthy
+        expect(gpg(gpg: {key: :foo}).active?).to be_truthy
       end
     end
 
     describe 'with password' do
       it 'should be true' do
-        expect(gpg(:gpg => {:password => :foo}).active?).to be_truthy
+        expect(gpg(gpg: {password: :foo}).active?).to be_truthy
       end
     end
 
@@ -93,7 +93,7 @@ describe WebTranslateIt::Safe::Gpg do
     describe 'with key & password' do
       it 'should raise RuntimeError' do
         lambda {
-          gpg(:gpg => {:key => 'foo', :password => 'bar'}).send :active?
+          gpg(gpg: {key: 'foo', password: 'bar'}).send :active?
         }.should raise_error(RuntimeError, "can't use both gpg password and pubkey")
       end
     end
@@ -103,7 +103,7 @@ describe WebTranslateIt::Safe::Gpg do
 
     describe 'with key' do
       def kgpg(extra={})
-        gpg({:gpg => {:key => 'foo', :options => 'GPG-OPT'}.merge(extra), :options => 'OPT'})
+        gpg({gpg: {key: 'foo', options: 'GPG-OPT'}.merge(extra), options: 'OPT'})
       end
 
       it 'should not call gpg_password_file' do
@@ -117,13 +117,13 @@ describe WebTranslateIt::Safe::Gpg do
       end
 
       it "should use the 'command' options" do
-        kgpg(:command => 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -e -r foo'
+        kgpg(command: 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -e -r foo'
       end
     end
 
     describe 'with password' do
       def pgpg(extra = {})
-        returning(gpg({:gpg => {:password => 'bar', :options => 'GPG-OPT'}.merge(extra), :options => 'OPT'})) do |g|
+        returning(gpg({gpg: {password: 'bar', options: 'GPG-OPT'}.merge(extra), options: 'OPT'})) do |g|
           stub(g).gpg_password_file(anything) {'pass-file'}
         end
       end
@@ -133,7 +133,7 @@ describe WebTranslateIt::Safe::Gpg do
       end
 
       it "should use the 'command' options" do
-        pgpg(:command => 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -c --passphrase-file pass-file'
+        pgpg(command: 'other-gpg').send(:pipe).should == '|other-gpg GPG-OPT -c --passphrase-file pass-file'
       end
     end
   end

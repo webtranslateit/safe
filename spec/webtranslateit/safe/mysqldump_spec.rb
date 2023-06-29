@@ -4,13 +4,13 @@ describe WebTranslateIt::Safe::Mysqldump do
 
   def def_config(extra = {})
     {
-      :options => 'OPTS',
-      :user => 'User',
-      :password => 'pwd',
-      :host => 'localhost',
-      :port => 7777,
-      :socket => 'socket',
-      :skip_tables => %i[bar baz]
+      options: 'OPTS',
+      user: 'User',
+      password: 'pwd',
+      host: 'localhost',
+      port: 7777,
+      socket: 'socket',
+      skip_tables: %i[bar baz]
     }.merge(extra)
   end
 
@@ -31,11 +31,11 @@ describe WebTranslateIt::Safe::Mysqldump do
     end
 
     {
-      :id => 'foo',
-      :kind => 'mysqldump',
-      :extension => '.sql',
-      :filename => 'mysqldump-foo.NOW',
-      :command => 'mysqldump --defaults-extra-file=/tmp/pwd OPTS --ignore-table=foo.bar --ignore-table=foo.baz foo'
+      id: 'foo',
+      kind: 'mysqldump',
+      extension: '.sql',
+      filename: 'mysqldump-foo.NOW',
+      command: 'mysqldump --defaults-extra-file=/tmp/pwd OPTS --ignore-table=foo.bar --ignore-table=foo.baz foo'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @mysql.backup.send(k).should == v
@@ -67,7 +67,7 @@ describe WebTranslateIt::Safe::Mysqldump do
 
   describe :mysql_password_file do
     it 'should create passwords file with quoted values' do
-      m = mysqldump(:foo, def_config(:password => '#qwe"asd\'zxc'))
+      m = mysqldump(:foo, def_config(password: '#qwe"asd\'zxc'))
       file = m.send(:mysql_password_file)
       File.exist?(file).should == true
       File.read(file).should == <<-PWD

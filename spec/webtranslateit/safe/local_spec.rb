@@ -3,24 +3,24 @@ require 'spec_helper'
 describe WebTranslateIt::Safe::Local do
   def def_config
     {
-      :local => {
-        :path => '/:kind~:id~:timestamp'
+      local: {
+        path: '/:kind~:id~:timestamp'
       },
-      :keep => {
-        :local => 2
+      keep: {
+        local: 2
       }
     }
   end
 
   def def_backup
     {
-      :kind => 'mysqldump',
-      :id => 'blog',
-      :timestamp => 'NoW',
-      :compressed => true,
-      :command => 'command',
-      :extension => '.foo.gz',
-      :filename => 'qweqwe'
+      kind: 'mysqldump',
+      id: 'blog',
+      timestamp: 'NoW',
+      compressed: true,
+      command: 'command',
+      extension: '.foo.gz',
+      filename: 'qweqwe'
     }
   end
 
@@ -93,7 +93,7 @@ describe WebTranslateIt::Safe::Local do
     end
 
     it 'should check [:keep, :local]' do
-      @local = local(def_config.merge(:keep => {}))
+      @local = local(def_config.merge(keep: {}))
       dont_allow(Dir).[]
       @local.send :cleanup
     end

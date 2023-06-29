@@ -4,24 +4,24 @@ describe WebTranslateIt::Safe::S3 do
 
   def def_config
     {
-      :s3 => {
-        :bucket => '_bucket',
-        :key    => '_key',
-        :secret => '_secret'
+      s3: {
+        bucket: '_bucket',
+        key: '_key',
+        secret: '_secret'
       },
-      :keep => {
-        :s3 => 2
+      keep: {
+        s3: 2
       }
     }
   end
 
   def def_backup(extra = {})
     {
-      :kind      => '_kind',
-      :filename  => '/backup/somewhere/_kind-_id.NOW.bar',
-      :extension => '.bar',
-      :id        => '_id',
-      :timestamp => 'NOW'
+      kind: '_kind',
+      filename: '/backup/somewhere/_kind-_id.NOW.bar',
+      extension: '.bar',
+      id: '_id',
+      timestamp: 'NOW'
     }.merge(extra)
   end
 
@@ -42,8 +42,8 @@ describe WebTranslateIt::Safe::S3 do
         o
       end
 
-      stub(AWS::S3::Bucket).objects('_bucket', :prefix => '_kind/_id/_kind-_id.', :max_keys => 4) {@files}
-      stub(AWS::S3::Bucket).objects('_bucket', :prefix => anything).stub![0].stub!.delete
+      stub(AWS::S3::Bucket).objects('_bucket', prefix: '_kind/_id/_kind-_id.', max_keys: 4) {@files}
+      stub(AWS::S3::Bucket).objects('_bucket', prefix: anything).stub![0].stub!.delete
     end
 
     it 'should check [:keep, :s3]' do
@@ -53,8 +53,8 @@ describe WebTranslateIt::Safe::S3 do
     end
 
     it 'should delete extra files' do
-      mock(AWS::S3::Bucket).objects('_bucket', :prefix => 'aaaaa1').mock![0].mock!.delete
-      mock(AWS::S3::Bucket).objects('_bucket', :prefix => 'aaaaa2').mock![0].mock!.delete
+      mock(AWS::S3::Bucket).objects('_bucket', prefix: 'aaaaa1').mock![0].mock!.delete
+      mock(AWS::S3::Bucket).objects('_bucket', prefix: 'aaaaa2').mock![0].mock!.delete
       @s3.send :cleanup
     end
 
@@ -91,7 +91,7 @@ describe WebTranslateIt::Safe::S3 do
     end
     it 'should use s3/path 1st' do
       @s3.config[:s3].data['path'] = 's3_path'
-      @s3.config[:local] = {:path => 'local_path'}
+      @s3.config[:local] = {path: 'local_path'}
       @s3.send(:path).should == 's3_path'
     end
 
@@ -111,7 +111,7 @@ describe WebTranslateIt::Safe::S3 do
       stubs.each do |s|
         case s
         when :connection
-          stub(AWS::S3::Base).establish_connection!(:access_key_id => '_key', :secret_access_key => '_secret', :use_ssl => true)
+          stub(AWS::S3::Base).establish_connection!(access_key_id: '_key', secret_access_key: '_secret', use_ssl: true)
         when :stat
           stub(File).stat('foo').stub!.size {123}
         when :create_bucket
@@ -126,7 +126,7 @@ describe WebTranslateIt::Safe::S3 do
     end
 
     before(:each) do
-      @s3 = s3(def_config, def_backup(:path => 'foo'))
+      @s3 = s3(def_config, def_backup(path: 'foo'))
       @full_path = '_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar'
     end
 
@@ -136,7 +136,7 @@ describe WebTranslateIt::Safe::S3 do
     end
 
     it 'should establish s3 connection' do
-      mock(AWS::S3::Base).establish_connection!(:access_key_id => '_key', :secret_access_key => '_secret', :use_ssl => true)
+      mock(AWS::S3::Base).establish_connection!(access_key_id: '_key', secret_access_key: '_secret', use_ssl: true)
       add_stubs(:stat, :create_bucket, :file_open, :s3_store)
       @s3.send(:save)
     end

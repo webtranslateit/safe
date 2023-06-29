@@ -4,9 +4,9 @@ describe WebTranslateIt::Safe::Archive do
 
   def def_config
     {
-      :options => 'OPTS',
-      :files   => 'apples',
-      :exclude => 'oranges'
+      options: 'OPTS',
+      files: 'apples',
+      exclude: 'oranges'
     }
   end
 
@@ -23,11 +23,11 @@ describe WebTranslateIt::Safe::Archive do
     end
 
     {
-      :id => 'foo',
-      :kind => 'archive',
-      :extension => '.tar',
-      :filename => 'archive-foo.NOW',
-      :command => 'tar -cf - OPTS --exclude=oranges apples'
+      id: 'foo',
+      kind: 'archive',
+      extension: '.tar',
+      filename: 'archive-foo.NOW',
+      command: 'tar -cf - OPTS --exclude=oranges apples'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @archive.backup.send(k).should == v
@@ -41,11 +41,11 @@ describe WebTranslateIt::Safe::Archive do
     end
 
     it 'should accept single exclude as string' do
-      archive(:foo, {:exclude => 'bar'}).send(:tar_exclude_files).should == '--exclude=bar'
+      archive(:foo, {exclude: 'bar'}).send(:tar_exclude_files).should == '--exclude=bar'
     end
 
     it 'should accept multiple exclude as array' do
-      archive(:foo, {:exclude => %w[foo bar]}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
+      archive(:foo, {exclude: %w[foo bar]}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
     end
   end
 
@@ -57,11 +57,11 @@ describe WebTranslateIt::Safe::Archive do
     end
 
     it 'should accept single file as string' do
-      archive(:foo, {:files => 'foo'}).send(:tar_files).should == 'foo'
+      archive(:foo, {files: 'foo'}).send(:tar_files).should == 'foo'
     end
 
     it 'should accept multiple files as array' do
-      archive(:foo, {:files => %w[foo bar]}).send(:tar_files).should == 'foo bar'
+      archive(:foo, {files: %w[foo bar]}).send(:tar_files).should == 'foo bar'
     end
   end
 end
