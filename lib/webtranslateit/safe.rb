@@ -51,10 +51,10 @@ module WebTranslateIt
        [Archive,   %i[tar archives]],
        [Svndump,   %i[svndump repos]]
       ].each do |klass, path|
-        if collection = config[*path]
-          collection.each do |name, c|
-            klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :sftp, :ftp)
-          end
+        next unless collection = config[*path]
+
+        collection.each do |name, c|
+          klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :sftp, :ftp)
         end
       end
 
