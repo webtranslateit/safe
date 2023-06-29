@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'awesome_print'
+gem 'guard-rspec'
+gem 'guard-rubocop'
 gem 'rake'
 gem 'rr', '~> 1.0.4'
 gem 'rspec'
