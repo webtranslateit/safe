@@ -12,7 +12,7 @@ module WebTranslateIt
         "mongodump -q \"{xxxx : { \\$ne : 0 } }\" --db #{@id} #{opts.join(' ')} && cd #{output_directory} && tar cf - ."
       end
     
-      def extension; '.tar'; end
+      def extension = '.tar'
       
       protected
       def output_directory
