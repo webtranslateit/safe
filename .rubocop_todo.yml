@@ -502,13 +502,6 @@ RSpec/FilePath:
     - 'spec/webtranslateit/safe/s3_spec.rb'
     - 'spec/webtranslateit/safe/svndump_spec.rb'
 
-# Offense count: 32
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: .
-# SupportedStyles: implicit, each, example
-RSpec/HookArgument:
-  EnforcedStyle: each
-
 # Offense count: 167
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:

@@ -34,7 +34,7 @@ describe WebTranslateIt::Safe::S3 do
 
   describe :cleanup do
 
-    before(:each) do
+    before do
       @s3 = s3
 
       @files = [4,1,3,2].map do |i|
@@ -61,7 +61,7 @@ describe WebTranslateIt::Safe::S3 do
   end
 
   describe :active do
-    before(:each) do
+    before do
       @s3 = s3
     end
 
@@ -86,7 +86,7 @@ describe WebTranslateIt::Safe::S3 do
   end
 
   describe :path do
-    before(:each) do
+    before do
       @s3 = s3
     end
     it 'should use s3/path 1st' do
@@ -125,7 +125,7 @@ describe WebTranslateIt::Safe::S3 do
       end
     end
 
-    before(:each) do
+    before do
       @s3 = s3(def_config, def_backup(path: 'foo'))
       @full_path = '_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar'
     end

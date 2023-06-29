@@ -17,14 +17,14 @@ describe WebTranslateIt::Safe::Pgdump do
     WebTranslateIt::Safe::Pgdump.new(id, WebTranslateIt::Safe::Config::Node.new(nil, config))
   end
 
-  before(:each) do
+  before do
     stub(Time).now.stub!.strftime {'NOW'}
   end
 
-  after(:each) { WebTranslateIt::Safe::TmpFile.cleanup }
+  after { WebTranslateIt::Safe::TmpFile.cleanup }
 
   describe :backup do
-    before(:each) do
+    before do
       @pg = pgdump
     end
 

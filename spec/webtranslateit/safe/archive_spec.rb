@@ -14,10 +14,10 @@ describe WebTranslateIt::Safe::Archive do
     WebTranslateIt::Safe::Archive.new(id, WebTranslateIt::Safe::Config::Node.new(nil, config))
   end
 
-  after(:each) { WebTranslateIt::Safe::TmpFile.cleanup }
+  after { WebTranslateIt::Safe::TmpFile.cleanup }
 
   describe :backup do
-    before(:each) do
+    before do
       @archive = archive
       stub(@archive).timestamp {'NOW'}
     end

@@ -13,15 +13,15 @@ describe WebTranslateIt::Safe::Mongodump do
     WebTranslateIt::Safe::Mongodump.new(id, WebTranslateIt::Safe::Config::Node.new(nil, config))
   end
   
-  before(:each) do
+  before do
     stub(Time).now.stub!.strftime {'NOW'}
     @output_folder = File.join(WebTranslateIt::Safe::TmpFile.tmproot, 'mongodump')
   end
   
-  after(:each) { WebTranslateIt::Safe::TmpFile.cleanup }
+  after { WebTranslateIt::Safe::TmpFile.cleanup }
   
   describe :backup do
-    before(:each) do
+    before do
       @mongo = mongodump
     end
     
