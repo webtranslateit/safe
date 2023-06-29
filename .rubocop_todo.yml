@@ -807,13 +807,6 @@ Style/NumericPredicate:
     - 'spec/**/*'
     - 'lib/webtranslateit/safe/local.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Style/ParallelAssignment:
-  Exclude:
-    - 'lib/webtranslateit/safe/source.rb'
-    - 'lib/webtranslateit/safe/stream.rb'
-
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: RequireEnglish, EnforcedStyle.
