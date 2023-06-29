@@ -49,7 +49,7 @@ module WebTranslateIt
           ftp.login(user, password)
           files = ftp.nlst(path)
           pattern = File.basename(base.to_s)
-          files = files.reject{ |x| !x.start_with?(pattern)}
+          files = files.select{ |x| x.start_with?(pattern)}
           puts files.collect {|x| x} if verbose?
 
           files = files.
