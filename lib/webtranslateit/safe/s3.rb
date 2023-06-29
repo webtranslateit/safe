@@ -49,9 +49,9 @@ module WebTranslateIt
         files = AWS::S3::Bucket.objects(bucket, prefix: base, max_keys: keep * 2)
         puts files.collect(&:key) if verbose?
 
-        files = files.
-                collect(&:key).
-                sort
+        files = files
+                .collect(&:key)
+                .sort
 
         cleanup_with_limit(files, keep) do |f|
           puts "removing s3 file #{bucket}:#{f}" if dry_run? || verbose?

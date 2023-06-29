@@ -50,9 +50,9 @@ module WebTranslateIt
           files = files.select { |x| x.start_with?(pattern) }
           puts files.collect { |x| x } if verbose?
 
-          files = files.
-                  collect { |x| x }.
-                  sort
+          files = files
+                  .collect { |x| x }
+                  .sort
 
           cleanup_with_limit(files, keep) do |f|
             file = File.join(path, f)

@@ -42,9 +42,9 @@ describe WebTranslateIt::Safe::Cloudfiles do
       stub(@container).objects(prefix: '_kind/_id/_kind-_id.') { @files }
       stub(@container).delete_object(anything)
 
-      stub(CloudFiles::Connection).
-        new('_user', '_api_key', true, false).stub!.
-        container('_container') { @container }
+      stub(CloudFiles::Connection)
+        .new('_user', '_api_key', true, false).stub!
+        .container('_container') { @container }
     end
 
     it 'checks [:keep, :cloudfiles]' do
@@ -115,8 +115,8 @@ describe WebTranslateIt::Safe::Cloudfiles do
         when :connection
           @connection = 'connection'
           stub(CloudFiles::Authentication).new
-          stub(CloudFiles::Connection).
-            new('_user', '_api_key', true, false) { @connection }
+          stub(CloudFiles::Connection)
+            .new('_user', '_api_key', true, false) { @connection }
         when :file_size
           stub(@cloudfiles).get_file_size('foo') { 123 }
         when :create_container

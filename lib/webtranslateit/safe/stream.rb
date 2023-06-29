@@ -13,10 +13,10 @@ module WebTranslateIt
 
       # FIXME: move to Backup
       def expand(path)
-        path.
-          gsub(/:kind\b/, @backup.kind.to_s).
-          gsub(/:id\b/, @backup.id.to_s).
-          gsub(/:timestamp\b/, @backup.timestamp)
+        path
+          .gsub(/:kind\b/, @backup.kind.to_s)
+          .gsub(/:id\b/, @backup.id.to_s)
+          .gsub(/:timestamp\b/, @backup.timestamp)
       end
 
       private
