@@ -18,7 +18,7 @@ describe 'tar backup' do
     @src = src = "#{@root}/src"
     mkdir_p src
 
-    File.open(qwe = "#{@src}/qwe", 'w') {|f| f.write('qwe') }
+    File.write(qwe = "#{@src}/qwe", 'qwe')
 
     @dst = dst = "#{@root}/backup"
     mkdir_p "#{@dst}/archive"

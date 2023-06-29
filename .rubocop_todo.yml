@@ -615,13 +615,6 @@ Style/EachWithObject:
   Exclude:
     - 'lib/webtranslateit/safe/config/node.rb'
 
-# Offense count: 8
-# This cop supports safe autocorrection (--autocorrect).
-Style/FileWrite:
-  Exclude:
-    - 'spec/integration/archive_integration_spec.rb'
-    - 'spec/integration/cleanup_spec.rb'
-
 # Offense count: 41
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
