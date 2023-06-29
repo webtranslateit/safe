@@ -702,29 +702,6 @@ Style/GuardClause:
     - 'lib/webtranslateit/safe/sftp.rb'
     - 'lib/webtranslateit/safe/tmp_file.rb'
 
-# Offense count: 134
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, EnforcedShorthandSyntax, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
-# SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
-# SupportedShorthandSyntax: always, never, either, consistent
-Style/HashSyntax:
-  Exclude:
-    - 'lib/webtranslateit/safe/cloudfiles.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-    - 'lib/webtranslateit/safe/source.rb'
-    - 'spec/integration/archive_integration_spec.rb'
-    - 'spec/integration/cleanup_spec.rb'
-    - 'spec/webtranslateit/safe/archive_spec.rb'
-    - 'spec/webtranslateit/safe/config_spec.rb'
-    - 'spec/webtranslateit/safe/gpg_spec.rb'
-    - 'spec/webtranslateit/safe/gzip_spec.rb'
-    - 'spec/webtranslateit/safe/local_spec.rb'
-    - 'spec/webtranslateit/safe/mongodump_spec.rb'
-    - 'spec/webtranslateit/safe/mysqldump_spec.rb'
-    - 'spec/webtranslateit/safe/pgdump_spec.rb'
-    - 'spec/webtranslateit/safe/s3_spec.rb'
-    - 'spec/webtranslateit/safe/svndump_spec.rb'
-
 # Offense count: 3
 Style/MixinUsage:
   Exclude:

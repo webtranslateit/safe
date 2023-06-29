@@ -3,9 +3,9 @@ require 'spec_helper'
 describe WebTranslateIt::Safe::Mongodump do
   def def_config
     {
-      :host => 'prod.example.com',
-      :user => 'testuser',
-      :password => 'p4ssw0rd'
+      host: 'prod.example.com',
+      user: 'testuser',
+      password: 'p4ssw0rd'
     }
   end
   
@@ -26,10 +26,10 @@ describe WebTranslateIt::Safe::Mongodump do
     end
     
     {
-      :id => 'foo',
-      :kind => 'mongodump',
-      :extension => '.tar',
-      :filename => 'mongodump-foo.NOW'
+      id: 'foo',
+      kind: 'mongodump',
+      extension: '.tar',
+      filename: 'mongodump-foo.NOW'
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @mongo.backup.send(k).should == v
@@ -41,9 +41,9 @@ describe WebTranslateIt::Safe::Mongodump do
     end
     
     {
-      :host => '--host ',
-      :user => '-u ',
-      :password => '-p '
+      host: '--host ',
+      user: '-u ',
+      password: '-p '
     }.each do |key, v|    
       it "should not add #{key} to command if it is not present" do
         @mongo = mongodump(:foo, def_config.reject! {|k,v| k == key})

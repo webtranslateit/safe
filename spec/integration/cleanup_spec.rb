@@ -34,9 +34,9 @@ describe 'tar backup' do
     cp qwe, "#{dst}/archive/archive-foobar.000002.tar.gz"
 
     config = WebTranslateIt::Safe.safe do
-      local :path => "#{dst}/:kind"
+      local path: "#{dst}/:kind"
       tar do
-        keep :local => 1 # only leave the latest
+        keep local: 1 # only leave the latest
         archive :foo do
           files src
         end

@@ -49,7 +49,7 @@ module WebTranslateIt
         puts "listing files: #{container}:#{base}*" if verbose?
         cf = CloudFiles::Connection.new(user, api_key, true, service_net) unless local_only?
         cf_container = cf.container(container)
-        files = cf_container.objects(:prefix => base).sort
+        files = cf_container.objects(prefix: base).sort
 
         cleanup_with_limit(files, keep) do |f|
           puts "removing Cloud File #{container}:#{f}" if dry_run? || verbose?

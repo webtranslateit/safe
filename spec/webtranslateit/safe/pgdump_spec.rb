@@ -4,12 +4,12 @@ describe WebTranslateIt::Safe::Pgdump do
 
   def def_config
     {
-      :options => 'OPTS',
-      :user => 'User',
-      :password => 'pwd',
-      :host => 'localhost',
-      :port => 7777,
-      :skip_tables => %i[bar baz]
+      options: 'OPTS',
+      user: 'User',
+      password: 'pwd',
+      host: 'localhost',
+      port: 7777,
+      skip_tables: %i[bar baz]
     }
   end
 
@@ -29,11 +29,11 @@ describe WebTranslateIt::Safe::Pgdump do
     end
 
     {
-      :id => 'foo',
-      :kind => 'pgdump',
-      :extension => '.sql',
-      :filename => 'pgdump-foo.NOW',
-      :command => "pg_dump OPTS --username='User' --host='localhost' --port='7777' foo"
+      id: 'foo',
+      kind: 'pgdump',
+      extension: '.sql',
+      filename: 'pgdump-foo.NOW',
+      command: "pg_dump OPTS --username='User' --host='localhost' --port='7777' foo"
     }.each do |k, v|
       it "should set #{k} to #{v}" do
         @pg.backup.send(k).should == v
