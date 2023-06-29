@@ -11,7 +11,7 @@ describe WebTranslateIt::Safe::Gzip do
     }
   end
 
-  after(:each) { WebTranslateIt::Safe::TmpFile.cleanup }
+  after { WebTranslateIt::Safe::TmpFile.cleanup }
 
   def gzip(config = {}, backup = def_backup)
     WebTranslateIt::Safe::Gzip.new(
@@ -23,7 +23,7 @@ describe WebTranslateIt::Safe::Gzip do
   describe :preocess do
 
     describe 'when not yet compressed' do
-      before(:each) { @gzip = gzip }
+      before { @gzip = gzip }
 
       it 'should add .gz extension' do
         mock(@backup.extension) << '.gz'
@@ -43,7 +43,7 @@ describe WebTranslateIt::Safe::Gzip do
 
     describe 'when already compressed' do
 
-      before(:each) { @gzip = gzip({}, extension: '.foo', command: 'foobar', compressed: true) }
+      before { @gzip = gzip({}, extension: '.foo', command: 'foobar', compressed: true) }
 
       it 'should not touch extension' do
         @gzip.process

@@ -32,7 +32,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
   describe :cleanup do
 
-    before(:each) do
+    before do
       @cloudfiles = cloudfiles
 
       @files = [4,1,3,2].map { |i| "aaaaa#{i}" }
@@ -62,7 +62,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
   end
 
   describe :active do
-    before(:each) do
+    before do
       @cloudfiles = cloudfiles
     end
 
@@ -87,7 +87,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
   end
 
   describe :path do
-    before(:each) do
+    before do
       @cloudfiles = cloudfiles
     end
     it 'should use cloudfiles/path 1st' do
@@ -131,7 +131,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
       end
     end
 
-    before(:each) do
+    before do
       @cloudfiles = cloudfiles(def_config, def_backup(path: 'foo'))
       @full_path = '_kind/_id/backup/somewhere/_kind-_id.NOW.bar.bar'
     end

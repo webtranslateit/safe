@@ -17,18 +17,18 @@ describe WebTranslateIt::Safe::Gpg do
     )
   end
 
-  after(:each) { WebTranslateIt::Safe::TmpFile.cleanup }
+  after { WebTranslateIt::Safe::TmpFile.cleanup }
 
   describe :process do
 
-    before(:each) do
+    before do
       @gpg = gpg
       stub(@gpg).gpg_password_file {'pwd-file'}
       stub(@gpg).pipe {'|gpg -BLAH'}
     end
 
     describe 'when active' do
-      before(:each) do
+      before do
         stub(@gpg).active? {true}
       end
 
@@ -49,7 +49,7 @@ describe WebTranslateIt::Safe::Gpg do
     end
 
     describe 'when inactive' do
-      before(:each) do
+      before do
         stub(@gpg).active? {false}
       end
 

@@ -50,7 +50,7 @@ describe WebTranslateIt::Safe::Local do
   end
 
   describe :save do
-    before(:each) do
+    before do
       @local = local
       stub(@local).system
       stub(@local).full_path {'file-path'}
@@ -73,7 +73,7 @@ describe WebTranslateIt::Safe::Local do
     end
 
     describe 'dry run' do
-      before(:each) { @local.config[:dry_run] = true }
+      before { @local.config[:dry_run] = true }
 
       it 'should not create directory'
       it 'should not call system'
@@ -85,7 +85,7 @@ describe WebTranslateIt::Safe::Local do
   end
 
   describe :cleanup do
-    before(:each) do
+    before do
       @files = [4,1,3,2].map { |i| "/mysqldump~blog~NoW/qweqwe.#{i}" }
       stub(File).file?(anything) {true}
       stub(File).size(anything) {1}
