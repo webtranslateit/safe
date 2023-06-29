@@ -1,4 +1,7 @@
+0.4.3
+
 * Bug fix on builder.
+* Move version number to gemspec file.
 
 0.4.2
 
