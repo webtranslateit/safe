@@ -28,7 +28,7 @@ module WebTranslateIt
         puts "Uploading #{container}:#{full_path} from #{@backup.path}" if verbose? || dry_run?
         unless dry_run? || local_only?
           if get_file_size(@backup.path) > MAX_CLOUDFILES_FILE_SIZE
-            STDERR.puts "ERROR: File size exceeds maximum allowed for upload to Cloud Files (#{MAX_CLOUDFILES_FILE_SIZE}): #{@backup.path}"
+            warn "ERROR: File size exceeds maximum allowed for upload to Cloud Files (#{MAX_CLOUDFILES_FILE_SIZE}): #{@backup.path}"
             return
           end
           benchmark = Benchmark.realtime do
