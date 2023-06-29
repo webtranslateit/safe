@@ -6,3 +6,5 @@ AllCops:
   TargetRubyVersion: 3.2
   Exclude:
     - vendor/bundle/**/*
+
+require: rubocop-performance
