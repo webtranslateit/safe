@@ -141,11 +141,6 @@ describe WebTranslateIt::Safe::Cloudfiles do
       proc {@cloudfiles.send(:save)}.should raise_error(RuntimeError)
     end
 
-    it 'should establish Cloud Files connection' do
-      add_stubs(:connection, :file_size, :create_container, :file_open, :cloudfiles_store)
-      @cloudfiles.send(:save)
-    end
-
     it 'should open local file' do
       add_stubs(:connection, :file_size, :create_container, :cloudfiles_store)
       mock(File).open('foo')
