@@ -151,7 +151,7 @@ describe WebTranslateIt::Safe::Config do
           'production' => {
            'keep' => {'local' => 3},
            'gpg' => {'password' => 'custom-production-pass'},
-            'skip_tables' => ['logger_exceptions', 'request_logs']
+            'skip_tables' => %w[logger_exceptions request_logs]
           }
         }
       },
@@ -167,7 +167,7 @@ describe WebTranslateIt::Safe::Config do
           'blog' => {},
           'production' => {
            'keep' => {'local' => 3},
-            'skip_tables' => ['logger_exceptions', 'request_logs']
+            'skip_tables' => %w[logger_exceptions request_logs]
           }
         }
       },
@@ -217,7 +217,7 @@ describe WebTranslateIt::Safe::Config do
     end
 
     expected = {
-      'skip_tables' => ['a', 'b'],
+      'skip_tables' => %w[a b],
       'files' => ['/foo', '/bar'],
       'exclude' => ['/foo/bar', '/foo/bar/baz']
     }
@@ -237,14 +237,14 @@ describe WebTranslateIt::Safe::Config do
   it 'should accept hash as data' do
     WebTranslateIt::Safe::Config::Node.new do
       tar do
-        archive 'blog', files: 'foo', exclude: ['aaa', 'bbb']
+        archive 'blog', files: 'foo', exclude: %w[aaa bbb]
       end
     end.to_hash.should == {
       'tar' => {
         'archives' => {
           'blog' => {
             'files' => ['foo'],
-            'exclude' => ['aaa', 'bbb']
+            'exclude' => %w[aaa bbb]
           }
         }
       }
@@ -255,7 +255,7 @@ describe WebTranslateIt::Safe::Config do
     WebTranslateIt::Safe::Config::Node.new do
       tar do
         archive 'blog', files: 'foo' do
-          exclude ['aaa', 'bbb']
+          exclude %w[aaa bbb]
         end
       end
     end.to_hash.should == {
@@ -263,7 +263,7 @@ describe WebTranslateIt::Safe::Config do
         'archives' => {
           'blog' => {
             'files' => ['foo'],
-            'exclude' => ['aaa', 'bbb']
+            'exclude' => %w[aaa bbb]
           }
         }
       }

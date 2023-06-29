@@ -45,7 +45,7 @@ describe WebTranslateIt::Safe::Archive do
     end
 
     it 'should accept multiple exclude as array' do
-      archive(:foo, {:exclude => ['foo', 'bar']}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
+      archive(:foo, {:exclude => %w[foo bar]}).send(:tar_exclude_files).should == '--exclude=foo --exclude=bar'
     end
   end
 
@@ -61,7 +61,7 @@ describe WebTranslateIt::Safe::Archive do
     end
 
     it 'should accept multiple files as array' do
-      archive(:foo, {:files => ['foo', 'bar']}).send(:tar_files).should == 'foo bar'
+      archive(:foo, {:files => %w[foo bar]}).send(:tar_files).should == 'foo bar'
     end
   end
 end
