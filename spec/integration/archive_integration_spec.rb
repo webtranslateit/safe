@@ -8,7 +8,7 @@ describe 'tar backup' do
     # need both local and instance vars
     # instance variables are used in tests
     # local variables are used in the backup definition (instance vars can't be seen)
-    @root = root = 'tmp/archive_backup_example'
+    @root = 'tmp/archive_backup_example'
 
     # clean state
     rm_rf @root
