@@ -6,7 +6,7 @@ module WebTranslateIt
         "mysqldump --defaults-extra-file=#{mysql_password_file} #{config[:options]} #{mysql_skip_tables} #{@id}"
       end
 
-      def extension; '.sql'; end
+      def extension = '.sql'
 
       protected
 

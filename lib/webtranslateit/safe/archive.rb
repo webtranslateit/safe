@@ -6,7 +6,7 @@ module WebTranslateIt
         "tar -cf - #{config[:options]} #{tar_exclude_files} #{tar_files}"
       end
 
-      def extension; '.tar'; end
+      def extension = '.tar'
 
       protected
 

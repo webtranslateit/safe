@@ -11,7 +11,7 @@ module WebTranslateIt
         "pg_dump #{postgres_options} #{postgres_username} #{postgres_host} #{postgres_port} #{@id}"
       end
 
-      def extension; '.sql'; end
+      def extension = '.sql'
 
       protected
 

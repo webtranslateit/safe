@@ -6,7 +6,7 @@ module WebTranslateIt
         "svnadmin dump #{config[:options]} #{config[:repo_path]}"
       end
 
-      def extension; '.svn'; end
+      def extension = '.svn'
 
     end
   end
