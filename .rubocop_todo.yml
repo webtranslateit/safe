@@ -580,12 +580,6 @@ Style/ClassMethods:
   Exclude:
     - 'lib/extensions/mktmpdir.rb'
 
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Style/ConcatArrayLiterals:
-  Exclude:
-    - 'lib/webtranslateit/safe/config/node.rb'
-
 # Offense count: 41
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
