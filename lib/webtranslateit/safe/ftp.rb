@@ -18,7 +18,7 @@ module WebTranslateIt
         puts "Uploading #{host}:#{full_path} via FTP" if verbose? || dry_run?
 
         unless dry_run? || local_only?
-          if !port
+          unless port
             port = 21
           end
           Net::FTP.open(host) do |ftp|
@@ -35,13 +35,13 @@ module WebTranslateIt
         end
       end
 
-      def cleanup # rubocop:todo Metrics/AbcSize
+      def cleanup
         return if local_only? || dry_run?
 
         return unless keep = config[:keep, :ftp]
 
         puts "listing files: #{host}:#{base}*" if verbose?
-        if !port
+        unless port
            port = 21
         end
         Net::FTP.open(host) do |ftp|
