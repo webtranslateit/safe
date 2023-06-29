@@ -11,7 +11,7 @@ module WebTranslateIt
           merge data, &block
         end
 
-        def merge data = {}, &block
+        def merge(data = {}, &block)
           builder = Builder.new(self, data)
           builder.instance_eval(&block) if block
           self
