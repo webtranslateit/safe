@@ -158,18 +158,6 @@ Layout/MultilineArrayBraceLayout:
   Exclude:
     - 'lib/webtranslateit/safe.rb'
 
-# Offense count: 11
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: aligned, indented, indented_relative_to_receiver
-Layout/MultilineMethodCallIndentation:
-  Exclude:
-    - 'lib/webtranslateit/safe/ftp.rb'
-    - 'lib/webtranslateit/safe/local.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-    - 'lib/webtranslateit/safe/sftp.rb'
-    - 'lib/webtranslateit/safe/stream.rb'
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedMethods, AllowedPatterns.
