@@ -46,7 +46,7 @@ describe WebTranslateIt::Safe::Mongodump do
       password: '-p '
     }.each do |key, v|    
       it "does not add #{key} to command if it is not present" do
-        @mongo = mongodump(:foo, def_config.reject! {|k,v| k == key})
+        @mongo = mongodump(:foo, def_config.reject! {|k,_v| k == key})
         @mongo.backup.send(:command).should_not =~ /#{v}/
       end
     end
