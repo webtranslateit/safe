@@ -814,18 +814,6 @@ Style/ParallelAssignment:
     - 'lib/webtranslateit/safe/source.rb'
     - 'lib/webtranslateit/safe/stream.rb'
 
-# Offense count: 7
-# This cop supports safe autocorrection (--autocorrect).
-Style/RedundantException:
-  Exclude:
-    - 'lib/webtranslateit/safe/archive.rb'
-    - 'lib/webtranslateit/safe/cloudfiles.rb'
-    - 'lib/webtranslateit/safe/ftp.rb'
-    - 'lib/webtranslateit/safe/gpg.rb'
-    - 'lib/webtranslateit/safe/local.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-    - 'lib/webtranslateit/safe/sftp.rb'
-
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: RequireEnglish, EnforcedStyle.

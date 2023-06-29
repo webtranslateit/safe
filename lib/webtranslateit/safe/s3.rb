@@ -15,7 +15,7 @@ module WebTranslateIt
 
       def save
         # FIXME: user friendly error here :)
-        raise RuntimeError, 'pipe-streaming not supported for S3.' unless @backup.path
+        raise 'pipe-streaming not supported for S3.' unless @backup.path
 
         # needed in cleanup even on dry run
         AWS::S3::Base.establish_connection!(:access_key_id => key, :secret_access_key => secret, :use_ssl => true) unless local_only?

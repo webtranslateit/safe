@@ -3,7 +3,7 @@ module WebTranslateIt
     class Gpg < Pipe
 
       def active?
-        raise RuntimeError, "can't use both gpg password and pubkey" if key && password
+        raise "can't use both gpg password and pubkey" if key && password
 
         !!(password || key)
       end

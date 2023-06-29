@@ -21,7 +21,7 @@ module WebTranslateIt
       end
 
       def save
-        raise RuntimeError, 'pipe-streaming not supported for S3.' unless @backup.path
+        raise 'pipe-streaming not supported for S3.' unless @backup.path
 
         # needed in cleanup even on dry run
         cf = CloudFiles::Connection.new(user, api_key, true, service_net) unless local_only?
