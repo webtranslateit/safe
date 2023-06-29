@@ -1,5 +1,3 @@
-require 'webtranslateit/safe/version'
-
 require 'aws/s3'
 require 'cloudfiles'
 require 'net/sftp'

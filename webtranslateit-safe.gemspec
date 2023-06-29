@@ -1,10 +1,9 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'webtranslateit/safe/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'webtranslateit-safe'
-  spec.version       = WebTranslateIt::Safe::VERSION
+  spec.version       = '0.4.2'
   spec.authors       = ['Edouard Briere', 'Vitaly Kushner']
   spec.email         = ['support@webtranslateit.com']
   spec.required_ruby_version = '>= 3.2'
@@ -19,7 +18,7 @@ Remote storage is supported on Amazon S3, Rackspace Cloud Files, or just plain F
 
   spec.default_executable = 'webtranslateit-safe'
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = Dir['CHANGELOG', 'LICENCE.txt', 'README.markdown', 'lib/**/*', 'bin/**/*']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
