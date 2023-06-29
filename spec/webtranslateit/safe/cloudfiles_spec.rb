@@ -6,8 +6,8 @@ describe WebTranslateIt::Safe::Cloudfiles do
     {
       cloudfiles: {
         container: '_container',
-        user:      '_user',
-        api_key:   '_api_key'
+        user: '_user',
+        api_key: '_api_key'
       },
       keep: {cloudfiles: 2}
     }
@@ -15,10 +15,10 @@ describe WebTranslateIt::Safe::Cloudfiles do
 
   def def_backup(extra = {})
     {
-      kind:      '_kind',
-      filename:  '/backup/somewhere/_kind-_id.NOW.bar',
+      kind: '_kind',
+      filename: '/backup/somewhere/_kind-_id.NOW.bar',
       extension: '.bar',
-      id:        '_id',
+      id: '_id',
       timestamp: 'NOW'
     }.merge(extra)
   end

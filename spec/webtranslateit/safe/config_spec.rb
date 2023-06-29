@@ -149,8 +149,8 @@ describe WebTranslateIt::Safe::Config do
         'databases' => {
           'blog' => {},
           'production' => {
-           'keep' => {'local' => 3},
-           'gpg' => {'password' => 'custom-production-pass'},
+            'keep' => {'local' => 3},
+            'gpg' => {'password' => 'custom-production-pass'},
             'skip_tables' => %w[logger_exceptions request_logs]
           }
         }
@@ -166,7 +166,7 @@ describe WebTranslateIt::Safe::Config do
         'databases' => {
           'blog' => {},
           'production' => {
-           'keep' => {'local' => 3},
+            'keep' => {'local' => 3},
             'skip_tables' => %w[logger_exceptions request_logs]
           }
         }
