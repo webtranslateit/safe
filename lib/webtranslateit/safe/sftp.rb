@@ -32,7 +32,11 @@ module WebTranslateIt
               folders.each_index do |i|
                 folder = folders[0..i].join('/')
                 puts "Creating #{folder} on remote" if verbose?
-                sftp.mkdir!(folder) rescue Net::SFTP::StatusException
+                begin
+                  sftp.mkdir!(folder)
+                rescue StandardError
+                  Net::SFTP::StatusException
+                end
               end
               retry
             end

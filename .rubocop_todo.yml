@@ -840,12 +840,6 @@ Style/RedundantSelf:
     - 'lib/webtranslateit/safe/config/builder.rb'
 
 # Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/RescueModifier:
-  Exclude:
-    - 'lib/webtranslateit/safe/sftp.rb'
-
-# Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: RequireEnglish, EnforcedStyle.
 # SupportedStyles: use_perl_names, use_english_names, use_builtin_english_names
