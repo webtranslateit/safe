@@ -11,7 +11,7 @@ module WebTranslateIt
       protected
 
       def path
-        @path ||= File.expand_path(expand(config[:local, :path] || raise(RuntimeError, 'missing :local/:path')))
+        @path ||= File.expand_path(expand(config[:local, :path] || raise('missing :local/:path')))
       end
 
       def save

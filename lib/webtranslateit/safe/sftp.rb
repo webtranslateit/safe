@@ -13,7 +13,7 @@ module WebTranslateIt
       end
 
       def save
-        raise RuntimeError, 'pipe-streaming not supported for SFTP.' unless @backup.path
+        raise 'pipe-streaming not supported for SFTP.' unless @backup.path
 
         puts "Uploading #{host}:#{full_path} via SFTP" if verbose? || dry_run?
 
