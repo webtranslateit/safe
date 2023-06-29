@@ -22,9 +22,9 @@ module WebTranslateIt
       end
 
       def mysql_skip_tables
-        if skip_tables = config[:skip_tables]
-          [*skip_tables].map{ |t| "--ignore-table=#{@id}.#{t}" }.join(' ')
-        end
+        return unless skip_tables = config[:skip_tables]
+
+        [*skip_tables].map{ |t| "--ignore-table=#{@id}.#{t}" }.join(' ')
       end
 
     end

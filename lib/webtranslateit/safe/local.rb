@@ -20,13 +20,14 @@ module WebTranslateIt
         # FIXME: probably need to change this to smth like @backup.finalize!
         @backup.path = full_path # need to do it outside DRY_RUN so that it will be avialable for S3 DRY_RUN
 
-        unless dry_run?
-          FileUtils.mkdir_p(path) unless File.directory?(path)
-          benchmark = Benchmark.realtime do
-            system "#{@backup.command}>#{@backup.path}"
-          end
-          puts("command took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
+        return if dry_run?
+
+        FileUtils.mkdir_p(path) unless File.directory?(path)
+        benchmark = Benchmark.realtime do
+          system "#{@backup.command}>#{@backup.path}"
         end
+        puts("command took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
+
 
       end
 
