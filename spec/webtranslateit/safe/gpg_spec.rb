@@ -22,7 +22,7 @@ describe WebTranslateIt::Safe::Gpg do
   describe :process do
 
     before(:each) do
-      @gpg = gpg()
+      @gpg = gpg
       stub(@gpg).gpg_password_file {'pwd-file'}
       stub(@gpg).pipe {'|gpg -BLAH'}
     end
