@@ -19,7 +19,7 @@ describe WebTranslateIt::Safe::Archive do
   describe :backup do
     before do
       @archive = archive
-      stub(@archive).timestamp {'NOW'}
+      stub(@archive).timestamp { 'NOW' }
     end
 
     {

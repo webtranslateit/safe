@@ -40,7 +40,7 @@ def main
 
   config_file = File.expand_path(args.first)
 
-  is_dry = (opts.delete('-n') || opts.delete('--dry-run')) && ! opts.delete('--not-dry-run')
+  is_dry = (opts.delete('-n') || opts.delete('--dry-run')) && !opts.delete('--not-dry-run')
   is_verbose = (opts.delete('-v') || opts.delete('--verbose')) && !opts.delete('--not-verbose')
   is_local_only = (opts.delete('-L') || opts.delete('--local')) && !opts.delete('--not-local')
 

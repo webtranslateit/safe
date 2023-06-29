@@ -13,7 +13,7 @@ describe WebTranslateIt::Safe::Svndump do
   end
 
   before do
-    stub(Time).now.stub!.strftime {'NOW'}
+    stub(Time).now.stub!.strftime { 'NOW' }
   end
 
   after { WebTranslateIt::Safe::TmpFile.cleanup }

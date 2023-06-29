@@ -37,12 +37,12 @@ describe WebTranslateIt::Safe::S3 do
     before do
       @s3 = s3
 
-      @files = [4,1,3,2].map do |i|
-        stub(o = {}).key {"aaaaa#{i}"}
+      @files = [4, 1, 3, 2].map do |i|
+        stub(o = {}).key { "aaaaa#{i}" }
         o
       end
 
-      stub(AWS::S3::Bucket).objects('_bucket', prefix: '_kind/_id/_kind-_id.', max_keys: 4) {@files}
+      stub(AWS::S3::Bucket).objects('_bucket', prefix: '_kind/_id/_kind-_id.', max_keys: 4) { @files }
       stub(AWS::S3::Bucket).objects('_bucket', prefix: anything).stub![0].stub!.delete
     end
 
@@ -114,12 +114,12 @@ describe WebTranslateIt::Safe::S3 do
         when :connection
           stub(AWS::S3::Base).establish_connection!(access_key_id: '_key', secret_access_key: '_secret', use_ssl: true)
         when :stat
-          stub(File).stat('foo').stub!.size {123}
+          stub(File).stat('foo').stub!.size { 123 }
         when :create_bucket
           stub(AWS::S3::Bucket).find('_bucket') { raise_error AWS::S3::NoSuchBucket }
           stub(AWS::S3::Bucket).create
         when :file_open
-          stub(File).open('foo') {|_f, block| block.call(:opened_file)}
+          stub(File).open('foo') { |_f, block| block.call(:opened_file) }
         when :s3_store
           stub(AWS::S3::S3Object).store(@full_path, :opened_file, '_bucket')
         end
@@ -133,7 +133,7 @@ describe WebTranslateIt::Safe::S3 do
 
     it 'fails if no backup.file is set' do
       @s3.backup.path = nil
-      proc {@s3.send(:save)}.should raise_error(RuntimeError)
+      proc { @s3.send(:save) }.should raise_error(RuntimeError)
     end
 
     it 'establishes s3 connection' do
@@ -156,7 +156,7 @@ describe WebTranslateIt::Safe::S3 do
 
     it 'fails on files bigger then 5G' do
       add_stubs(:connection)
-      mock(File).stat('foo').stub!.size {5*1024*1024*1024+1}
+      mock(File).stat('foo').stub!.size { 5 * 1024 * 1024 * 1024 + 1 }
       dont_allow(Benchmark).realtime
       @s3.send(:save)
     end

@@ -35,7 +35,6 @@ module WebTranslateIt
         end
         puts '...done' if verbose?
         puts("Upload took #{format('%.2f', benchmark)} second(s).") if verbose?
-        
       end
 
       def cleanup
@@ -70,7 +69,7 @@ module WebTranslateIt
       end
 
       private
-      
+
       def bucket_exists?(bucket)
         true if AWS::S3::Bucket.find(bucket)
       rescue AWS::S3::NoSuchBucket

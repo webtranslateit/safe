@@ -34,7 +34,7 @@ module WebTranslateIt
         end
         benchmark = Benchmark.realtime do
           cf_container = cf.create_container(container)
-          o = cf_container.create_object(full_path,true)
+          o = cf_container.create_object(full_path, true)
           o.write(File.open(@backup.path))
         end
         puts '...done' if verbose?

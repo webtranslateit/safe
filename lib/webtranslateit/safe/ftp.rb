@@ -45,11 +45,11 @@ module WebTranslateIt
           ftp.login(user, password)
           files = ftp.nlst(path)
           pattern = File.basename(base.to_s)
-          files = files.select{ |x| x.start_with?(pattern)}
-          puts files.collect {|x| x} if verbose?
+          files = files.select { |x| x.start_with?(pattern) }
+          puts files.collect { |x| x } if verbose?
 
           files = files.
-            collect {|x| x }.
+            collect { |x| x }.
             sort
 
           cleanup_with_limit(files, keep) do |f|

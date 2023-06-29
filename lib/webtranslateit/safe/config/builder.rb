@@ -40,7 +40,7 @@ module WebTranslateIt
 
           def mixed_value(*names)
             names.each do |m|
-              define_method(m) do |data={}, &block|
+              define_method(m) do |data = {}, &block|
                 ensure_uniq(m)
                 if data.is_a?(Hash) || block
                   ensure_hash(m, data) if block
@@ -54,7 +54,7 @@ module WebTranslateIt
 
           def collection(*names)
             names.each do |m|
-              define_method(m) do |id, data={}, &block|
+              define_method(m) do |id, data = {}, &block|
                 raise "bad collection id: #{id.inspect}" unless id
                 ensure_hash(m, data)
 
