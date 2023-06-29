@@ -4,7 +4,8 @@ module WebTranslateIt
 
       attr_accessor :id
       def initialize(id, config)
-        @id, @config = id.to_s, config
+        @id = id.to_s
+        @config = config
       end
 
       def timestamp

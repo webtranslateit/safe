@@ -4,7 +4,8 @@ module WebTranslateIt
 
       attr_accessor :config, :backup
       def initialize(config, backup)
-        @config, @backup = config, backup
+        @config = config
+        @backup = backup
       end
       # FIXME: move to Backup
       def expand(path)
