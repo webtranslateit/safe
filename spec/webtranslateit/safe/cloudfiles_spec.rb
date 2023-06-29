@@ -90,6 +90,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
     before do
       @cloudfiles = cloudfiles
     end
+
     it 'uses cloudfiles/path 1st' do
       @cloudfiles.config[:cloudfiles].data['path'] = 'cloudfiles_path'
       @cloudfiles.config[:local] = {path: 'local_path'}

@@ -452,14 +452,6 @@ RSpec/DescribeSymbol:
     - 'spec/webtranslateit/safe/s3_spec.rb'
     - 'spec/webtranslateit/safe/svndump_spec.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowConsecutiveOneLiners.
-RSpec/EmptyLineAfterHook:
-  Exclude:
-    - 'spec/webtranslateit/safe/cloudfiles_spec.rb'
-    - 'spec/webtranslateit/safe/s3_spec.rb'
-
 # Offense count: 9
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:
