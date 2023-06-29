@@ -689,19 +689,6 @@ Style/GlobalStdStream:
     - 'spec/webtranslateit/safe/cloudfiles_spec.rb'
     - 'spec/webtranslateit/safe/s3_spec.rb'
 
-# Offense count: 7
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinBodyLength, AllowConsecutiveConditionals.
-Style/GuardClause:
-  Exclude:
-    - 'lib/webtranslateit/safe/cloudfiles.rb'
-    - 'lib/webtranslateit/safe/ftp.rb'
-    - 'lib/webtranslateit/safe/local.rb'
-    - 'lib/webtranslateit/safe/mysqldump.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-    - 'lib/webtranslateit/safe/sftp.rb'
-    - 'lib/webtranslateit/safe/tmp_file.rb'
-
 # Offense count: 3
 Style/MixinUsage:
   Exclude:

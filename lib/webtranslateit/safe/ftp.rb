@@ -17,20 +17,20 @@ module WebTranslateIt
 
         puts "Uploading #{host}:#{full_path} via FTP" if verbose? || dry_run?
 
-        unless dry_run? || local_only?
-          port ||= 21
-          Net::FTP.open(host) do |ftp|
-            ftp.connect(host, port)
-            ftp.login(user, password)
-            puts "Sending #{@backup.path} to #{full_path}" if verbose?
-            begin
-              ftp.put(@backup.path, full_path)
-            rescue Net::FTPPermError
-              puts "Ensuring remote path (#{path}) exists" if verbose?
-            end
+        return if dry_run? || local_only?
+
+        port ||= 21
+        Net::FTP.open(host) do |ftp|
+          ftp.connect(host, port)
+          ftp.login(user, password)
+          puts "Sending #{@backup.path} to #{full_path}" if verbose?
+          begin
+            ftp.put(@backup.path, full_path)
+          rescue Net::FTPPermError
+            puts "Ensuring remote path (#{path}) exists" if verbose?
           end
-          puts '...done' if verbose?
         end
+        puts '...done' if verbose?
       end
 
       def cleanup

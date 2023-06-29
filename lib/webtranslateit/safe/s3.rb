@@ -21,20 +21,21 @@ module WebTranslateIt
         AWS::S3::Base.establish_connection!(access_key_id: key, secret_access_key: secret, use_ssl: true) unless local_only?
 
         puts "Uploading #{bucket}:#{full_path}" if verbose? || dry_run?
-        unless dry_run? || local_only?
-          if File.stat(@backup.path).size > MAX_S3_FILE_SIZE
-            warn "ERROR: File size exceeds maximum allowed for upload to S3 (#{MAX_S3_FILE_SIZE}): #{@backup.path}"
-            return
-          end
-          benchmark = Benchmark.realtime do
-            AWS::S3::Bucket.create(bucket) unless bucket_exists?(bucket)
-            File.open(@backup.path) do |file|
-              AWS::S3::S3Object.store(full_path, file, bucket)
-            end
-          end
-          puts '...done' if verbose?
-          puts("Upload took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
+        return if dry_run? || local_only?
+
+        if File.stat(@backup.path).size > MAX_S3_FILE_SIZE
+          warn "ERROR: File size exceeds maximum allowed for upload to S3 (#{MAX_S3_FILE_SIZE}): #{@backup.path}"
+          return
         end
+        benchmark = Benchmark.realtime do
+          AWS::S3::Bucket.create(bucket) unless bucket_exists?(bucket)
+          File.open(@backup.path) do |file|
+            AWS::S3::S3Object.store(full_path, file, bucket)
+          end
+        end
+        puts '...done' if verbose?
+        puts("Upload took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
+        
       end
 
       def cleanup

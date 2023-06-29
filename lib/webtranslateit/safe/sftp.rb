@@ -17,32 +17,32 @@ module WebTranslateIt
 
         puts "Uploading #{host}:#{full_path} via SFTP" if verbose? || dry_run?
 
-        unless dry_run? || local_only?
-          opts = {}
-          opts[:password] = password if password
-          opts[:port] = port if port
-          Net::SFTP.start(host, user, opts) do |sftp|
-            puts "Sending #{@backup.path} to #{full_path}" if verbose?
-            begin
-              sftp.upload! @backup.path, full_path
-            rescue Net::SFTP::StatusException
-              puts "Ensuring remote path (#{path}) exists" if verbose?
-              # mkdir -p
-              folders = path.split('/')
-              folders.each_index do |i|
-                folder = folders[0..i].join('/')
-                puts "Creating #{folder} on remote" if verbose?
-                begin
-                  sftp.mkdir!(folder)
-                rescue StandardError
-                  Net::SFTP::StatusException
-                end
+        return if dry_run? || local_only?
+
+        opts = {}
+        opts[:password] = password if password
+        opts[:port] = port if port
+        Net::SFTP.start(host, user, opts) do |sftp|
+          puts "Sending #{@backup.path} to #{full_path}" if verbose?
+          begin
+            sftp.upload! @backup.path, full_path
+          rescue Net::SFTP::StatusException
+            puts "Ensuring remote path (#{path}) exists" if verbose?
+            # mkdir -p
+            folders = path.split('/')
+            folders.each_index do |i|
+              folder = folders[0..i].join('/')
+              puts "Creating #{folder} on remote" if verbose?
+              begin
+                sftp.mkdir!(folder)
+              rescue StandardError
+                Net::SFTP::StatusException
               end
-              retry
             end
+            retry
           end
-          puts '...done' if verbose?
         end
+        puts '...done' if verbose?
       end
 
       def cleanup

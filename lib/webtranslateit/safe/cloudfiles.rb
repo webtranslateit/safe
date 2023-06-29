@@ -26,19 +26,19 @@ module WebTranslateIt
         # needed in cleanup even on dry run
         cf = CloudFiles::Connection.new(user, api_key, true, service_net) unless local_only?
         puts "Uploading #{container}:#{full_path} from #{@backup.path}" if verbose? || dry_run?
-        unless dry_run? || local_only?
-          if get_file_size(@backup.path) > MAX_CLOUDFILES_FILE_SIZE
-            warn "ERROR: File size exceeds maximum allowed for upload to Cloud Files (#{MAX_CLOUDFILES_FILE_SIZE}): #{@backup.path}"
-            return
-          end
-          benchmark = Benchmark.realtime do
-            cf_container = cf.create_container(container)
-            o = cf_container.create_object(full_path,true)
-            o.write(File.open(@backup.path))
-          end
-          puts '...done' if verbose?
-          puts("Upload took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
+        return if dry_run? || local_only?
+
+        if get_file_size(@backup.path) > MAX_CLOUDFILES_FILE_SIZE
+          warn "ERROR: File size exceeds maximum allowed for upload to Cloud Files (#{MAX_CLOUDFILES_FILE_SIZE}): #{@backup.path}"
+          return
         end
+        benchmark = Benchmark.realtime do
+          cf_container = cf.create_container(container)
+          o = cf_container.create_object(full_path,true)
+          o.write(File.open(@backup.path))
+        end
+        puts '...done' if verbose?
+        puts("Upload took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
       end
 
       def cleanup
