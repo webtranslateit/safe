@@ -21,7 +21,7 @@ module WebTranslateIt
         def get(*path)
           key = path.shift
           value = @data[key.to_s]
-          return value if (nil != value) && path.empty?
+          return value if !value.nil? && path.empty?
 
           value && value.get(*path)
         end
