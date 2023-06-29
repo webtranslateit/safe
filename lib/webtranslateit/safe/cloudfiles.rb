@@ -1,7 +1,7 @@
 module WebTranslateIt
   module Safe
     class Cloudfiles < Sink
-      MAX_CLOUDFILES_FILE_SIZE = 5368709120
+      MAX_CLOUDFILES_FILE_SIZE = 5_368_709_120
 
       def active?
         container && user && api_key

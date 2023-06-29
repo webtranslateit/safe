@@ -1,7 +1,7 @@
 module WebTranslateIt
   module Safe
     class S3 < Sink
-      MAX_S3_FILE_SIZE = 5368709120
+      MAX_S3_FILE_SIZE = 5_368_709_120
 
       def active?
         bucket && key && secret
