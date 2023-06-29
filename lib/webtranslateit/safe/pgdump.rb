@@ -3,11 +3,7 @@ module WebTranslateIt
     class Pgdump < Source
 
       def command
-        if config['password']
-          ENV['PGPASSWORD'] = config['password']
-        else
-          ENV['PGPASSWORD'] = nil
-        end
+        ENV['PGPASSWORD'] = (config['password'] || nil)
         "pg_dump #{postgres_options} #{postgres_username} #{postgres_host} #{postgres_port} #{@id}"
       end
 

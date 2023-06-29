@@ -586,14 +586,6 @@ Style/ConcatArrayLiterals:
   Exclude:
     - 'lib/webtranslateit/safe/config/node.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, SingleLineConditionsOnly, IncludeTernaryExpressions.
-# SupportedStyles: assign_to_condition, assign_inside_condition
-Style/ConditionalAssignment:
-  Exclude:
-    - 'lib/webtranslateit/safe/pgdump.rb'
-
 # Offense count: 41
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
