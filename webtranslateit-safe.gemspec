@@ -16,10 +16,8 @@ Remote storage is supported on Amazon S3, Rackspace Cloud Files, or just plain F
   spec.homepage      = 'http://github.com/webtranslateit/safe'
   spec.license       = 'MIT'
 
-  spec.default_executable = 'webtranslateit-safe'
-
   spec.files         = Dir['CHANGELOG', 'LICENCE.txt', 'README.markdown', 'lib/**/*', 'bin/**/*']
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.executables   = 'webtranslateit-safe'
   spec.require_paths = ['lib']
 
   spec.add_dependency 'aws-s3'
