@@ -60,7 +60,7 @@ module WebTranslateIt
           @data.each do |key, value|
             if value.is_a?(Node)
               puts "#{indent}#{key}:"
-              value.dump(indent + '    ')
+              value.dump("#{indent}    ")
             else
               puts "#{indent}#{key}: #{value.inspect}"
             end

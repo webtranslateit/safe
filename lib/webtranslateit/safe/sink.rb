@@ -15,7 +15,7 @@ module WebTranslateIt
       # base is used in 'cleanup' to find all files that begin with base. the '.'
       # at the end is essential to distinguish b/w foo.* and foobar.* archives for example
       def base
-        @base ||= File.join(path, File.basename(@backup.filename).split('.').first + '.')
+        @base ||= File.join(path, "#{File.basename(@backup.filename).split('.').first}.")
       end
 
       def full_path

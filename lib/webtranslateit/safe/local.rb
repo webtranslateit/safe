@@ -25,7 +25,7 @@ module WebTranslateIt
           benchmark = Benchmark.realtime do
             system "#{@backup.command}>#{@backup.path}"
           end
-          puts('command took ' + sprintf('%.2f', benchmark) + ' second(s).') if verbose?
+          puts("command took #{sprintf('%.2f', benchmark)} second(s).") if verbose?
         end
 
       end

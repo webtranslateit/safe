@@ -886,17 +886,6 @@ Style/StderrPuts:
     - 'lib/webtranslateit/safe/cloudfiles.rb'
     - 'lib/webtranslateit/safe/s3.rb'
 
-# Offense count: 5
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: Mode.
-Style/StringConcatenation:
-  Exclude:
-    - 'lib/webtranslateit/safe/cloudfiles.rb'
-    - 'lib/webtranslateit/safe/config/node.rb'
-    - 'lib/webtranslateit/safe/local.rb'
-    - 'lib/webtranslateit/safe/s3.rb'
-    - 'lib/webtranslateit/safe/sink.rb'
-
 # Offense count: 9
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
