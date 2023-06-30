@@ -6,7 +6,6 @@ require 'fileutils'
 require 'benchmark'
 
 require 'tempfile'
-require 'extensions/mktmpdir'
 
 require 'webtranslateit/safe/tmp_file'
 

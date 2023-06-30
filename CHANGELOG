@@ -3,6 +3,7 @@
 * Remove `default_executable` line and simplify executables definition.
 * Autocorrect rubocop offences.
 * Convert rspec syntax from `should` to `expect`.
+* Remove unused extension `Dir.mktmpdir`.
 
 ## 0.4.3 - 2023-06-29
 
