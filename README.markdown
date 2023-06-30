@@ -1,39 +1,14 @@
 # webtranslateit-safe
 
-Simple database and filesystem backups with S3 and Rackspace Cloud Files support (with optional encryption)
+Simple database and filesystem backups with S3 and Rackspace Cloud Files support (with optional encryption).
 
-* Code: [http://github.com/webtranslateit/safe](http://github.com/webtranslateit/safe)
+This is a fork of now abandonned [astrails-safe](https://github.com/astrails/safe) that we’ve been using since 2010. It is now unmaintained and not compatible with ruby 3.2, so we forked it.
 
-## Motivation
+We’ve added:
 
-We needed a backup solution that will satisfy the following requirements:
-
-* opensource
-* simple to install and configure
-* support for simple ‘tar’ backups of directories (with includes/excludes)
-* support for simple mysqldump of mysql databases
-* support for symmetric or public key encryption
-* support for local filesystem, Amazon S3, and Rackspace Cloud Files for storage
-* support for backup rotation. we don’t want backups filling all the diskspace or cost a fortune on S3 or Cloud Files
-
-And since we didn't find any, we wrote our own :)
-
-## Contributions
-
-The following functionality was contributed by webtranslateit-safe users:
-
-* PostgreSQL dump using `pg_dump` (by Mark Mansour <mark@stateofflux.com>)
-* Subversion dump using svndump (by Richard Luther <richard.luther@gmail.com>)
-* SFTP remote storage (by Adam <adam@mediadrive.ca>)
-* benchmarking output (By Neer)
-* README fixes (by Bobby Wilson)
-* improved config file parsing (by Fedor Kocherga <fkocherga@gmail.com>)
-* mysql password file quoting (by Jonathan Sutherland <jonathan.sutherland@gmail.com>)
-* Rackspace Cloud Files support (by H. Wade Minter <minter@lunenburg.org>)
-* Plan FTP support (by seroy <seroy@bk.ru>)
-* mongodump support (by Matt Berther <matt@mattberther.com>)
-
-Thanks to all :)
+- Support for ruby 3.2
+- Standardized code with rubocop
+- Added support for SCP transfers — On some conditions with servers with higher latency, transfering large files (> 18GB) with SFTP can take a very long time.
 
 ## Installation
 
@@ -236,14 +211,6 @@ safe do
   end
 end
 ```
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
 
 ## Copyright
 
