@@ -1,6 +1,7 @@
 require 'aws/s3'
 require 'cloudfiles'
 require 'net/sftp'
+require 'net/scp'
 # require 'net/ftp'
 require 'fileutils'
 require 'benchmark'
@@ -31,6 +32,7 @@ require 'webtranslateit/safe/sink'
 require 'webtranslateit/safe/local'
 require 'webtranslateit/safe/s3'
 require 'webtranslateit/safe/cloudfiles'
+require 'webtranslateit/safe/scp'
 require 'webtranslateit/safe/sftp'
 require 'webtranslateit/safe/ftp'
 
@@ -53,7 +55,7 @@ module WebTranslateIt
         next unless collection = config[*path]
 
         collection.each do |name, c|
-          klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :sftp, :ftp)
+          klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :scp, :sftp, :ftp)
         end
       end
 
