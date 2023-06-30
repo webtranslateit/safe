@@ -8,33 +8,33 @@ require 'benchmark'
 
 require 'tempfile'
 
-require 'webtranslateit/safe/tmp_file'
+require 'web_translate_it/safe/tmp_file'
 
-require 'webtranslateit/safe/config/node'
-require 'webtranslateit/safe/config/builder'
+require 'web_translate_it/safe/config/node'
+require 'web_translate_it/safe/config/builder'
 
-require 'webtranslateit/safe/stream'
+require 'web_translate_it/safe/stream'
 
-require 'webtranslateit/safe/backup'
+require 'web_translate_it/safe/backup'
 
-require 'webtranslateit/safe/source'
-require 'webtranslateit/safe/mysqldump'
-require 'webtranslateit/safe/pgdump'
-require 'webtranslateit/safe/archive'
-require 'webtranslateit/safe/svndump'
-require 'webtranslateit/safe/mongodump'
+require 'web_translate_it/safe/source'
+require 'web_translate_it/safe/mysqldump'
+require 'web_translate_it/safe/pgdump'
+require 'web_translate_it/safe/archive'
+require 'web_translate_it/safe/svndump'
+require 'web_translate_it/safe/mongodump'
 
-require 'webtranslateit/safe/pipe'
-require 'webtranslateit/safe/gpg'
-require 'webtranslateit/safe/gzip'
+require 'web_translate_it/safe/pipe'
+require 'web_translate_it/safe/gpg'
+require 'web_translate_it/safe/gzip'
 
-require 'webtranslateit/safe/sink'
-require 'webtranslateit/safe/local'
-require 'webtranslateit/safe/s3'
-require 'webtranslateit/safe/cloudfiles'
-require 'webtranslateit/safe/scp'
-require 'webtranslateit/safe/sftp'
-require 'webtranslateit/safe/ftp'
+require 'web_translate_it/safe/sink'
+require 'web_translate_it/safe/local'
+require 'web_translate_it/safe/s3'
+require 'web_translate_it/safe/cloudfiles'
+require 'web_translate_it/safe/scp'
+require 'web_translate_it/safe/sftp'
+require 'web_translate_it/safe/ftp'
 
 module WebTranslateIt
 
