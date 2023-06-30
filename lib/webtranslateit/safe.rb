@@ -42,8 +42,8 @@ module WebTranslateIt
 
     ROOT = File.join(File.dirname(__FILE__), '..', '..')
 
-    def safe(&block)
-      Config::Node.new(&block)
+    def safe(&)
+      Config::Node.new(&)
     end
 
     def process(config)

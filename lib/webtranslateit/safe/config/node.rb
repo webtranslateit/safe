@@ -9,10 +9,10 @@ module WebTranslateIt
 
         attr_reader :parent, :data
 
-        def initialize(parent = nil, data = {}, &block)
+        def initialize(parent = nil, data = {}, &)
           @parent = parent
           @data = {}
-          merge data, &block
+          merge(data, &)
         end
 
         def merge(data = {}, &block)
@@ -47,8 +47,8 @@ module WebTranslateIt
         end
         alias []= set
 
-        def each(&block)
-          @data.each(&block)
+        def each(&)
+          @data.each(&)
         end
         include Enumerable
 
