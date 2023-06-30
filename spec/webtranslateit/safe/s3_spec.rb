@@ -156,7 +156,7 @@ describe WebTranslateIt::Safe::S3 do
 
     it 'fails on files bigger then 5G' do
       add_stubs(:connection)
-      mock(File).stat('foo').stub!.size { 5 * 1024 * 1024 * 1024 + 1 }
+      mock(File).stat('foo').stub!.size { (5 * 1024 * 1024 * 1024) + 1 }
       dont_allow(Benchmark).realtime
       @s3.send(:save)
     end
