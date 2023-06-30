@@ -83,7 +83,7 @@ We recommend also pringing the hard paper copy of your GPG key 'just in case'.
 
 The procedure to create and transfer the key is as follows:
 
-1. run 'gpg --gen-key' on your local machine and follow onscreen instructions to create the key
+1. run `gpg --gen-key` on your local machine and follow onscreen instructions to create the key
    (you can accept all the defaults).
 
 2. extract your public key into a file (assuming you used test@example.com as your key email):
@@ -94,38 +94,41 @@ The procedure to create and transfer the key is as follows:
 
 4. import public key on the remote system:
 
-    $ gpg --import test@example.com.pub
-    gpg: key 45CA9403: public key "Test Backup <test@example.com>" imported
-    gpg: Total number processed: 1
-    gpg:               imported: 1
+``` bash
+$ gpg --import test@example.com.pub
+gpg: key 45CA9403: public key "Test Backup <test@example.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+```
 
 5. since we don't keep the secret part of the key on the remote server, gpg has
    no way to know its yours and can be trusted.
    To fix that we can sign it with other trusted key, or just directly modify its
    trust level in gpg (use level 5):
 
-     $ gpg --edit-key test@example.com
-     ...
-     Command> trust
-     ...
-     1 = I don't know or won't say
-     2 = I do NOT trust
-     3 = I trust marginally
-     4 = I trust fully
-     5 = I trust ultimately
-     m = back to the main menu
+``` bash
+$ gpg --edit-key test@example.com
+...
+Command> trust
+...
+1 = I don't know or won't say
+2 = I do NOT trust
+3 = I trust marginally
+4 = I trust fully
+5 = I trust ultimately
+m = back to the main menu
 
-     Your decision? 5
-     ...
-     Command> quit
+Your decision? 5
+...
+Command> quit
+```
 
 6. export your secret key for backup
    (we recommend to print it on paper and burn to a CD/DVD and store in a safe place):
 
-    $ gpg -a --export-secret-key test@example.com > test@example.com.key
-
-
-
+``` bash
+$ gpg -a --export-secret-key test@example.com > test@example.com.key
+```
 ## Example configuration
 
 ``` ruby
