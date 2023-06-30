@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Gpg do
   def def_backup
     {

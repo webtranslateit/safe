@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-
 require 'webtranslateit/safe'
 
 include WebTranslateIt::Safe

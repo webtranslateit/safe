@@ -1,4 +1,3 @@
-require 'tmpdir'
 module WebTranslateIt
 
   module Safe

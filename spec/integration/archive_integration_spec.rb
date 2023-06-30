@@ -1,6 +1,3 @@
-require 'spec_helper'
-
-require 'fileutils'
 include FileUtils
 
 describe 'tar backup' do

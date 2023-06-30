@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Pgdump do
 
   def def_config

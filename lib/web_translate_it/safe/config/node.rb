@@ -1,4 +1,3 @@
-require 'web_translate_it/safe/config/builder'
 module WebTranslateIt
 
   module Safe

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Gzip do
 
   def def_backup

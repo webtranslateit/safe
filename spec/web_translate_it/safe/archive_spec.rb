@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Archive do
 
   def def_config

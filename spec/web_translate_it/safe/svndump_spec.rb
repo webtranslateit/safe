@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Svndump do
   def def_config
     {

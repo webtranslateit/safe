@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Mysqldump do
 
   def def_config(extra = {})

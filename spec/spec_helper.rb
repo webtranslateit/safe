@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'bundler/setup'
 require 'web_translate_it/safe'
 
 RSpec.configure do |config|
