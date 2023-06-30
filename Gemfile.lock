@@ -4,6 +4,7 @@ PATH
     webtranslateit-safe (0.4.4)
       aws-s3
       cloudfiles
+      net-scp
       net-sftp
 
 GEM
@@ -53,6 +54,8 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0218.1)
     nenv (0.3.0)
+    net-scp (4.0.0)
+      net-ssh (>= 2.6.5, < 8.0.0)
     net-sftp (4.0.0)
       net-ssh (>= 5.0.0, < 8.0.0)
     net-ssh (7.1.0)

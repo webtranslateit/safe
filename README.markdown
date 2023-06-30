@@ -155,6 +155,13 @@ The procedure to create and transfer the key is as follows:
         password "ssh password for sftp"
       end
 
+      sftp do
+        host "sftp.astrails.com"
+        user "astrails"
+        # port 8023
+        password "ssh password for scp"
+      end
+
       gpg do
         command "/usr/local/bin/gpg"
         options  "--no-use-agent"
@@ -170,6 +177,7 @@ The procedure to create and transfer the key is as follows:
         s3 100
         cloudfiles 100
         sftp 100
+        scp 100
       end
 
       mysqldump do
