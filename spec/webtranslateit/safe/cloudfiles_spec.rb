@@ -109,7 +109,7 @@ describe WebTranslateIt::Safe::Cloudfiles do
   end
 
   describe :save do
-    def add_stubs(*stubs)
+    def add_stubs(*stubs) # rubocop:todo Metrics/MethodLength
       stubs.each do |s|
         case s
         when :connection

@@ -42,7 +42,7 @@ module WebTranslateIt
             end
           end
 
-          def mixed_value(*names)
+          def mixed_value(*names) # rubocop:todo Metrics/MethodLength
             names.each do |m|
               define_method(m) do |data = {}, &block|
                 ensure_uniq(m)

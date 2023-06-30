@@ -108,7 +108,7 @@ describe WebTranslateIt::Safe::S3 do
   end
 
   describe :save do
-    def add_stubs(*stubs)
+    def add_stubs(*stubs) # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength
       stubs.each do |s|
         case s
         when :connection

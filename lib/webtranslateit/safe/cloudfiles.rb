@@ -23,7 +23,7 @@ module WebTranslateIt
         File.stat(path).size
       end
 
-      def save
+      def save # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
         raise 'pipe-streaming not supported for S3.' unless @backup.path
 
         # needed in cleanup even on dry run
@@ -44,7 +44,7 @@ module WebTranslateIt
         puts("Upload took #{format('%.2f', benchmark)} second(s).") if verbose?
       end
 
-      def cleanup
+      def cleanup # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
         return if local_only?
 
         return unless keep = config[:keep, :cloudfiles]

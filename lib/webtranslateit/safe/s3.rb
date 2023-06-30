@@ -16,7 +16,7 @@ module WebTranslateIt
         @path ||= expand(config[:s3, :path] || config[:local, :path] || ':kind/:id')
       end
 
-      def save
+      def save # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
         # FIXME: user friendly error here :)
         raise 'pipe-streaming not supported for S3.' unless @backup.path
 
@@ -40,7 +40,8 @@ module WebTranslateIt
         puts("Upload took #{format('%.2f', benchmark)} second(s).") if verbose?
       end
 
-      def cleanup
+      # rubocop:todo Metrics/PerceivedComplexity
+      def cleanup # rubocop:todo Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
         return if local_only?
 
         return unless keep = config[:keep, :s3]
@@ -58,6 +59,7 @@ module WebTranslateIt
           AWS::S3::Bucket.objects(bucket, prefix: f)[0].delete unless dry_run? || local_only?
         end
       end
+      # rubocop:enable Metrics/PerceivedComplexity
 
       def bucket
         config[:s3, :bucket]

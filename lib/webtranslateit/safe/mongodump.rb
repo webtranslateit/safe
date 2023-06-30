@@ -4,7 +4,7 @@ module WebTranslateIt
 
     class Mongodump < Source
 
-      def command
+      def command # rubocop:todo Metrics/AbcSize
         opts = []
         opts << "--host #{config[:host]}" if config[:host]
         opts << "-u #{config[:user]}" if config[:user]
