@@ -4,6 +4,8 @@ module WebTranslateIt
 
     class Sftp < Sink
 
+      MAX_RETRIES = 5
+
       protected
 
       def active?
@@ -14,13 +16,14 @@ module WebTranslateIt
         @path ||= expand(config[:sftp, :path] || config[:local, :path] || ':kind/:id')
       end
 
-      def save
+      def save # rubocop:todo Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         raise 'pipe-streaming not supported for SFTP.' unless @backup.path
 
         puts "Uploading #{host}:#{full_path} via SFTP" if verbose? || dry_run?
 
         return if dry_run? || local_only?
 
+        retries = 0
         opts = {}
         opts[:password] = password if password
         opts[:port] = port if port
@@ -28,6 +31,14 @@ module WebTranslateIt
           puts "Sending #{@backup.path} to #{full_path}" if verbose?
           begin
             sftp.upload! @backup.path, full_path
+          rescue IO::TimeoutError
+            puts 'Upload timed out, retrying'
+            retries += 1
+            if retries >= MAX_RETRIES
+              puts "Tried #{retries} times. Giving up."
+            else
+              retry unless retries >= MAX_RETRIES
+            end
           rescue Net::SFTP::StatusException
             puts "Ensuring remote path (#{path}) exists" if verbose?
             # mkdir -p
@@ -61,9 +72,7 @@ module WebTranslateIt
 
           puts files.collect(&:name) if verbose?
 
-          files = files
-                  .collect(&:name)
-                  .sort
+          files = files.collect(&:name).sort
 
           cleanup_with_limit(files, keep) do |f|
             file = File.join(path, f)
