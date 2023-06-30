@@ -16,7 +16,7 @@ module WebTranslateIt
         @path ||= File.expand_path(expand(config[:local, :path] || raise('missing :local/:path')))
       end
 
-      def save
+      def save # rubocop:todo Metrics/AbcSize
         puts "command: #{@backup.command}" if verbose?
 
         # FIXME: probably need to change this to smth like @backup.finalize!
@@ -31,7 +31,7 @@ module WebTranslateIt
         puts("command took #{format('%.2f', benchmark)} second(s).") if verbose?
       end
 
-      def cleanup
+      def cleanup # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize
         return unless keep = config[:keep, :local]
 
         puts "listing files #{base}" if verbose?

@@ -16,7 +16,7 @@ module WebTranslateIt
         @path ||= expand(config[:sftp, :path] || config[:local, :path] || ':kind/:id')
       end
 
-      def save # rubocop:todo Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      def save # rubocop:todo Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
         raise 'pipe-streaming not supported for SFTP.' unless @backup.path
 
         puts "Uploading #{host}:#{full_path} via SFTP" if verbose? || dry_run?
@@ -58,7 +58,8 @@ module WebTranslateIt
         puts '...done' if verbose?
       end
 
-      def cleanup
+      # rubocop:todo Metrics/PerceivedComplexity
+      def cleanup # rubocop:todo Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
         return if local_only? || dry_run?
 
         return unless keep = config[:keep, :sftp]
@@ -81,6 +82,7 @@ module WebTranslateIt
           end
         end
       end
+      # rubocop:enable Metrics/PerceivedComplexity
 
       def host
         config[:sftp, :host]

@@ -31,7 +31,7 @@ OPTS = [
   '-n', '--dry-run', '--not-dry-run',
   '-L', '--local', '--not-local'
 ].freeze
-def main
+def main # rubocop:todo Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
   opts = ARGV & OPTS
   args = ARGV - OPTS
 
