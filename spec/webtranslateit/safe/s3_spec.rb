@@ -7,7 +7,8 @@ describe WebTranslateIt::Safe::S3 do
       s3: {
         bucket: '_bucket',
         key: '_key',
-        secret: '_secret'
+        secret: '_secret',
+        region: 'us-east-1'
       },
       keep: {
         s3: 2

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe WebTranslateIt::Safe::Config do
-  it 'parses example config' do
+  it 'parses example config' do # rubocop:todo RSpec/ExampleLength
     config = WebTranslateIt::Safe::Config::Node.new do
 
       dry_run false
@@ -15,6 +15,7 @@ describe WebTranslateIt::Safe::Config do
       s3 do
         key 's3 key'
         secret 'secret'
+        region 'us-east-1'
         bucket 'bucket'
         path 'path1'
       end
@@ -124,6 +125,7 @@ describe WebTranslateIt::Safe::Config do
       's3' => {
         'key' => 's3 key',
         'secret' => 'secret',
+        'region' => 'us-east-1',
         'bucket' => 'bucket',
         'path' => 'path1'
       },
