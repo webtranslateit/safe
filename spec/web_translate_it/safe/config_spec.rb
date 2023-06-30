@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WebTranslateIt::Safe::Config do
   it 'parses example config' do
     config = WebTranslateIt::Safe::Config::Node.new do

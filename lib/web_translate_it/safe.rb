@@ -2,7 +2,7 @@ require 'aws/s3'
 require 'cloudfiles'
 require 'net/sftp'
 require 'net/scp'
-# require 'net/ftp'
+require 'tmpdir'
 require 'fileutils'
 require 'benchmark'
 
