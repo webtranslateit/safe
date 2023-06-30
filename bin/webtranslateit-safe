@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'webtranslateit/safe'
+require 'web_translate_it/safe'
 
 include WebTranslateIt::Safe
 
