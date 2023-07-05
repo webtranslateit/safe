@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['support@webtranslateit.com']
   spec.required_ruby_version = '>= 3.2'
   spec.description = <<~DESC
-    WebTranslateIt-Safe is a simple tool to backup databases (MySQL and PostgreSQL), Subversion repositories (with svndump) and just files.
+    WebTranslateIt-Safe is a simple tool to backup databases (MySQL and PostgreSQL) and just files.
     Backups can be stored locally or remotely and can be enctypted.
     Remote storage is supported on Amazon S3, Rackspace Cloud Files, or just plain FTP/SFTP.
   DESC

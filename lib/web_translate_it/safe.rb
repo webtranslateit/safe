@@ -21,7 +21,6 @@ require 'web_translate_it/safe/source'
 require 'web_translate_it/safe/mysqldump'
 require 'web_translate_it/safe/pgdump'
 require 'web_translate_it/safe/archive'
-require 'web_translate_it/safe/svndump'
 require 'web_translate_it/safe/mongodump'
 
 require 'web_translate_it/safe/pipe'
@@ -50,8 +49,7 @@ module WebTranslateIt
       [[Mysqldump, %i[mysqldump databases]],
        [Pgdump,    %i[pgdump databases]],
        [Mongodump, %i[mongodump databases]],
-       [Archive,   %i[tar archives]],
-       [Svndump,   %i[svndump repos]]].each do |klass, path|
+       [Archive,   %i[tar archives]]].each do |klass, path|
         next unless collection = config[*path]
 
         collection.each do |name, c|
