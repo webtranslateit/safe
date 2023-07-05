@@ -134,13 +134,7 @@ safe do
     user "astrails"
     # port 8023
     password "ssh password for sftp"
-  end
-
-  sftp do
-    host "sftp.astrails.com"
-    user "astrails"
-    # port 8023
-    password "ssh password for scp"
+    use_scp: true # use SCP if possible
   end
 
   gpg do

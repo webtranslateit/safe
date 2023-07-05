@@ -2,6 +2,7 @@
 
 * Remove svndump feature.
 * Remove FTP transfer feature.
+* Merge SCP with SFTP, add `use_scp` option to SFTP to force SCP transfers.
 
 ## 0.4.7 - 2023-06-30
 
