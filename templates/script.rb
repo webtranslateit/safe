@@ -51,15 +51,7 @@ safe do
   #   user "YOUR_REMOTE_USERNAME"
   #   # port "NON STANDARD SSH PORT"
   #   password "YOUR_REMOTE_PASSWORD"
-  #   path ":kind/:id" # this is the default
-  # end
-
-  ## uncomment to enable uploads via SCP
-  # scp do
-  #   host "YOUR_REMOTE_HOSTNAME"
-  #   user "YOUR_REMOTE_USERNAME"
-  #   # port "NON STANDARD SSH PORT"
-  #   password "YOUR_REMOTE_PASSWORD"
+  #   use_scp true # set to `true` to use SCP
   #   path ":kind/:id" # this is the default
   # end
 

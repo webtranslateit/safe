@@ -31,7 +31,6 @@ require 'web_translate_it/safe/sink'
 require 'web_translate_it/safe/local'
 require 'web_translate_it/safe/s3'
 require 'web_translate_it/safe/cloudfiles'
-require 'web_translate_it/safe/scp'
 require 'web_translate_it/safe/sftp'
 
 module WebTranslateIt
@@ -52,7 +51,7 @@ module WebTranslateIt
         next unless collection = config[*path]
 
         collection.each do |name, c|
-          klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :scp, :sftp)
+          klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :sftp)
         end
       end
 
