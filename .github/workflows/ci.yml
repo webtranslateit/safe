@@ -32,6 +32,9 @@ jobs:
     - name: Run tests
       run: bundle exec rspec
 
+    - name: Upload coverage results to Code Climate
+      uses: paambaati/codeclimate-action@v4.0.0
+
   linters:
     name: Linters
     runs-on: ubuntu-22.04
