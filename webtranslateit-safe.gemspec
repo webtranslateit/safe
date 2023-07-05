@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'webtranslateit-safe'
-  spec.version       = '0.4.7'
+  spec.version       = '0.4.8'
   spec.authors       = ['Edouard Briere', 'Vitaly Kushner']
   spec.email         = ['support@webtranslateit.com']
   spec.required_ruby_version = '>= 3.2'
