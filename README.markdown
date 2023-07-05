@@ -152,7 +152,6 @@ safe do
     s3 100
     cloudfiles 100
     sftp 100
-    scp 100
   end
 
   mysqldump do
