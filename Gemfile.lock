@@ -21,6 +21,7 @@ GEM
       json
     coderay (1.1.3)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     ffi (1.15.5)
     formatador (1.1.0)
     fuubar (2.5.1)
@@ -117,6 +118,12 @@ GEM
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     shellany (0.0.1)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     thor (1.2.2)
     unicode-display_width (2.4.2)
     xml-simple (1.1.9)
@@ -137,6 +144,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   rubocop-rspec
+  simplecov
   webtranslateit-safe!
 
 BUNDLED WITH
