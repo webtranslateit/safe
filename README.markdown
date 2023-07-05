@@ -9,6 +9,7 @@ We’ve added:
 - Support for ruby 3.2
 - Standardized code with rubocop
 - Added support for SCP transfers — On some conditions with servers with higher latency, transfering large files (> 18GB) with SFTP can take a very long time.
+- Remove svndump feature
 
 ## Installation
 
@@ -174,12 +175,6 @@ safe do
       skip_tables ["bar", "baz"]
     end
 
-  end
-
-  svndump do
-    repo :my_repo do
-      repo_path "/home/svn/my_repo"
-    end
   end
 
   pgdump do

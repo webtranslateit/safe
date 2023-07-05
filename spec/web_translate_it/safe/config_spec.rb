@@ -74,12 +74,6 @@ describe WebTranslateIt::Safe::Config do
 
       end
 
-      svndump do
-        repo :my_repo do
-          repo_path '/home/svn/my_repo'
-        end
-      end
-
       tar do
         archive 'git-repositories' do
           files '/home/git/repositories'
@@ -166,14 +160,6 @@ describe WebTranslateIt::Safe::Config do
           'production' => {
             'keep' => {'local' => 3},
             'skip_tables' => %w[logger_exceptions request_logs]
-          }
-        }
-      },
-
-      'svndump' => {
-        'repos' => {
-          'my_repo' => {
-            'repo_path' => '/home/svn/my_repo'
           }
         }
       },

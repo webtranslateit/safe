@@ -76,7 +76,7 @@ module WebTranslateIt
                      :options, :user, :host, :port, :password, :key, :secret, :bucket,
                      :api_key, :container, :socket, :service_net, :repo_path
         multi_value :skip_tables, :exclude, :files
-        mixed_value :s3, :local, :cloudfiles, :sftp, :mysqldump, :tar, :gpg, :keep, :pgdump, :tar, :svndump,
+        mixed_value :s3, :local, :cloudfiles, :sftp, :mysqldump, :tar, :gpg, :keep, :pgdump, :tar,
                     :ftp, :mongodump, :scp
         collection :database, :archive, :repo
 
