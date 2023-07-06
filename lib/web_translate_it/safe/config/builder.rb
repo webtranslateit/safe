@@ -72,12 +72,10 @@ module WebTranslateIt
 
         end
 
-        simple_value :verbose, :dry_run, :local_only, :path, :command,
-                     :options, :user, :host, :port, :password, :key, :secret, :bucket,
-                     :api_key, :container, :socket, :service_net, :repo_path, :use_scp
+        simple_value :verbose, :dry_run, :local_only, :path, :command, :options, :user, :host, :port,
+                     :password, :key, :secret, :bucket, :socket, :service_net, :repo_path, :use_scp
         multi_value :skip_tables, :exclude, :files
-        mixed_value :s3, :local, :cloudfiles, :sftp, :mysqldump, :tar, :gpg, :keep, :pgdump, :tar,
-                    :mongodump
+        mixed_value :s3, :local, :sftp, :mysqldump, :tar, :gpg, :keep, :pgdump, :tar, :mongodump
         collection :database, :archive, :repo
 
         private

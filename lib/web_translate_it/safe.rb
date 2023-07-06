@@ -1,5 +1,4 @@
 require 'aws/s3'
-require 'cloudfiles'
 require 'net/sftp'
 require 'net/scp'
 require 'tmpdir'
@@ -31,7 +30,6 @@ require 'web_translate_it/safe/pigz'
 require 'web_translate_it/safe/sink'
 require 'web_translate_it/safe/local'
 require 'web_translate_it/safe/s3'
-require 'web_translate_it/safe/cloudfiles'
 require 'web_translate_it/safe/sftp'
 
 # Keeps mkmf from littering STDOUT
@@ -57,7 +55,7 @@ module WebTranslateIt
         next unless collection = config[*path]
 
         collection.each do |name, c|
-          klass.new(name, c).backup.run(c, :gpg, :pigz, :gzip, :local, :s3, :cloudfiles, :sftp)
+          klass.new(name, c).backup.run(c, :gpg, :pigz, :gzip, :local, :s3, :sftp)
         end
       end
 

@@ -1,6 +1,6 @@
 # webtranslateit-safe
 
-Simple database and filesystem backups with S3 and Rackspace Cloud Files support (with optional encryption).
+Simple database and filesystem backups with Amazon S3 support (with optional encryption).
 
 This is a fork of now abandonned [astrails-safe](https://github.com/astrails/safe) that we’ve been using since 2010. It is now unmaintained and not compatible with ruby 3.2, so we forked it.
 
@@ -121,14 +121,6 @@ safe do
     path "servers/alpha/:kind/:id"
   end
 
-  cloudfiles do
-    user "..........."
-    api_key "................................."
-    container "safe_backup"
-    path ":kind/" # this is default
-    service_net false
-  end
-
   sftp do
     host "sftp.astrails.com"
     user "astrails"
@@ -150,7 +142,6 @@ safe do
   keep do
     local 20
     s3 100
-    cloudfiles 100
     sftp 100
   end
 
