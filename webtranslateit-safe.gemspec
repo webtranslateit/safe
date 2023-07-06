@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.description = <<~DESC
     WebTranslateIt-Safe is a simple tool to backup databases (MySQL and PostgreSQL) and files.
     Backups can be stored locally or remotely and can be encrypted.
-    Remote storage is supported on Amazon S3, Rackspace Cloud Files, or just plain SFTP/SCP.
+    Remote storage is supported on Amazon S3 or just plain SFTP/SCP.
   DESC
   spec.summary       = 'Backup filesystem and databases (MySQL and PostgreSQL) locally or to a remote server/service (with encryption)'
   spec.homepage      = 'http://github.com/webtranslateit/safe'
@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'aws-s3'
-  spec.add_dependency 'cloudfiles'
   spec.add_dependency 'net-scp'
   spec.add_dependency 'net-sftp'
 

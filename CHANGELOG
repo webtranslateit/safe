@@ -1,3 +1,7 @@
+## Edge
+
+* Remove Rackspace Cloudfiles feature.
+
 ## 0.4.10 - 2023-07-06
 
 * Fix retry strategy when using SCP.
