@@ -1,3 +1,6 @@
+## Edge
+
+* Use pigz instead of gzip when available on system to speed up compression time. 
 ## 0.4.8 - 2023-07-05
 
 * Remove svndump feature.
