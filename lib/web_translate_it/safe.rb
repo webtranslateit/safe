@@ -5,8 +5,8 @@ require 'net/scp'
 require 'tmpdir'
 require 'fileutils'
 require 'benchmark'
-
 require 'tempfile'
+require 'mkmf'
 
 require 'web_translate_it/safe/tmp_file'
 
@@ -26,12 +26,18 @@ require 'web_translate_it/safe/mongodump'
 require 'web_translate_it/safe/pipe'
 require 'web_translate_it/safe/gpg'
 require 'web_translate_it/safe/gzip'
+require 'web_translate_it/safe/pigz'
 
 require 'web_translate_it/safe/sink'
 require 'web_translate_it/safe/local'
 require 'web_translate_it/safe/s3'
 require 'web_translate_it/safe/cloudfiles'
 require 'web_translate_it/safe/sftp'
+
+# Keeps mkmf from littering STDOUT
+MakeMakefile::Logging.quiet = true
+# Keeps mkmf from creating a mkmf.log file on current path
+MakeMakefile::Logging.logfile(File::NULL)
 
 module WebTranslateIt
 
@@ -51,7 +57,7 @@ module WebTranslateIt
         next unless collection = config[*path]
 
         collection.each do |name, c|
-          klass.new(name, c).backup.run(c, :gpg, :gzip, :local, :s3, :cloudfiles, :sftp)
+          klass.new(name, c).backup.run(c, :gpg, :pigz, :gzip, :local, :s3, :cloudfiles, :sftp)
         end
       end
 
