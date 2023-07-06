@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    webtranslateit-safe (0.4.9)
+    webtranslateit-safe (0.4.10)
       aws-s3
       cloudfiles
       net-scp

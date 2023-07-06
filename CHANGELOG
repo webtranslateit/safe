@@ -1,3 +1,6 @@
+## 0.4.10 - 2023-07-06
+
+* Fix retry strategy when using SCP.
 ## 0.4.9 - 2023-07-06
 
 * Use pigz instead of gzip when available on system to speed up compression time. 

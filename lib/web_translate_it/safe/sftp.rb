@@ -32,7 +32,7 @@ module WebTranslateIt
           puts "Sending #{@backup.path} to #{full_path}" if verbose?
           begin
             connexion.upload! @backup.path, full_path
-          rescue IO::TimeoutError
+          rescue IO::TimeoutError, Net::SCP::Error
             puts 'Upload timed out, retrying'
             retries += 1
             if retries >= MAX_RETRIES
@@ -40,7 +40,7 @@ module WebTranslateIt
             else
               retry unless retries >= MAX_RETRIES
             end
-          rescue Net::SFTP::StatusException, Net::SCP::Error
+          rescue Net::SFTP::StatusException
             Net::SFTP.start(host, user, opts) do |sftp|
               puts "Ensuring remote path (#{path}) exists" if verbose?
               # mkdir -p
