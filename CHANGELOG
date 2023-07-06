@@ -1,4 +1,4 @@
-## Edge
+## 0.4.9 - 2023-07-06
 
 * Use pigz instead of gzip when available on system to speed up compression time. 
 ## 0.4.8 - 2023-07-05
