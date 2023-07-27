@@ -1,6 +1,7 @@
-## Edge
+## 0.4.11 - 2023-07-27
 
 * Remove Rackspace Cloudfiles feature.
+* Code refactoring.
 
 ## 0.4.10 - 2023-07-06
 
