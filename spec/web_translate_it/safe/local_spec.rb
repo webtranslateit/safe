@@ -73,8 +73,6 @@ describe WebTranslateIt::Safe::Local do
     describe 'dry run' do
       before { @local.config[:dry_run] = true }
 
-      it 'should not create directory'
-      it 'should not call system'
       it 'sets backup.path' do
         mock(@backup).path = 'file-path'
         @local.send(:save)
