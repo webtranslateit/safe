@@ -31,8 +31,8 @@ module WebTranslateIt
 
         # recursive find
         # starts at the node and continues to the parent
-        def find(*path)
-          get(*path) || @parent&.find(*path)
+        def find(*)
+          get(*) || @parent&.find(*)
         end
         alias [] find
 
