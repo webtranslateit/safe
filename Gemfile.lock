@@ -75,7 +75,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.9.2)
     rexml (3.3.7)
-    rr (1.0.5)
+    rr (3.1.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -130,7 +130,7 @@ DEPENDENCIES
   guard-rspec
   guard-rubocop
   rake
-  rr (~> 1.0.4)
+  rr (~> 3.1.1)
   rspec
   rubocop
   rubocop-performance
