@@ -23,6 +23,7 @@ GEM
     docile (1.4.1)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-musl)
     formatador (1.1.0)
     fuubar (2.5.1)
       rspec-core (~> 3.0)
@@ -127,6 +128,7 @@ GEM
 PLATFORMS
   arm64-darwin
   x86_64-linux
+  x86_64-linux-musl
 
 DEPENDENCIES
   awesome_print
