@@ -3,6 +3,7 @@ PATH
   specs:
     webtranslateit-safe (0.4.11)
       aws-s3
+      base64
       net-scp
       net-sftp
 
@@ -15,6 +16,7 @@ GEM
       builder
       mime-types
       xml-simple
+    base64 (0.2.0)
     builder (3.2.4)
     coderay (1.1.3)
     diff-lcs (1.5.1)
@@ -124,6 +126,7 @@ GEM
 PLATFORMS
   arm64-darwin-22
   arm64-darwin-23
+  arm64-darwin-24
   x86_64-linux
 
 DEPENDENCIES
@@ -141,4 +144,4 @@ DEPENDENCIES
   webtranslateit-safe!
 
 BUNDLED WITH
-   2.4.13
+   2.6.2
