@@ -117,7 +117,7 @@ describe WebTranslateIt::Safe::S3 do
           stub(AWS::S3::Bucket).find('_bucket') { raise_error AWS::S3::NoSuchBucket }
           stub(AWS::S3::Bucket).create
         when :file_open
-          stub(File).open('foo') { |_f, block| block.call(:opened_file) }
+          stub(File).open('foo') { |&block| block.call(:opened_file) }
         when :s3_store
           stub(AWS::S3::S3Object).store(@full_path, :opened_file, '_bucket')
         end
