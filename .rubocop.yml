@@ -7,4 +7,4 @@ AllCops:
   Exclude:
     - vendor/bundle/**/*
 
-require: rubocop-performance
+plugins: rubocop-performance
