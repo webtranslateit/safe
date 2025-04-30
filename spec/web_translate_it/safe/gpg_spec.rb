@@ -36,7 +36,7 @@ describe WebTranslateIt::Safe::Gpg do
       end
 
       it 'adds command pipe' do
-        mock(@gpg.backup.command) << (/\|gpg -BLAH/)
+        mock(@gpg.backup.command) << /\|gpg -BLAH/
         @gpg.process
       end
 
