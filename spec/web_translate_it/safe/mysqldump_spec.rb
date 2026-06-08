@@ -49,7 +49,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       m = mysqldump(:foo, WebTranslateIt::Safe::Config::Node.new(nil, config))
       stub(m).timestamp { 'NOW' }
       expect(m.send(:mysql_skip_tables)).to be_nil
-      expect(m.backup.command).not_to match(/ignore-table/)
+      expect(m.backup.command).not_to include('ignore-table')
     end
 
     it "returns '' if skip_tables empty" do
@@ -58,7 +58,7 @@ describe WebTranslateIt::Safe::Mysqldump do
       m = mysqldump(:foo, WebTranslateIt::Safe::Config::Node.new(nil, config))
       stub(m).timestamp { 'NOW' }
       expect(m.send(:mysql_skip_tables)).to eq('')
-      expect(m.backup.command).not_to match(/ignore-table/)
+      expect(m.backup.command).not_to include('ignore-table')
     end
 
   end
