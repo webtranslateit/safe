@@ -60,7 +60,7 @@ describe 'tar backup' do
       system "tar -zxvf #{@backup} -C #{@target}"
 
       @test = "#{@target}/#{@root}/src"
-      puts @test # rubocop:todo Rspec/Output
+      puts @test # rubocop:todo RSpec/Output
     end
 
     it 'includes asd1/2/3' do
