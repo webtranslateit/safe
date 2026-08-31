@@ -40,7 +40,7 @@ module WebTranslateIt
         puts("Upload took #{format('%.2f', benchmark)} second(s).") if verbose?
       end
 
-      # rubocop:todo Metrics/PerceivedComplexity
+      # rubocop:todo-next Metrics/PerceivedComplexity
       def cleanup # rubocop:todo Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
         return if local_only?
 
@@ -59,7 +59,6 @@ module WebTranslateIt
           AWS::S3::Bucket.objects(bucket, prefix: f)[0].delete unless dry_run? || local_only?
         end
       end
-      # rubocop:enable Metrics/PerceivedComplexity
 
       def bucket
         config[:s3, :bucket]

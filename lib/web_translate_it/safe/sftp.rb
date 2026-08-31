@@ -61,7 +61,7 @@ module WebTranslateIt
         puts '...done' if verbose?
       end
 
-      # rubocop:todo Metrics/PerceivedComplexity
+      # rubocop:todo-next Metrics/PerceivedComplexity
       def cleanup # rubocop:todo Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/MethodLength
         return if local_only? || dry_run?
 
@@ -85,7 +85,6 @@ module WebTranslateIt
           end
         end
       end
-      # rubocop:enable Metrics/PerceivedComplexity
 
       def host
         config[:sftp, :host]
